@@ -40,10 +40,16 @@
             this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeSpanEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
+            this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
@@ -68,7 +74,6 @@
             this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -77,9 +82,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).BeginInit();
             this.schedulerSplitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).BeginInit();
@@ -91,7 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             this.popupControlContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl
@@ -124,14 +130,12 @@
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 165;
+            this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl1.Size = new System.Drawing.Size(165, 519);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
-            
-           
             // 
             // CPBbar
             // 
@@ -208,10 +212,17 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbonControl;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTimeSpanEdit1});
             this.gridControl1.Size = new System.Drawing.Size(700, 519);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // nodeInfoBindingSource
+            // 
+            this.nodeInfoBindingSource.DataMember = "NodeInfo";
+            this.nodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
             // 
             // nodeInfoDSBindingSource
             // 
@@ -226,10 +237,16 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.GroupColumn});
+            this.GroupColumn,
+            this.StatusColumn,
+            this.DateColumn,
+            this.TimeColumn,
+            this.DurationColumn});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsHint.ShowColumnHeaderHints = false;
+            this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // GroupColumn
             // 
@@ -238,6 +255,53 @@
             this.GroupColumn.Name = "GroupColumn";
             this.GroupColumn.Visible = true;
             this.GroupColumn.VisibleIndex = 0;
+            this.GroupColumn.Width = 136;
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.Caption = "状态";
+            this.StatusColumn.FieldName = "Status";
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.Visible = true;
+            this.StatusColumn.VisibleIndex = 1;
+            this.StatusColumn.Width = 60;
+            // 
+            // DateColumn
+            // 
+            this.DateColumn.Caption = "日期";
+            this.DateColumn.FieldName = "Date";
+            this.DateColumn.Name = "DateColumn";
+            this.DateColumn.Visible = true;
+            this.DateColumn.VisibleIndex = 2;
+            this.DateColumn.Width = 160;
+            // 
+            // TimeColumn
+            // 
+            this.TimeColumn.Caption = "起始时间";
+            this.TimeColumn.ColumnEdit = this.repositoryItemTimeSpanEdit1;
+            this.TimeColumn.FieldName = "Time";
+            this.TimeColumn.Name = "TimeColumn";
+            this.TimeColumn.Visible = true;
+            this.TimeColumn.VisibleIndex = 3;
+            this.TimeColumn.Width = 160;
+            // 
+            // repositoryItemTimeSpanEdit1
+            // 
+            this.repositoryItemTimeSpanEdit1.AllowEditDays = false;
+            this.repositoryItemTimeSpanEdit1.AutoHeight = false;
+            this.repositoryItemTimeSpanEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemTimeSpanEdit1.Mask.EditMask = "HH:mm:ss";
+            this.repositoryItemTimeSpanEdit1.Name = "repositoryItemTimeSpanEdit1";
+            // 
+            // DurationColumn
+            // 
+            this.DurationColumn.Caption = "持续时长";
+            this.DurationColumn.FieldName = "Interval";
+            this.DurationColumn.Name = "DurationColumn";
+            this.DurationColumn.Visible = true;
+            this.DurationColumn.VisibleIndex = 4;
+            this.DurationColumn.Width = 166;
             // 
             // ribbonControl
             // 
@@ -378,7 +442,6 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "File";
-            
             // 
             // ribbonPageSkins
             // 
@@ -386,6 +449,7 @@
             this.skinsRibbonPageGroup});
             this.ribbonPageSkins.Name = "ribbonPageSkins";
             this.ribbonPageSkins.Text = "Skins";
+            this.ribbonPageSkins.Visible = false;
             // 
             // skinsRibbonPageGroup
             // 
@@ -496,11 +560,6 @@
             this.someLabelControl1.TabIndex = 0;
             this.someLabelControl1.Text = "Some Info";
             // 
-            // nodeInfoBindingSource
-            // 
-            this.nodeInfoBindingSource.DataMember = "NodeInfo";
-            this.nodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
-            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -516,6 +575,7 @@
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "MegaSet V2.0";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
             this.splitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
@@ -524,9 +584,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).EndInit();
             this.schedulerSplitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).EndInit();
@@ -539,7 +601,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
             this.popupControlContainer1.ResumeLayout(false);
             this.popupControlContainer1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,6 +647,11 @@
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraGrid.Columns.GridColumn GroupColumn;
         private System.Windows.Forms.BindingSource nodeInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn StatusColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn DateColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn TimeColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn DurationColumn;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit repositoryItemTimeSpanEdit1;
 
     }
 }

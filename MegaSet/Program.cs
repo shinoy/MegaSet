@@ -18,6 +18,7 @@ namespace MegaSet
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
+            
 
             Application.Run(new Form1());
         }

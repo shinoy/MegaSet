@@ -15,6 +15,7 @@ using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraScheduler;
 
 
+
 namespace MegaSet
 {
     public partial class Form1 : RibbonForm
@@ -50,6 +51,11 @@ namespace MegaSet
         {
             
             nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            UserLookAndFeel.Default.SetSkinStyle("Visual Studio 2013 Light");
         }
 
     }
