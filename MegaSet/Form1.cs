@@ -46,5 +46,11 @@ namespace MegaSet
             openFile.ShowDialog();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128);
+        }
+
     }
 }
