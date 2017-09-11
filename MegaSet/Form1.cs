@@ -55,7 +55,7 @@ namespace MegaSet
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UserLookAndFeel.Default.SetSkinStyle("Visual Studio 2013 Light");
+            UserLookAndFeel.Default.SetSkinStyle("VS2010");
         }
 
     }
