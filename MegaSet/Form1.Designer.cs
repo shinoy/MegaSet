@@ -485,6 +485,8 @@
             // 
             // Node1
             // 
+            this.Node1.Appearance.FontStyleDelta = System.Drawing.FontStyle.Underline;
+            this.Node1.Appearance.Options.UseFont = true;
             this.Node1.Caption = "上海(192.168.0.1)";
             this.Node1.Name = "Node1";
             this.Node1.SmallImageIndex = 4;
