@@ -1,0 +1,44 @@
+get power
+
+8-power00     ON      ********   08:35:00   230
+8-power01     ON      ********   13:35:00   230
+8-power02     ON      ********   08:30:00   240
+8-power03     ON      ********   13:35:00   240
+8-power04     OFF     ********   ********   ****
+8-power05     OFF     ********   ********   ****
+
+get status
+
+7-Channel 0 disable
+7-Channel 1 disable
+7-Channel 2 disable
+7-Channel 3 disable
+7-Channel 4 disable
+7-Channel 5 disable
+
+get time
+
+1-time2000-01-01 00:37:03
+
+power on enable
+always_on
+power on disable
+alwaysoff
+
+set time 212322180314
+1-time2018-03-14 21:23:22
+
+get temp
+0-temp32.5
+
+4-bakcpboFF
+
+get voltage
+6-voltage = 15.3
+
+get gps
+utcerror
+3-utcerror
+
+get version
+5-version = V1.7.2
