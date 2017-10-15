@@ -55,8 +55,9 @@
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.CPBbar = new DevExpress.XtraNavBar.NavBarGroup();
-            this.Node2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.Node1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.CamBar = new DevExpress.XtraNavBar.NavBarGroup();
             this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
@@ -80,7 +81,6 @@
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.nodeInfoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -90,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDuration1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            this.navBarGroupControlContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).BeginInit();
@@ -105,10 +107,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            this.navBarControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // nodeInfoBindingSource
@@ -168,7 +170,7 @@
             this.repositoryItemSpinEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(734, 147);
+            this.ribbonControl.Size = new System.Drawing.Size(856, 149);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -349,38 +351,72 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.dateTimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 428);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 461);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(734, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(856, 33);
             // 
             // CPBbar
             // 
             this.CPBbar.Caption = "通道板";
-            this.CPBbar.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.Node2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.Node1)});
+            this.CPBbar.ControlContainer = this.navBarGroupControlContainer1;
+            this.CPBbar.Expanded = true;
+            this.CPBbar.GroupClientHeight = 192;
+            this.CPBbar.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.CPBbar.LargeImageIndex = 2;
             this.CPBbar.Name = "CPBbar";
             // 
-            // Node2
+            // navBarGroupControlContainer1
             // 
-            this.Node2.Caption = "北京(192.168.0.2)";
-            this.Node2.Name = "Node2";
-            this.Node2.SmallImageIndex = 1;
+            this.navBarGroupControlContainer1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
+            this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(165, 192);
+            this.navBarGroupControlContainer1.TabIndex = 0;
             // 
-            // Node1
+            // cpbTreeView
             // 
-            this.Node1.Appearance.FontStyleDelta = System.Drawing.FontStyle.Underline;
-            this.Node1.Appearance.Options.UseFont = true;
-            this.Node1.Caption = "上海(192.168.0.1)";
-            this.Node1.Name = "Node1";
-            this.Node1.SmallImageIndex = 4;
+            this.cpbTreeView.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1});
+            this.cpbTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cpbTreeView.Location = new System.Drawing.Point(0, 0);
+            this.cpbTreeView.Name = "cpbTreeView";
+            this.cpbTreeView.BeginUnboundLoad();
+            this.cpbTreeView.AppendNode(new object[] {
+            "shanghai"}, -1);
+            this.cpbTreeView.AppendNode(new object[] {
+            "192.168.1.1"}, 0);
+            this.cpbTreeView.AppendNode(new object[] {
+            "192.168.1.2"}, 0);
+            this.cpbTreeView.AppendNode(new object[] {
+            "beijing"}, -1);
+            this.cpbTreeView.AppendNode(new object[] {
+            "10.1.1.1"}, 3);
+            this.cpbTreeView.AppendNode(new object[] {
+            "10.1.1.2"}, 3);
+            this.cpbTreeView.EndUnboundLoad();
+            this.cpbTreeView.OptionsView.ShowColumns = false;
+            this.cpbTreeView.OptionsView.ShowHorzLines = false;
+            this.cpbTreeView.OptionsView.ShowIndicator = false;
+            this.cpbTreeView.OptionsView.ShowVertLines = false;
+            this.cpbTreeView.OptionsBehavior.Editable = false;
+            this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
+            this.cpbTreeView.Size = new System.Drawing.Size(165, 192);
+            this.cpbTreeView.TabIndex = 0;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "treeListColumn1";
+            this.treeListColumn1.FieldName = "treeListColumn1";
+            this.treeListColumn1.MinWidth = 52;
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
             // 
             // CamBar
             // 
             this.CamBar.Caption = "摄像头";
-            this.CamBar.Expanded = true;
             this.CamBar.LargeImageIndex = 0;
             this.CamBar.Name = "CamBar";
             // 
@@ -412,10 +448,10 @@
             this.popupControlContainer2.Appearance.Options.UseBackColor = true;
             this.popupControlContainer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.popupControlContainer2.Controls.Add(this.buttonEdit);
-            this.popupControlContainer2.Location = new System.Drawing.Point(204, 268);
+            this.popupControlContainer2.Location = new System.Drawing.Point(238, 289);
             this.popupControlContainer2.Name = "popupControlContainer2";
             this.popupControlContainer2.Ribbon = this.ribbonControl;
-            this.popupControlContainer2.Size = new System.Drawing.Size(101, 26);
+            this.popupControlContainer2.Size = new System.Drawing.Size(118, 28);
             this.popupControlContainer2.TabIndex = 3;
             this.popupControlContainer2.Visible = false;
             // 
@@ -427,7 +463,7 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit.Size = new System.Drawing.Size(86, 20);
+            this.buttonEdit.Size = new System.Drawing.Size(100, 20);
             this.buttonEdit.TabIndex = 0;
             // 
             // popupControlContainer1
@@ -437,18 +473,18 @@
             this.popupControlContainer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.popupControlContainer1.Controls.Add(this.someLabelControl2);
             this.popupControlContainer1.Controls.Add(this.someLabelControl1);
-            this.popupControlContainer1.Location = new System.Drawing.Point(95, 183);
+            this.popupControlContainer1.Location = new System.Drawing.Point(111, 197);
             this.popupControlContainer1.Name = "popupControlContainer1";
             this.popupControlContainer1.Ribbon = this.ribbonControl;
-            this.popupControlContainer1.Size = new System.Drawing.Size(65, 65);
+            this.popupControlContainer1.Size = new System.Drawing.Size(76, 70);
             this.popupControlContainer1.TabIndex = 2;
             this.popupControlContainer1.Visible = false;
             // 
             // someLabelControl2
             // 
-            this.someLabelControl2.Location = new System.Drawing.Point(3, 53);
+            this.someLabelControl2.Location = new System.Drawing.Point(3, 57);
             this.someLabelControl2.Name = "someLabelControl2";
-            this.someLabelControl2.Size = new System.Drawing.Size(49, 13);
+            this.someLabelControl2.Size = new System.Drawing.Size(57, 14);
             this.someLabelControl2.TabIndex = 0;
             this.someLabelControl2.Text = "Some Info";
             // 
@@ -456,7 +492,7 @@
             // 
             this.someLabelControl1.Location = new System.Drawing.Point(3, 3);
             this.someLabelControl1.Name = "someLabelControl1";
-            this.someLabelControl1.Size = new System.Drawing.Size(49, 13);
+            this.someLabelControl1.Size = new System.Drawing.Size(57, 14);
             this.someLabelControl1.TabIndex = 0;
             this.someLabelControl1.Text = "Some Info";
             // 
@@ -472,7 +508,7 @@
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.button1);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(564, 281);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(685, 312);
             this.schedulerSplitContainerControl.SplitterPosition = 225;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -485,7 +521,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbonControl;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(334, 290);
+            this.gridControl1.Size = new System.Drawing.Size(454, 312);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -565,9 +601,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(62, 119);
+            this.button1.Location = new System.Drawing.Point(72, 128);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 21);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
@@ -575,7 +611,8 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.CamBar;
+            this.navBarControl1.ActiveGroup = this.CPBbar;
+            this.navBarControl1.Controls.Add(this.navBarGroupControlContainer1);
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.AllowDrop;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -587,7 +624,7 @@
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 165;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(165, 281);
+            this.navBarControl1.Size = new System.Drawing.Size(165, 312);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -595,14 +632,14 @@
             // splitContainerControl
             // 
             this.splitContainerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl.Location = new System.Drawing.Point(0, 147);
+            this.splitContainerControl.Location = new System.Drawing.Point(0, 149);
             this.splitContainerControl.Name = "splitContainerControl";
-            this.splitContainerControl.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.splitContainerControl.Padding = new System.Windows.Forms.Padding(6);
             this.splitContainerControl.Panel1.Controls.Add(this.navBarControl1);
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(734, 281);
+            this.splitContainerControl.Size = new System.Drawing.Size(856, 312);
             this.splitContainerControl.SplitterPosition = 165;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
@@ -612,17 +649,12 @@
             this.nodeInfoBindingSource1.DataMember = "NodeInfo";
             this.nodeInfoBindingSource1.DataSource = this.nodeInfoDSBindingSource;
             // 
-            // nodeInfoBindingSource2
-            // 
-            this.nodeInfoBindingSource2.DataMember = "NodeInfo";
-            this.nodeInfoBindingSource2.DataSource = this.nodeInfoDS;
-            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 459);
+            this.ClientSize = new System.Drawing.Size(856, 494);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.popupControlContainer2);
@@ -642,6 +674,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDuration1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            this.navBarGroupControlContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).EndInit();
@@ -658,10 +692,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            this.navBarControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
             this.splitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -694,8 +728,6 @@
         private DevExpress.XtraBars.BarButtonItem openFileBtn;
         private DevExpress.XtraNavBar.NavBarGroup CPBbar;
         private DevExpress.XtraNavBar.NavBarGroup CamBar;
-        private DevExpress.XtraNavBar.NavBarItem Node1;
-        private DevExpress.XtraNavBar.NavBarItem Node2;
         private DevExpress.XtraBars.BarButtonItem saveBtn;
         private DevExpress.XtraBars.BarStaticItem dateTimeInfo;
         private System.Windows.Forms.BindingSource nodeInfoDSBindingSource;
@@ -718,8 +750,10 @@
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
+        private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer1;
+        private DevExpress.XtraTreeList.TreeList cpbTreeView;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private System.Windows.Forms.BindingSource nodeInfoBindingSource1;
-        private System.Windows.Forms.BindingSource nodeInfoBindingSource2;
 
     }
 }
