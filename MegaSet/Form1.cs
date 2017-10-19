@@ -51,15 +51,20 @@ namespace MegaSet
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
             nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128);
+            nodeInfoDS.cpbInfo.Rows.Add("上海","0","上海",0);
+            nodeInfoDS.cpbInfo.Rows.Add("北京", "0", "北京", 0);
+            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "192.168.1.1", 1);
+            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "192.168.1.2", 1);
+            nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "10.0.0.1", 1);
+            nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
             
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             UserLookAndFeel.Default.StyleChanged += Default_StyleChanged;
-            UserLookAndFeel.Default.SetSkinStyle("VS2010");
+            //UserLookAndFeel.Default.SetSkinStyle("VS2010");
             Skin skin = GridSkins.GetSkin(this.cpbTreeView.LookAndFeel);
             skin.Properties[GridSkins.OptShowTreeLine] = true;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.None;

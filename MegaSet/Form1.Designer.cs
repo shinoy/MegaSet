@@ -57,10 +57,11 @@
             this.CPBbar = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.AddressName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.CamBar = new DevExpress.XtraNavBar.NavBarGroup();
             this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
-            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
             this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
@@ -92,8 +93,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             this.navBarGroupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
             this.popupControlContainer2.SuspendLayout();
@@ -378,41 +380,47 @@
             // cpbTreeView
             // 
             this.cpbTreeView.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1});
+            this.AddressName});
+            this.cpbTreeView.DataSource = this.cpbInfoBindingSource;
             this.cpbTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cpbTreeView.ImageIndexFieldName = "NodeImage";
             this.cpbTreeView.Location = new System.Drawing.Point(0, 0);
             this.cpbTreeView.Name = "cpbTreeView";
-            this.cpbTreeView.BeginUnboundLoad();
-            this.cpbTreeView.AppendNode(new object[] {
-            "shanghai"}, -1);
-            this.cpbTreeView.AppendNode(new object[] {
-            "192.168.1.1"}, 0);
-            this.cpbTreeView.AppendNode(new object[] {
-            "192.168.1.2"}, 0);
-            this.cpbTreeView.AppendNode(new object[] {
-            "beijing"}, -1);
-            this.cpbTreeView.AppendNode(new object[] {
-            "10.1.1.1"}, 3);
-            this.cpbTreeView.AppendNode(new object[] {
-            "10.1.1.2"}, 3);
-            this.cpbTreeView.EndUnboundLoad();
+            this.cpbTreeView.OptionsBehavior.Editable = false;
+            this.cpbTreeView.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.None;
             this.cpbTreeView.OptionsView.ShowColumns = false;
             this.cpbTreeView.OptionsView.ShowHorzLines = false;
             this.cpbTreeView.OptionsView.ShowIndicator = false;
             this.cpbTreeView.OptionsView.ShowVertLines = false;
-            this.cpbTreeView.OptionsBehavior.Editable = false;
-            this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
+            this.cpbTreeView.RootValue = "0";
+            this.cpbTreeView.SelectImageList = this.navbarImageCollection;
             this.cpbTreeView.Size = new System.Drawing.Size(165, 192);
             this.cpbTreeView.TabIndex = 0;
             // 
-            // treeListColumn1
+            // AddressName
             // 
-            this.treeListColumn1.Caption = "treeListColumn1";
-            this.treeListColumn1.FieldName = "treeListColumn1";
-            this.treeListColumn1.MinWidth = 52;
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
+            this.AddressName.Caption = "Address";
+            this.AddressName.FieldName = "Address";
+            this.AddressName.ImageAlignment = System.Drawing.StringAlignment.Far;
+            this.AddressName.MinWidth = 52;
+            this.AddressName.Name = "AddressName";
+            this.AddressName.Visible = true;
+            this.AddressName.VisibleIndex = 0;
+            // 
+            // cpbInfoBindingSource
+            // 
+            this.cpbInfoBindingSource.DataMember = "cpbInfo";
+            this.cpbInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
+            // 
+            // navbarImageCollection
+            // 
+            this.navbarImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("navbarImageCollection.ImageStream")));
+            this.navbarImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.navbarImageCollection.Images.SetKeyName(0, "pcb1616.png");
+            this.navbarImageCollection.Images.SetKeyName(1, "break1616.png");
+            this.navbarImageCollection.Images.SetKeyName(2, "good1616.png");
+            this.navbarImageCollection.Images.SetKeyName(3, "break.png");
+            this.navbarImageCollection.Images.SetKeyName(4, "good1616.png");
             // 
             // CamBar
             // 
@@ -431,16 +439,6 @@
             this.navbarImageCollectionLarge.Images.SetKeyName(3, "break3232.png");
             this.navbarImageCollectionLarge.Images.SetKeyName(4, "good3232.png");
             this.navbarImageCollectionLarge.Images.SetKeyName(5, "break.png");
-            // 
-            // navbarImageCollection
-            // 
-            this.navbarImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("navbarImageCollection.ImageStream")));
-            this.navbarImageCollection.TransparentColor = System.Drawing.Color.Transparent;
-            this.navbarImageCollection.Images.SetKeyName(0, "pcb1616.png");
-            this.navbarImageCollection.Images.SetKeyName(1, "break1616.png");
-            this.navbarImageCollection.Images.SetKeyName(2, "good1616.png");
-            this.navbarImageCollection.Images.SetKeyName(3, "break.png");
-            this.navbarImageCollection.Images.SetKeyName(4, "good1616.png");
             // 
             // popupControlContainer2
             // 
@@ -517,6 +515,7 @@
             // 
             this.gridControl1.DataSource = this.nodeInfoBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbonControl;
@@ -676,8 +675,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             this.navBarGroupControlContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navbarImageCollectionLarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
             this.popupControlContainer2.ResumeLayout(false);
@@ -752,8 +752,9 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
         private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer1;
         private DevExpress.XtraTreeList.TreeList cpbTreeView;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn AddressName;
         private System.Windows.Forms.BindingSource nodeInfoBindingSource1;
+        private System.Windows.Forms.BindingSource cpbInfoBindingSource;
 
     }
 }
