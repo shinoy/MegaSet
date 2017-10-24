@@ -23,6 +23,8 @@ namespace MegaSet
     {
         private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
 
+        private int editingRow = -1;
+
         public Form1()
         {
             InitializeComponent();
@@ -51,16 +53,57 @@ namespace MegaSet
 
         private void button1_Click(object sender, EventArgs e)
         {
-            nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128);
+            nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128, nodeInfoDS.NodeInfo.Rows.Count);
             nodeInfoDS.cpbInfo.Rows.Add("上海","0","上海",0);
             nodeInfoDS.cpbInfo.Rows.Add("北京", "0", "北京", 0);
             nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "192.168.1.1", 1);
             nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "192.168.1.2", 1);
             nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "10.0.0.1", 1);
             nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
-            
+
+            this.gridView1.ShowingEditor += gridView1_ShowingEditor;
+
         }
 
+        void gridView1_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            int currentEditRow = (int)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID");
+            if (editingRow == -1)
+            {
+                editingRow = currentEditRow;
+                e.Cancel = false;
+            //    MessageBox.Show("first ID: " + editingRow);
+                checkBox1.Checked = true;
+            }
+            else
+            {
+                if (currentEditRow == editingRow)
+                {
+                    e.Cancel = false;
+                   // MessageBox.Show("current id: " + currentEditRow.ToString() + " editing row: " + editingRow.ToString());
+                    checkBox1.Checked = true;
+                }
+                else
+                {
+                    if (checkBox1.Checked)
+                    {
+                        e.Cancel = true;
+                      //  MessageBox.Show("Please update " + editingRow.ToString() + " firstly");
+                    }
+                    else
+                    {
+                        e.Cancel = false;
+                        editingRow = currentEditRow;
+                      //  MessageBox.Show("Change to edit " + currentEditRow.ToString());
+                    }
+                }
+            }
+
+          
+        }
+
+
+       
         private void Form1_Load(object sender, EventArgs e)
         {
             UserLookAndFeel.Default.StyleChanged += Default_StyleChanged;
