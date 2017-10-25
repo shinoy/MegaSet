@@ -218,7 +218,7 @@
             this.barButtonItem2});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 4;
+            this.ribbonControl.MaxItemId = 1;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -443,7 +443,6 @@
             this.cpbTreeView.ImageIndexFieldName = "NodeImage";
             this.cpbTreeView.Location = new System.Drawing.Point(0, 0);
             this.cpbTreeView.Name = "cpbTreeView";
-            this.cpbTreeView.OptionsBehavior.Editable = false;
             this.cpbTreeView.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.None;
             this.cpbTreeView.OptionsView.ShowColumns = false;
             this.cpbTreeView.OptionsView.ShowHorzLines = false;

@@ -63,6 +63,9 @@ namespace MegaSet
 
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
 
+            LocationsEditor editorWindow = new LocationsEditor();
+
+            editorWindow.ShowDialog();
         }
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
@@ -107,7 +110,7 @@ namespace MegaSet
         private void Form1_Load(object sender, EventArgs e)
         {
             UserLookAndFeel.Default.StyleChanged += Default_StyleChanged;
-            //UserLookAndFeel.Default.SetSkinStyle("VS2010");
+            UserLookAndFeel.Default.SetSkinStyle("VS2010");
             Skin skin = GridSkins.GetSkin(this.cpbTreeView.LookAndFeel);
             skin.Properties[GridSkins.OptShowTreeLine] = true;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.None;
