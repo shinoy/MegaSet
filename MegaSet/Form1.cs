@@ -72,14 +72,18 @@ namespace MegaSet
 
         private void button1_Click(object sender, EventArgs e)
         {
-            nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
-            nodeInfoDS.NodeInfo.Rows.Add("row1", true, DateTime.Now, DateTime.Now, DateTime.Now, "Camera");
-            nodeInfoDS.NodeInfo.Rows.Add("row1", false, DateTime.Now,DateTime.Now, DateTime.Now, "CPB");
-            nodeInfoDS.cpbInfo.Rows.Add("上海","0","上海",0);
-            nodeInfoDS.cpbInfo.Rows.Add("北京", "0", "北京", 0);
-            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "202.202.202.202(区域五个字)", 1);
-            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "202.202.202.202(区域五个字)", 1);
-            nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "1.1.1.1()", 1);
+            //nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
+            //nodeInfoDS.NodeInfo.Rows.Add("row1", true, DateTime.Now, DateTime.Now, DateTime.Now, "Camera");
+            //nodeInfoDS.NodeInfo.Rows.Add("row1", false, DateTime.Now,DateTime.Now, DateTime.Now, "CPB");
+            //nodeInfoDS.cpbInfo.Rows.Add("上海","0","上海",0);
+            //nodeInfoDS.cpbInfo.Rows.Add("北京", "0", "北京", 0);
+            //nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "202.202.202.202(区域五个字)", 1);
+            //nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "202.202.202.202(区域五个字)", 1);
+            //nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "1.1.1.1()", 1);
+            foreach(NodeInfoDS.cpbInfoRow row in nodeInfoDS.cpbInfo.Select("ID = '192.168.1.1'"))
+            {
+                MessageBox.Show(row.Address);
+            }
             
 
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
@@ -207,6 +211,11 @@ namespace MegaSet
        
             
             
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+           nodeInfoDS.NodeInfo.Rows.Add();
         }
 
 

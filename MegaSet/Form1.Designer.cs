@@ -35,20 +35,20 @@ namespace MegaSet
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip29 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem29 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip30 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem30 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip31 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem31 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip32 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem32 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip33 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem33 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem34 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip35 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem35 = new DevExpress.Utils.ToolTipItem();
             this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
@@ -101,8 +101,7 @@ namespace MegaSet
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.timeEdit1 = new DevExpress.XtraEditors.TimeEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -114,7 +113,6 @@ namespace MegaSet
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.timeSpanEdit1 = new DevExpress.XtraEditors.TimeSpanEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -172,12 +170,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSpanEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge4)).BeginInit();
@@ -256,7 +252,7 @@ namespace MegaSet
             this.ribbonPageSkins});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1237, 149);
+            this.ribbonControl.Size = new System.Drawing.Size(1143, 149);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -314,9 +310,9 @@ namespace MegaSet
             this.openFileBtn.Id = 3;
             this.openFileBtn.LargeImageIndex = 2;
             this.openFileBtn.Name = "openFileBtn";
-            toolTipItem1.Text = "从备份的配置文件导入所有节点信息";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.openFileBtn.SuperTip = superToolTip1;
+            toolTipItem29.Text = "从备份的配置文件导入所有节点信息";
+            superToolTip29.Items.Add(toolTipItem29);
+            this.openFileBtn.SuperTip = superToolTip29;
             this.openFileBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.openScheduleItem1_ItemClick);
             // 
             // saveBtn
@@ -325,9 +321,9 @@ namespace MegaSet
             this.saveBtn.Id = 1;
             this.saveBtn.LargeImageIndex = 8;
             this.saveBtn.Name = "saveBtn";
-            toolTipItem2.Text = "备份所有节点信息";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.saveBtn.SuperTip = superToolTip2;
+            toolTipItem30.Text = "备份所有节点信息";
+            superToolTip30.Items.Add(toolTipItem30);
+            this.saveBtn.SuperTip = superToolTip30;
             this.saveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.saveBtn_ItemClick);
             // 
             // barButtonItem1
@@ -336,9 +332,9 @@ namespace MegaSet
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.LargeImageIndex = 6;
             this.barButtonItem1.Name = "barButtonItem1";
-            toolTipItem3.Text = "添加节点信息，节点描述不超过5个字符";
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barButtonItem1.SuperTip = superToolTip3;
+            toolTipItem31.Text = "添加节点信息，节点描述不超过5个字符";
+            superToolTip31.Items.Add(toolTipItem31);
+            this.barButtonItem1.SuperTip = superToolTip31;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
@@ -347,9 +343,9 @@ namespace MegaSet
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.LargeImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipItem4.Text = "删除当前选中的地区或节点";
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barButtonItem2.SuperTip = superToolTip4;
+            toolTipItem32.Text = "删除当前选中的地区或节点";
+            superToolTip32.Items.Add(toolTipItem32);
+            this.barButtonItem2.SuperTip = superToolTip32;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
@@ -358,9 +354,9 @@ namespace MegaSet
             this.barButtonItem3.Id = 1;
             this.barButtonItem3.LargeImageIndex = 0;
             this.barButtonItem3.Name = "barButtonItem3";
-            toolTipItem5.Text = "添加地区名称，最长不超过10个字符";
-            superToolTip5.Items.Add(toolTipItem5);
-            this.barButtonItem3.SuperTip = superToolTip5;
+            toolTipItem33.Text = "添加地区名称，最长不超过10个字符";
+            superToolTip33.Items.Add(toolTipItem33);
+            this.barButtonItem3.SuperTip = superToolTip33;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem4
@@ -369,9 +365,9 @@ namespace MegaSet
             this.barButtonItem4.Id = 2;
             this.barButtonItem4.LargeImageIndex = 1;
             this.barButtonItem4.Name = "barButtonItem4";
-            toolTipItem6.Text = "修改软件登陆密码";
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barButtonItem4.SuperTip = superToolTip6;
+            toolTipItem34.Text = "修改软件登陆密码";
+            superToolTip34.Items.Add(toolTipItem34);
+            this.barButtonItem4.SuperTip = superToolTip34;
             // 
             // barButtonItem5
             // 
@@ -393,9 +389,10 @@ namespace MegaSet
             this.barButtonItem6.Id = 5;
             this.barButtonItem6.LargeImageIndex = 3;
             this.barButtonItem6.Name = "barButtonItem6";
-            toolTipItem7.Text = "更新当前节点的定时表";
-            superToolTip7.Items.Add(toolTipItem7);
-            this.barButtonItem6.SuperTip = superToolTip7;
+            toolTipItem35.Text = "更新当前节点的定时表";
+            superToolTip35.Items.Add(toolTipItem35);
+            this.barButtonItem6.SuperTip = superToolTip35;
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // ribbonImageCollectionLarge
             // 
@@ -464,10 +461,10 @@ namespace MegaSet
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.datetimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 520);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 576);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1237, 33);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1143, 33);
             // 
             // CPBbar
             // 
@@ -485,7 +482,7 @@ namespace MegaSet
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 297);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 353);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
@@ -509,7 +506,7 @@ namespace MegaSet
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(240, 297);
+            this.cpbTreeView.Size = new System.Drawing.Size(240, 353);
             this.cpbTreeView.TabIndex = 0;
             // 
             // AddressName
@@ -615,6 +612,7 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel1.Appearance.Options.UseFont = true;
             this.schedulerSplitContainerControl.Panel1.Controls.Add(this.gridControl1);
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
+            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.timeEdit1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton7);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton6);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton5);
@@ -623,7 +621,6 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton4);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton3);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton2);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.timeSpanEdit1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.checkEdit1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label4);
@@ -635,7 +632,7 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panel1);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(991, 371);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(897, 427);
             this.schedulerSplitContainerControl.SplitterPosition = 450;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -654,12 +651,10 @@ namespace MegaSet
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2,
             this.repositoryItemTimeEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(535, 371);
+            this.gridControl1.Size = new System.Drawing.Size(441, 427);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1,
-            this.gridView2,
-            this.gridView3});
+            this.gridView1});
             // 
             // gridView1
             // 
@@ -709,40 +704,51 @@ namespace MegaSet
             // DateColumn
             // 
             this.DateColumn.Caption = "日期";
+            this.DateColumn.ColumnEdit = this.repositoryItemTimeEdit1;
             this.DateColumn.FieldName = "Date";
             this.DateColumn.Name = "DateColumn";
             this.DateColumn.OptionsColumn.AllowEdit = false;
             this.DateColumn.Visible = true;
             this.DateColumn.VisibleIndex = 2;
-            this.DateColumn.Width = 128;
+            this.DateColumn.Width = 90;
             // 
             // TimeColumn
             // 
             this.TimeColumn.Caption = "起始时间";
             this.TimeColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.TimeColumn.DisplayFormat.FormatString = "hh:mm:ss";
             this.TimeColumn.FieldName = "StartTime";
             this.TimeColumn.Name = "TimeColumn";
             this.TimeColumn.Visible = true;
             this.TimeColumn.VisibleIndex = 3;
-            this.TimeColumn.Width = 128;
+            this.TimeColumn.Width = 90;
             // 
             // repositoryItemTimeEdit1
             // 
+            this.repositoryItemTimeEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.repositoryItemTimeEdit1.AutoHeight = false;
             this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemTimeEdit1.DisplayFormat.FormatString = "hh:mm:ss";
+            this.repositoryItemTimeEdit1.EditFormat.FormatString = "hh:mm:ss";
+            this.repositoryItemTimeEdit1.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
+            this.repositoryItemTimeEdit1.Mask.IgnoreMaskBlank = false;
+            this.repositoryItemTimeEdit1.Mask.PlaceHolder = '*';
+            this.repositoryItemTimeEdit1.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
+            this.repositoryItemTimeEdit1.NullText = "_";
             this.repositoryItemTimeEdit1.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             // 
             // DurationColumn
             // 
             this.DurationColumn.Caption = "中止时间";
             this.DurationColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.DurationColumn.DisplayFormat.FormatString = "hh:mm:ss";
             this.DurationColumn.FieldName = "EndTime";
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
             this.DurationColumn.VisibleIndex = 4;
-            this.DurationColumn.Width = 128;
+            this.DurationColumn.Width = 90;
             // 
             // typeColumn
             // 
@@ -754,10 +760,11 @@ namespace MegaSet
             // 
             // repositoryItemTimeSpanEdit2
             // 
+            this.repositoryItemTimeSpanEdit2.AllowEditDays = false;
             this.repositoryItemTimeSpanEdit2.AutoHeight = false;
             this.repositoryItemTimeSpanEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemTimeSpanEdit2.Mask.EditMask = "dd.HH:mm:ss";
+            this.repositoryItemTimeSpanEdit2.Mask.EditMask = "HH:mm:ss";
             this.repositoryItemTimeSpanEdit2.Name = "repositoryItemTimeSpanEdit2";
             // 
             // repositoryItemDateEdit1
@@ -778,15 +785,17 @@ namespace MegaSet
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
-            // gridView2
+            // timeEdit1
             // 
-            this.gridView2.GridControl = this.gridControl1;
-            this.gridView2.Name = "gridView2";
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridControl1;
-            this.gridView3.Name = "gridView3";
+            this.timeEdit1.EditValue = new System.DateTime(2017, 10, 28, 0, 0, 0, 0);
+            this.timeEdit1.Location = new System.Drawing.Point(234, 33);
+            this.timeEdit1.MenuManager = this.ribbonControl;
+            this.timeEdit1.Name = "timeEdit1";
+            this.timeEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.timeEdit1.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
+            this.timeEdit1.Size = new System.Drawing.Size(97, 20);
+            this.timeEdit1.TabIndex = 22;
             // 
             // simpleButton7
             // 
@@ -886,18 +895,6 @@ namespace MegaSet
             this.simpleButton2.Size = new System.Drawing.Size(97, 23);
             this.simpleButton2.TabIndex = 14;
             this.simpleButton2.Text = "GPS时间";
-            // 
-            // timeSpanEdit1
-            // 
-            this.timeSpanEdit1.EditValue = System.TimeSpan.Parse("00:00:00");
-            this.timeSpanEdit1.Location = new System.Drawing.Point(234, 34);
-            this.timeSpanEdit1.MenuManager = this.ribbonControl;
-            this.timeSpanEdit1.Name = "timeSpanEdit1";
-            this.timeSpanEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.timeSpanEdit1.Properties.Mask.EditMask = "dd.HH:mm:ss";
-            this.timeSpanEdit1.Size = new System.Drawing.Size(97, 20);
-            this.timeSpanEdit1.TabIndex = 13;
             // 
             // checkEdit1
             // 
@@ -1129,7 +1126,6 @@ namespace MegaSet
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // navBarControl1
@@ -1146,7 +1142,7 @@ namespace MegaSet
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 240;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(240, 371);
+            this.navBarControl1.Size = new System.Drawing.Size(240, 427);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -1161,7 +1157,7 @@ namespace MegaSet
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(1237, 371);
+            this.splitContainerControl.Size = new System.Drawing.Size(1143, 427);
             this.splitContainerControl.SplitterPosition = 240;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
@@ -1202,7 +1198,7 @@ namespace MegaSet
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 553);
+            this.ClientSize = new System.Drawing.Size(1143, 609);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.popupControlContainer2);
@@ -1244,12 +1240,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSpanEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge4)).EndInit();
@@ -1278,7 +1272,11 @@ namespace MegaSet
         {
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Add)
             {
-                e.Node.ParentNode.ExpandAll();
+                if (e.Node.ParentNode != null)
+                {
+                    e.Node.ParentNode.ExpandAll();
+                }
+                    
             }
         }
 
@@ -1322,8 +1320,6 @@ namespace MegaSet
         private DevExpress.XtraGrid.Columns.GridColumn DateColumn;
         private DevExpress.XtraGrid.Columns.GridColumn TimeColumn;
         private DevExpress.XtraGrid.Columns.GridColumn DurationColumn;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
@@ -1369,7 +1365,6 @@ namespace MegaSet
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.TimeSpanEdit timeSpanEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn typeColumn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -1381,6 +1376,7 @@ namespace MegaSet
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private DevExpress.XtraEditors.TimeEdit timeEdit1;
 
     }
 }
