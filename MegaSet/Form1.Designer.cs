@@ -1,4 +1,6 @@
-﻿namespace MegaSet
+﻿using DevExpress.XtraTreeList.Nodes;
+
+namespace MegaSet
 {
     partial class Form1
     {
@@ -32,6 +34,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.Utils.SuperToolTip superToolTip29 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem29 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip30 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem30 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip31 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem31 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip32 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem32 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip33 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem33 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem34 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip35 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem35 = new DevExpress.Utils.ToolTipItem();
             this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource();
             this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource();
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
@@ -46,10 +62,16 @@
             this.saveBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.datetimeInfo = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageSkins = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.skinsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemDuration1 = new DevExpress.XtraScheduler.UI.RepositoryItemDuration();
@@ -71,12 +93,15 @@
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
@@ -113,18 +138,14 @@
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.digitalGauge1 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge();
             this.digitalBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource();
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.datetimeInfo = new DevExpress.XtraBars.BarStaticItem();
+            this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -149,7 +170,11 @@
             this.schedulerSplitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.panel5.SuspendLayout();
@@ -175,6 +200,7 @@
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // nodeInfoBindingSource
@@ -223,10 +249,11 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.datetimeInfo});
+            this.datetimeInfo,
+            this.barButtonItem6});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 5;
+            this.ribbonControl.MaxItemId = 6;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -249,6 +276,7 @@
             this.ribbonImageCollection.Images.SetKeyName(0, "Ribbon_Exit_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(1, "Ribbon_Content_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(2, "Ribbon_Info_16x16.png");
+            this.ribbonImageCollection.Images.SetKeyName(15, "document_save_2_256px_539656_easyicon.net.png");
             // 
             // iExit
             // 
@@ -299,20 +327,27 @@
             // 
             // openFileBtn
             // 
-            this.openFileBtn.Caption = "导入";
+            this.openFileBtn.Caption = "导入站点";
             this.openFileBtn.Id = 3;
             this.openFileBtn.ImageIndex = 1;
             this.openFileBtn.LargeImageIndex = 1;
             this.openFileBtn.Name = "openFileBtn";
+            toolTipItem29.Text = "从备份的配置文件导入所有节点信息";
+            superToolTip29.Items.Add(toolTipItem29);
+            this.openFileBtn.SuperTip = superToolTip29;
             this.openFileBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.openScheduleItem1_ItemClick);
             // 
             // saveBtn
             // 
-            this.saveBtn.Caption = "保存";
+            this.saveBtn.Caption = "导出站点";
             this.saveBtn.Id = 1;
             this.saveBtn.ImageIndex = 4;
-            this.saveBtn.LargeImageIndex = 4;
+            this.saveBtn.LargeImageIndex = 12;
             this.saveBtn.Name = "saveBtn";
+            toolTipItem30.Text = "备份所有节点信息";
+            superToolTip30.Items.Add(toolTipItem30);
+            this.saveBtn.SuperTip = superToolTip30;
+            this.saveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.saveBtn_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -320,6 +355,10 @@
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageUri.Uri = "Add";
             this.barButtonItem1.Name = "barButtonItem1";
+            toolTipItem31.Text = "添加节点信息，节点描述不超过5个字符";
+            superToolTip31.Items.Add(toolTipItem31);
+            this.barButtonItem1.SuperTip = superToolTip31;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -327,7 +366,55 @@
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.ImageUri.Uri = "Delete";
             this.barButtonItem2.Name = "barButtonItem2";
+            toolTipItem32.Text = "删除当前选中的地区或节点";
+            superToolTip32.Items.Add(toolTipItem32);
+            this.barButtonItem2.SuperTip = superToolTip32;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "添加地区";
+            this.barButtonItem3.Id = 1;
+            this.barButtonItem3.LargeImageIndex = 9;
+            this.barButtonItem3.Name = "barButtonItem3";
+            toolTipItem33.Text = "添加地区名称，最长不超过10个字符";
+            superToolTip33.Items.Add(toolTipItem33);
+            this.barButtonItem3.SuperTip = superToolTip33;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "更改密码";
+            this.barButtonItem4.Id = 2;
+            this.barButtonItem4.LargeImageIndex = 10;
+            this.barButtonItem4.Name = "barButtonItem4";
+            toolTipItem34.Text = "修改软件登陆密码";
+            superToolTip34.Items.Add(toolTipItem34);
+            this.barButtonItem4.SuperTip = superToolTip34;
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "默认设置";
+            this.barButtonItem5.Id = 3;
+            this.barButtonItem5.LargeImageIndex = 11;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // datetimeInfo
+            // 
+            this.datetimeInfo.Caption = "barStaticItem1";
+            this.datetimeInfo.Id = 4;
+            this.datetimeInfo.Name = "datetimeInfo";
+            this.datetimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "更新定时表";
+            this.barButtonItem6.Id = 5;
+            this.barButtonItem6.LargeImageIndex = 13;
+            this.barButtonItem6.Name = "barButtonItem6";
+            toolTipItem35.Text = "更新当前节点的定时表";
+            superToolTip35.Items.Add(toolTipItem35);
+            this.barButtonItem6.SuperTip = superToolTip35;
             // 
             // ribbonImageCollectionLarge
             // 
@@ -336,9 +423,11 @@
             this.ribbonImageCollectionLarge.Images.SetKeyName(0, "Ribbon_Exit_32x32.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(1, "Ribbon_Content_32x32.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(2, "Ribbon_Info_32x32.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(9, "world_add_256px_1113321_easyicon.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(9, "world_add_3232.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(10, "change_password_128px_1077753_easyicon.net.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(11, "system_restart_256px_572124_easyicon.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(12, "document_save_3232.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(13, "Software_Update_3232.png");
             // 
             // fileRibbonPage1
             // 
@@ -346,7 +435,8 @@
             this.fileRibbonPage1.Appearance.Options.UseFont = true;
             this.fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.fileRibbonPage1.Name = "fileRibbonPage1";
             this.fileRibbonPage1.Text = "功能";
             // 
@@ -354,7 +444,6 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.openFileBtn);
             this.ribbonPageGroup1.ItemLinks.Add(this.saveBtn);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "配置信息";
@@ -364,9 +453,17 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "通道板管理";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.AllowTextClipping = false;
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "软件管理";
             // 
             // ribbonPageSkins
             // 
@@ -422,7 +519,7 @@
             // 
             // CPBbar
             // 
-            this.CPBbar.Caption = "通道板";
+            this.CPBbar.Caption = "站点信息";
             this.CPBbar.ControlContainer = this.navBarGroupControlContainer1;
             this.CPBbar.Expanded = true;
             this.CPBbar.GroupClientHeight = 192;
@@ -441,6 +538,7 @@
             // 
             // cpbTreeView
             // 
+            this.cpbTreeView.AllowDrop = true;
             this.cpbTreeView.Appearance.FocusedCell.BackColor = System.Drawing.Color.Silver;
             this.cpbTreeView.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.cpbTreeView.Appearance.FocusedCell.Options.UseBackColor = true;
@@ -461,6 +559,7 @@
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
             this.cpbTreeView.Size = new System.Drawing.Size(240, 297);
             this.cpbTreeView.TabIndex = 0;
+            this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
             // 
             // AddressName
             // 
@@ -600,7 +699,10 @@
             this.gridControl1.MenuManager = this.ribbonControl;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTimeSpanEdit2});
+            this.repositoryItemTimeSpanEdit2,
+            this.repositoryItemDateEdit1,
+            this.repositoryItemDateEdit2,
+            this.repositoryItemTimeEdit1});
             this.gridControl1.Size = new System.Drawing.Size(535, 371);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -611,12 +713,12 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
             this.StatusColumn,
             this.DateColumn,
             this.TimeColumn,
             this.DurationColumn,
-            this.gridColumn1,
-            this.gridColumn2});
+            this.typeColumn});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
@@ -631,45 +733,74 @@
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.RowHeight = 40;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.ViewCaption = "192.168.0.1";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "组别";
+            this.gridColumn1.FieldName = "GroupName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 73;
             // 
             // StatusColumn
             // 
             this.StatusColumn.Caption = "状态";
             this.StatusColumn.FieldName = "Status";
             this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.OptionsColumn.AllowEdit = false;
             this.StatusColumn.Visible = true;
             this.StatusColumn.VisibleIndex = 1;
-            this.StatusColumn.Width = 62;
+            this.StatusColumn.Width = 61;
             // 
             // DateColumn
             // 
             this.DateColumn.Caption = "日期";
             this.DateColumn.FieldName = "Date";
             this.DateColumn.Name = "DateColumn";
+            this.DateColumn.OptionsColumn.AllowEdit = false;
             this.DateColumn.Visible = true;
             this.DateColumn.VisibleIndex = 2;
-            this.DateColumn.Width = 110;
+            this.DateColumn.Width = 128;
             // 
             // TimeColumn
             // 
             this.TimeColumn.Caption = "起始时间";
-            this.TimeColumn.FieldName = "Time";
+            this.TimeColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.TimeColumn.FieldName = "StartTime";
             this.TimeColumn.Name = "TimeColumn";
             this.TimeColumn.Visible = true;
             this.TimeColumn.VisibleIndex = 3;
-            this.TimeColumn.Width = 100;
+            this.TimeColumn.Width = 128;
+            // 
+            // repositoryItemDateEdit2
+            // 
+            this.repositoryItemDateEdit2.AutoHeight = false;
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
             // DurationColumn
             // 
-            this.DurationColumn.Caption = "持续时长";
-            this.DurationColumn.ColumnEdit = this.repositoryItemTimeSpanEdit2;
-            this.DurationColumn.FieldName = "Interval";
+            this.DurationColumn.Caption = "中止时间";
+            this.DurationColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.DurationColumn.FieldName = "EndTime";
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
             this.DurationColumn.VisibleIndex = 4;
-            this.DurationColumn.Width = 157;
+            this.DurationColumn.Width = 128;
+            // 
+            // typeColumn
+            // 
+            this.typeColumn.Caption = "类型";
+            this.typeColumn.FieldName = "TypeName";
+            this.typeColumn.Name = "typeColumn";
+            this.typeColumn.Visible = true;
+            this.typeColumn.VisibleIndex = 5;
             // 
             // repositoryItemTimeSpanEdit2
             // 
@@ -679,14 +810,14 @@
             this.repositoryItemTimeSpanEdit2.Mask.EditMask = "dd.HH:mm:ss";
             this.repositoryItemTimeSpanEdit2.Name = "repositoryItemTimeSpanEdit2";
             // 
-            // gridColumn1
+            // repositoryItemDateEdit1
             // 
-            this.gridColumn1.Caption = "ID";
-            this.gridColumn1.FieldName = "ID";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 73;
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // gridView2
             // 
@@ -1031,16 +1162,6 @@
             this.digitalBackgroundLayerComponent1.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent1.ZOrder = 1000;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(927, 93);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 18);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(818, 88);
@@ -1049,6 +1170,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // navBarControl1
@@ -1105,41 +1227,24 @@
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
             // 
-            // gridColumn2
+            // repositoryItemTimeEdit1
             // 
-            this.gridColumn2.Caption = "类型";
-            this.gridColumn2.FieldName = "TypeName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
+            this.repositoryItemTimeEdit1.AutoHeight = false;
+            this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
+            this.repositoryItemTimeEdit1.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             // 
-            // barButtonItem3
+            // checkBox1
             // 
-            this.barButtonItem3.Caption = "添加地区";
-            this.barButtonItem3.Id = 1;
-            this.barButtonItem3.LargeImageIndex = 9;
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "更改密码";
-            this.barButtonItem4.Id = 2;
-            this.barButtonItem4.LargeImageIndex = 10;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "默认设置";
-            this.barButtonItem5.Id = 3;
-            this.barButtonItem5.LargeImageIndex = 11;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // datetimeInfo
-            // 
-            this.datetimeInfo.Caption = "barStaticItem1";
-            this.datetimeInfo.Id = 4;
-            this.datetimeInfo.Name = "datetimeInfo";
-            this.datetimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(927, 93);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(85, 18);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // Form1
             // 
@@ -1184,7 +1289,11 @@
             this.schedulerSplitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -1210,10 +1319,22 @@
             this.splitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+        void cpbTreeView_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
+        {
+            if (e.Node.HasChildren)
+            {
+                e.Node.ExpandAll();
+            }
+        }
+
+      
+
 
       
 
@@ -1283,7 +1404,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit repositoryItemTimeSpanEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn GroupColumn;
-        private System.Windows.Forms.CheckBox checkBox1;
         private DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent digitalBackgroundLayerComponent2;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl3;
@@ -1315,11 +1435,17 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.TimeSpanEdit timeSpanEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn typeColumn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarStaticItem datetimeInfo;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
+        private System.Windows.Forms.CheckBox checkBox1;
 
     }
 }

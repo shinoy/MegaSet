@@ -43,33 +43,36 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(244, 53);
+            this.panelControl1.Size = new System.Drawing.Size(262, 53);
             this.panelControl1.TabIndex = 0;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(146, 14);
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(175, 14);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "添加";
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // textEdit1
             // 
             this.textEdit1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.textEdit1.Location = new System.Drawing.Point(12, 12);
+            this.textEdit1.MinimumSize = new System.Drawing.Size(112, 27);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.AutoHeight = false;
-            this.textEdit1.Size = new System.Drawing.Size(112, 27);
+            this.textEdit1.Size = new System.Drawing.Size(157, 27);
             this.textEdit1.TabIndex = 0;
             // 
             // LocationsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 53);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(262, 53);
             this.Controls.Add(this.panelControl1);
             this.Name = "LocationsEditor";
             this.Text = "添加站点";

@@ -140,6 +140,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndPointEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndPointEditorForm.Designer.cs">
+      <DependentUpon>EndPointEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     <Compile Include="RowStateHelper.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="EndPointEditorForm.resx">
+      <DependentUpon>EndPointEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
