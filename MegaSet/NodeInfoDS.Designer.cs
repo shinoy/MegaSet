@@ -326,6 +326,8 @@ namespace MegaSet {
             
             private global::System.Data.DataColumn columnID;
             
+            private global::System.Data.DataColumn columnTypeName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeInfoDataTable() {
@@ -409,6 +411,14 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TypeNameColumn {
+                get {
+                    return this.columnTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -444,7 +454,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow AddNodeInfoRow(string GroupName, bool Status, System.DateTime Date, System.TimeSpan Time, System.TimeSpan Interval, int ID) {
+            public NodeInfoRow AddNodeInfoRow(string GroupName, bool Status, System.DateTime Date, System.DateTime Time, System.TimeSpan Interval, int ID, string TypeName) {
                 NodeInfoRow rowNodeInfoRow = ((NodeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
@@ -452,7 +462,8 @@ namespace MegaSet {
                         Date,
                         Time,
                         Interval,
-                        ID};
+                        ID,
+                        TypeName};
                 rowNodeInfoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNodeInfoRow);
                 return rowNodeInfoRow;
@@ -481,6 +492,7 @@ namespace MegaSet {
                 this.columnTime = base.Columns["Time"];
                 this.columnInterval = base.Columns["Interval"];
                 this.columnID = base.Columns["ID"];
+                this.columnTypeName = base.Columns["TypeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,12 +504,14 @@ namespace MegaSet {
                 base.Columns.Add(this.columnStatus);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
-                this.columnTime = new global::System.Data.DataColumn("Time", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                this.columnTime = new global::System.Data.DataColumn("Time", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTime);
                 this.columnInterval = new global::System.Data.DataColumn("Interval", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInterval);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnTypeName = new global::System.Data.DataColumn("TypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeName);
                 this.columnID.AllowDBNull = false;
                 this.columnID.DefaultValue = ((int)(-1));
             }
@@ -979,10 +993,10 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.TimeSpan Time {
+            public System.DateTime Time {
                 get {
                     try {
-                        return ((global::System.TimeSpan)(this[this.tableNodeInfo.TimeColumn]));
+                        return ((global::System.DateTime)(this[this.tableNodeInfo.TimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Time\' in table \'NodeInfo\' is DBNull.", e);
@@ -1017,6 +1031,22 @@ namespace MegaSet {
                 }
                 set {
                     this[this.tableNodeInfo.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNodeInfo.TypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TypeName\' in table \'NodeInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeInfo.TypeNameColumn] = value;
                 }
             }
             
@@ -1078,6 +1108,18 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIntervalNull() {
                 this[this.tableNodeInfo.IntervalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTypeNameNull() {
+                return this.IsNull(this.tableNodeInfo.TypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTypeNameNull() {
+                this[this.tableNodeInfo.TypeNameColumn] = global::System.Convert.DBNull;
             }
         }
         

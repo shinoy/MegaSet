@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocalParserCLS.cs" />
     <Compile Include="RowStateHelper.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -2,6 +2,9 @@
 {
     partial class Form1
     {
+
+        private DevExpress.XtraTreeList.Nodes.TreeListNode selectedNode;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,24 +31,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource();
+            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource();
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
             this.repositoryItemTimeSpanEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection();
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.openFileBtn = new DevExpress.XtraBars.BarButtonItem();
             this.saveBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.dateTimeInfo = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
+            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -58,14 +59,13 @@
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
             this.AddressName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
-            this.CamBar = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
-            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
-            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
+            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource();
+            this.navbarImageCollection = new DevExpress.Utils.ImageCollection();
+            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection();
+            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage();
+            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer();
             this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
+            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer();
             this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
@@ -117,9 +117,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
-            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource();
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.datetimeInfo = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -213,12 +218,15 @@
             this.rgbiSkins,
             this.openFileBtn,
             this.saveBtn,
-            this.dateTimeInfo,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barButtonItem5,
+            this.datetimeInfo});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 1;
+            this.ribbonControl.MaxItemId = 5;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -229,7 +237,7 @@
             this.repositoryItemSpinEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1044, 149);
+            this.ribbonControl.Size = new System.Drawing.Size(1237, 149);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -306,18 +314,9 @@
             this.saveBtn.LargeImageIndex = 4;
             this.saveBtn.Name = "saveBtn";
             // 
-            // dateTimeInfo
-            // 
-            this.dateTimeInfo.AllowRightClickInMenu = false;
-            this.dateTimeInfo.Caption = "barStaticItem1";
-            this.dateTimeInfo.Id = 2;
-            this.dateTimeInfo.Name = "dateTimeInfo";
-            this.dateTimeInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
-            this.dateTimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "添加";
+            this.barButtonItem1.Caption = "添加节点";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageUri.Uri = "Add";
             this.barButtonItem1.Name = "barButtonItem1";
@@ -328,6 +327,7 @@
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.ImageUri.Uri = "Delete";
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // ribbonImageCollectionLarge
             // 
@@ -336,6 +336,9 @@
             this.ribbonImageCollectionLarge.Images.SetKeyName(0, "Ribbon_Exit_32x32.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(1, "Ribbon_Content_32x32.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(2, "Ribbon_Info_32x32.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(9, "world_add_256px_1113321_easyicon.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(10, "change_password_128px_1077753_easyicon.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(11, "system_restart_256px_572124_easyicon.net.png");
             // 
             // fileRibbonPage1
             // 
@@ -345,18 +348,20 @@
             this.ribbonPageGroup1,
             this.ribbonPageGroup2});
             this.fileRibbonPage1.Name = "fileRibbonPage1";
-            this.fileRibbonPage1.Text = "文件";
+            this.fileRibbonPage1.Text = "功能";
             // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.openFileBtn);
             this.ribbonPageGroup1.ItemLinks.Add(this.saveBtn);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "配置信息";
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
@@ -409,11 +414,11 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.ItemLinks.Add(this.dateTimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 517);
+            this.ribbonStatusBar.ItemLinks.Add(this.datetimeInfo);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 520);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1044, 33);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1237, 33);
             // 
             // CPBbar
             // 
@@ -431,11 +436,15 @@
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(165, 248);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 297);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
             // 
+            this.cpbTreeView.Appearance.FocusedCell.BackColor = System.Drawing.Color.Silver;
+            this.cpbTreeView.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.cpbTreeView.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.cpbTreeView.Appearance.FocusedCell.Options.UseFont = true;
             this.cpbTreeView.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.AddressName});
             this.cpbTreeView.DataSource = this.cpbInfoBindingSource;
@@ -443,14 +452,14 @@
             this.cpbTreeView.ImageIndexFieldName = "NodeImage";
             this.cpbTreeView.Location = new System.Drawing.Point(0, 0);
             this.cpbTreeView.Name = "cpbTreeView";
-            this.cpbTreeView.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.None;
+            this.cpbTreeView.OptionsBehavior.Editable = false;
             this.cpbTreeView.OptionsView.ShowColumns = false;
             this.cpbTreeView.OptionsView.ShowHorzLines = false;
             this.cpbTreeView.OptionsView.ShowIndicator = false;
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(165, 248);
+            this.cpbTreeView.Size = new System.Drawing.Size(240, 297);
             this.cpbTreeView.TabIndex = 0;
             // 
             // AddressName
@@ -472,17 +481,12 @@
             // 
             this.navbarImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("navbarImageCollection.ImageStream")));
             this.navbarImageCollection.TransparentColor = System.Drawing.Color.Transparent;
-            this.navbarImageCollection.Images.SetKeyName(0, "pcb1616.png");
-            this.navbarImageCollection.Images.SetKeyName(1, "break1616.png");
+            this.navbarImageCollection.Images.SetKeyName(0, "Network_Earth_icon_256px_1073230_easyicon.net.png");
+            this.navbarImageCollection.Images.SetKeyName(1, "pcb1616.png");
             this.navbarImageCollection.Images.SetKeyName(2, "good1616.png");
-            this.navbarImageCollection.Images.SetKeyName(3, "break.png");
-            this.navbarImageCollection.Images.SetKeyName(4, "good1616.png");
-            // 
-            // CamBar
-            // 
-            this.CamBar.Caption = "摄像头";
-            this.CamBar.LargeImageIndex = 0;
-            this.CamBar.Name = "CamBar";
+            this.navbarImageCollection.Images.SetKeyName(3, "break1616.png");
+            this.navbarImageCollection.Images.SetKeyName(4, "break.png");
+            this.navbarImageCollection.Images.SetKeyName(5, "good1616.png");
             // 
             // navbarImageCollectionLarge
             // 
@@ -554,6 +558,7 @@
             // 
             this.schedulerSplitContainerControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerSplitContainerControl.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.schedulerSplitContainerControl.IsSplitterFixed = true;
             this.schedulerSplitContainerControl.Location = new System.Drawing.Point(0, 0);
             this.schedulerSplitContainerControl.Name = "schedulerSplitContainerControl";
             this.schedulerSplitContainerControl.Panel1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -580,7 +585,7 @@
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panel1);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(873, 368);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(991, 371);
             this.schedulerSplitContainerControl.SplitterPosition = 450;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -596,7 +601,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeSpanEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(417, 368);
+            this.gridControl1.Size = new System.Drawing.Size(535, 371);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -610,13 +615,23 @@
             this.DateColumn,
             this.TimeColumn,
             this.DurationColumn,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView1.OptionsCustomization.AllowFilter = false;
+            this.gridView1.OptionsFilter.AllowFilterEditor = false;
+            this.gridView1.OptionsFind.AllowFindPanel = false;
             this.gridView1.OptionsHint.ShowColumnHeaderHints = false;
-            this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
+            this.gridView1.OptionsMenu.EnableColumnMenu = false;
+            this.gridView1.OptionsMenu.EnableFooterMenu = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.RowHeight = 40;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.ViewCaption = "192.168.0.1";
             // 
             // StatusColumn
@@ -625,8 +640,8 @@
             this.StatusColumn.FieldName = "Status";
             this.StatusColumn.Name = "StatusColumn";
             this.StatusColumn.Visible = true;
-            this.StatusColumn.VisibleIndex = 0;
-            this.StatusColumn.Width = 49;
+            this.StatusColumn.VisibleIndex = 1;
+            this.StatusColumn.Width = 62;
             // 
             // DateColumn
             // 
@@ -634,18 +649,17 @@
             this.DateColumn.FieldName = "Date";
             this.DateColumn.Name = "DateColumn";
             this.DateColumn.Visible = true;
-            this.DateColumn.VisibleIndex = 1;
-            this.DateColumn.Width = 135;
+            this.DateColumn.VisibleIndex = 2;
+            this.DateColumn.Width = 110;
             // 
             // TimeColumn
             // 
             this.TimeColumn.Caption = "起始时间";
-            this.TimeColumn.ColumnEdit = this.repositoryItemTimeSpanEdit1;
             this.TimeColumn.FieldName = "Time";
             this.TimeColumn.Name = "TimeColumn";
             this.TimeColumn.Visible = true;
-            this.TimeColumn.VisibleIndex = 2;
-            this.TimeColumn.Width = 128;
+            this.TimeColumn.VisibleIndex = 3;
+            this.TimeColumn.Width = 100;
             // 
             // DurationColumn
             // 
@@ -655,7 +669,7 @@
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
             this.DurationColumn.VisibleIndex = 4;
-            this.DurationColumn.Width = 154;
+            this.DurationColumn.Width = 157;
             // 
             // repositoryItemTimeSpanEdit2
             // 
@@ -671,7 +685,8 @@
             this.gridColumn1.FieldName = "ID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 73;
             // 
             // gridView2
             // 
@@ -834,6 +849,7 @@
             // 
             // gaugeControl4
             // 
+            this.gaugeControl4.AutoLayout = false;
             this.gaugeControl4.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -846,21 +862,22 @@
             // 
             // digitalGauge4
             // 
-            this.digitalGauge4.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0A151A");
-            this.digitalGauge4.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#289FB8");
+            this.digitalGauge4.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#EAECF1");
+            this.digitalGauge4.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#7184BA");
             this.digitalGauge4.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent5});
-            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 202, 59);
+            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(41, 19, 138, 42);
             this.digitalGauge4.DigitCount = 6;
+            this.digitalGauge4.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge4.Name = "digitalGauge4";
             this.digitalGauge4.Padding = new DevExpress.XtraGauges.Core.Base.TextSpacing(26, 20, 26, 20);
             this.digitalGauge4.Text = "92:11:12";
             // 
             // digitalBackgroundLayerComponent5
             // 
-            this.digitalBackgroundLayerComponent5.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(313.775F, 99.9625F);
+            this.digitalBackgroundLayerComponent5.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(303.65F, 106.075F);
             this.digitalBackgroundLayerComponent5.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent5.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style21;
+            this.digitalBackgroundLayerComponent5.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style16;
             this.digitalBackgroundLayerComponent5.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent5.ZOrder = 1000;
             // 
@@ -868,7 +885,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(78, 91);
+            this.label3.Location = new System.Drawing.Point(82, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 7;
@@ -884,6 +901,7 @@
             // 
             // gaugeControl3
             // 
+            this.gaugeControl3.AutoLayout = false;
             this.gaugeControl3.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -896,21 +914,22 @@
             // 
             // digitalGauge3
             // 
-            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0A151A");
-            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#289FB8");
+            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#404040");
+            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFFFA");
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
-            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 202, 59);
+            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, -1, 206, 70);
             this.digitalGauge3.DigitCount = 6;
+            this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge3.Name = "digitalGauge3";
             this.digitalGauge3.Padding = new DevExpress.XtraGauges.Core.Base.TextSpacing(26, 20, 26, 20);
             this.digitalGauge3.Text = "92:11:12";
             // 
             // digitalBackgroundLayerComponent4
             // 
-            this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(313.775F, 99.9625F);
+            this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(303.65F, 106.075F);
             this.digitalBackgroundLayerComponent4.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style21;
+            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style10;
             this.digitalBackgroundLayerComponent4.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent4.ZOrder = 1000;
             // 
@@ -1039,15 +1058,14 @@
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.AllowDrop;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.CPBbar,
-            this.CamBar});
+            this.CPBbar});
             this.navBarControl1.LargeImages = this.navbarImageCollectionLarge;
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 165;
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 240;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(165, 368);
+            this.navBarControl1.Size = new System.Drawing.Size(240, 371);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -1062,8 +1080,8 @@
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(1044, 368);
-            this.splitContainerControl.SplitterPosition = 165;
+            this.splitContainerControl.Size = new System.Drawing.Size(1237, 371);
+            this.splitContainerControl.SplitterPosition = 240;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
             // 
@@ -1087,12 +1105,48 @@
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "类型";
+            this.gridColumn2.FieldName = "TypeName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 5;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "添加地区";
+            this.barButtonItem3.Id = 1;
+            this.barButtonItem3.LargeImageIndex = 9;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "更改密码";
+            this.barButtonItem4.Id = 2;
+            this.barButtonItem4.LargeImageIndex = 10;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "默认设置";
+            this.barButtonItem5.Id = 3;
+            this.barButtonItem5.LargeImageIndex = 11;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // datetimeInfo
+            // 
+            this.datetimeInfo.Caption = "barStaticItem1";
+            this.datetimeInfo.Id = 4;
+            this.datetimeInfo.Name = "datetimeInfo";
+            this.datetimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 550);
+            this.ClientSize = new System.Drawing.Size(1237, 553);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.popupControlContainer2);
@@ -1161,6 +1215,16 @@
 
         }
 
+      
+
+    
+
+        void cpbTreeView_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+           
+        }
+
+    
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
@@ -1187,9 +1251,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem openFileBtn;
         private DevExpress.XtraNavBar.NavBarGroup CPBbar;
-        private DevExpress.XtraNavBar.NavBarGroup CamBar;
         private DevExpress.XtraBars.BarButtonItem saveBtn;
-        private DevExpress.XtraBars.BarStaticItem dateTimeInfo;
         private System.Windows.Forms.BindingSource nodeInfoDSBindingSource;
         private NodeInfoDS nodeInfoDS;
         private System.Windows.Forms.BindingSource nodeInfoBindingSource;
@@ -1253,6 +1315,11 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.TimeSpanEdit timeSpanEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarStaticItem datetimeInfo;
 
     }
 }

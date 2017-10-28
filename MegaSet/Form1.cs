@@ -19,6 +19,8 @@ using DevExpress.Skins;
 
 namespace MegaSet
 {
+  
+
     public partial class Form1 : RibbonForm
     {
         private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
@@ -37,7 +39,7 @@ namespace MegaSet
 
         private void dateTimerTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            this.dateTimeInfo.Caption = DateTime.Now.ToString();
+            this.datetimeInfo.Caption = DateTime.Now.ToString();
 
         }
         void InitSkinGallery()
@@ -53,13 +55,15 @@ namespace MegaSet
 
         private void button1_Click(object sender, EventArgs e)
         {
-            nodeInfoDS.NodeInfo.Rows.Add("row1",true,DateTime.Now,new TimeSpan(3,14,22), 128, nodeInfoDS.NodeInfo.Rows.Count);
+            nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
+            nodeInfoDS.NodeInfo.Rows.Add("row1", true, DateTime.Now, DateTime.Now, 128, nodeInfoDS.NodeInfo.Rows.Count, "Camera");
+            nodeInfoDS.NodeInfo.Rows.Add("row1", true, DateTime.Now,DateTime.Now, 128, nodeInfoDS.NodeInfo.Rows.Count,"CPB");
             nodeInfoDS.cpbInfo.Rows.Add("上海","0","上海",0);
             nodeInfoDS.cpbInfo.Rows.Add("北京", "0", "北京", 0);
-            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "192.168.1.1", 1);
-            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "192.168.1.2", 1);
-            nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "10.0.0.1", 1);
-            nodeInfoDS.WriteXml(@"d:\nodeinfo.xml");
+            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "202.202.202.202(区域五个字)", 1);
+            nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "202.202.202.202(区域五个字)", 1);
+            nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "1.1.1.1()", 1);
+            
 
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
 
@@ -127,6 +131,13 @@ namespace MegaSet
             skin.Properties[GridSkins.OptShowTreeLine] = true;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.None;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+          //  if (selectedNode != null)
+             
+            cpbTreeView.DeleteNode(cpbTreeView.FocusedNode);
         }
 
 
