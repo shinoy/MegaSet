@@ -143,6 +143,8 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("配置文件读取失败，生成新的配置文件");
                 this.nodeInfoDS.WriteXml(@".\Configuration.mgs");
             }
+
+            this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
            
            
         }

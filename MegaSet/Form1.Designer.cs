@@ -33,6 +33,7 @@ namespace MegaSet
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -48,13 +49,12 @@ namespace MegaSet
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource();
-            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource();
+            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
             this.repositoryItemTimeSpanEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection();
-            this.iExit = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -67,7 +67,7 @@ namespace MegaSet
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.datetimeInfo = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
+            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -79,13 +79,13 @@ namespace MegaSet
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
             this.AddressName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource();
-            this.navbarImageCollection = new DevExpress.Utils.ImageCollection();
-            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection();
-            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage();
-            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer();
+            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
+            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
+            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer();
+            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
@@ -140,7 +140,7 @@ namespace MegaSet
             this.button1 = new System.Windows.Forms.Button();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
-            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource();
+            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -234,7 +234,6 @@ namespace MegaSet
             this.ribbonControl.Images = this.ribbonImageCollection;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
-            this.iExit,
             this.iHelp,
             this.iAbout,
             this.rgbiSkins,
@@ -270,16 +269,6 @@ namespace MegaSet
             this.ribbonImageCollection.Images.SetKeyName(1, "Ribbon_Content_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(2, "Ribbon_Info_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(15, "document_save_2_256px_539656_easyicon.net.png");
-            // 
-            // iExit
-            // 
-            this.iExit.Caption = "Exit";
-            this.iExit.Description = "Closes this program after prompting you to save unsaved data.";
-            this.iExit.Hint = "Closes this program after prompting you to save unsaved data";
-            this.iExit.Id = 20;
-            this.iExit.ImageIndex = 6;
-            this.iExit.LargeImageIndex = 6;
-            this.iExit.Name = "iExit";
             // 
             // iHelp
             // 
@@ -323,8 +312,7 @@ namespace MegaSet
             // 
             this.openFileBtn.Caption = "导入站点";
             this.openFileBtn.Id = 3;
-            this.openFileBtn.ImageIndex = 1;
-            this.openFileBtn.LargeImageIndex = 1;
+            this.openFileBtn.LargeImageIndex = 2;
             this.openFileBtn.Name = "openFileBtn";
             toolTipItem1.Text = "从备份的配置文件导入所有节点信息";
             superToolTip1.Items.Add(toolTipItem1);
@@ -335,8 +323,7 @@ namespace MegaSet
             // 
             this.saveBtn.Caption = "导出站点";
             this.saveBtn.Id = 1;
-            this.saveBtn.ImageIndex = 4;
-            this.saveBtn.LargeImageIndex = 12;
+            this.saveBtn.LargeImageIndex = 8;
             this.saveBtn.Name = "saveBtn";
             toolTipItem2.Text = "备份所有节点信息";
             superToolTip2.Items.Add(toolTipItem2);
@@ -347,7 +334,7 @@ namespace MegaSet
             // 
             this.barButtonItem1.Caption = "添加节点";
             this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageUri.Uri = "Add";
+            this.barButtonItem1.LargeImageIndex = 6;
             this.barButtonItem1.Name = "barButtonItem1";
             toolTipItem3.Text = "添加节点信息，节点描述不超过5个字符";
             superToolTip3.Items.Add(toolTipItem3);
@@ -358,7 +345,7 @@ namespace MegaSet
             // 
             this.barButtonItem2.Caption = "删除";
             this.barButtonItem2.Id = 3;
-            this.barButtonItem2.ImageUri.Uri = "Delete";
+            this.barButtonItem2.LargeImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
             toolTipItem4.Text = "删除当前选中的地区或节点";
             superToolTip4.Items.Add(toolTipItem4);
@@ -369,7 +356,7 @@ namespace MegaSet
             // 
             this.barButtonItem3.Caption = "添加地区";
             this.barButtonItem3.Id = 1;
-            this.barButtonItem3.LargeImageIndex = 9;
+            this.barButtonItem3.LargeImageIndex = 0;
             this.barButtonItem3.Name = "barButtonItem3";
             toolTipItem5.Text = "添加地区名称，最长不超过10个字符";
             superToolTip5.Items.Add(toolTipItem5);
@@ -380,7 +367,7 @@ namespace MegaSet
             // 
             this.barButtonItem4.Caption = "更改密码";
             this.barButtonItem4.Id = 2;
-            this.barButtonItem4.LargeImageIndex = 10;
+            this.barButtonItem4.LargeImageIndex = 1;
             this.barButtonItem4.Name = "barButtonItem4";
             toolTipItem6.Text = "修改软件登陆密码";
             superToolTip6.Items.Add(toolTipItem6);
@@ -404,7 +391,7 @@ namespace MegaSet
             // 
             this.barButtonItem6.Caption = "更新定时表";
             this.barButtonItem6.Id = 5;
-            this.barButtonItem6.LargeImageIndex = 13;
+            this.barButtonItem6.LargeImageIndex = 3;
             this.barButtonItem6.Name = "barButtonItem6";
             toolTipItem7.Text = "更新当前节点的定时表";
             superToolTip7.Items.Add(toolTipItem7);
@@ -414,14 +401,15 @@ namespace MegaSet
             // 
             this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
             this.ribbonImageCollectionLarge.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ribbonImageCollectionLarge.ImageStream")));
-            this.ribbonImageCollectionLarge.Images.SetKeyName(0, "Ribbon_Exit_32x32.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(1, "Ribbon_Content_32x32.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(2, "Ribbon_Info_32x32.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(9, "world_add_3232.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(10, "change_password_128px_1077753_easyicon.net.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(11, "system_restart_256px_572124_easyicon.net.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(12, "document_save_3232.net.png");
-            this.ribbonImageCollectionLarge.Images.SetKeyName(13, "Software_Update_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(0, "world_add_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(1, "change_password_128px_1077753_easyicon.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(2, "document_save_3232.net.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(3, "Software_Update_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(4, "document_export_more_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(5, "document_import_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(6, "point_add_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(7, "delete_3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(8, "export_3232.png");
             // 
             // fileRibbonPage1
             // 
@@ -1288,29 +1276,17 @@ namespace MegaSet
 
         void cpbTreeView_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
         {
-            if (e.Node.HasChildren)
+            if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Add)
             {
-                e.Node.ExpandAll();
+                e.Node.ParentNode.ExpandAll();
             }
         }
 
-      
-
-
-      
-
-    
-
-        void cpbTreeView_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-           
-        }
-
+     
     
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
-        private DevExpress.XtraBars.BarButtonItem iExit;
         private DevExpress.XtraBars.BarButtonItem iHelp;
         private DevExpress.XtraBars.BarButtonItem iAbout;
         private DevExpress.XtraBars.RibbonGalleryBarItem rgbiSkins;
