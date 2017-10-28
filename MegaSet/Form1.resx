@@ -123,12 +123,6 @@
   <metadata name="nodeInfoDSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
-  <metadata name="nodeInfoDSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="nodeInfoDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1096, 17</value>
-  </metadata>
   <metadata name="nodeInfoDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1096, 17</value>
   </metadata>
@@ -365,7 +359,7 @@
         TjAvISa2j7HhQqA0GugPdXQHGgSi2VHQeO7jqdWtXDXolk9N/lN1i8rIYG+oszMY8bk3ZLMzYKPd41Oz
         y8+NNj99aQm5O/CvqV0+ktrlI6ld/n2I3+wILvNaqp3MAAAAAElFTkSuQmCCdgIAAIlQTkcNChoKAAAA
         DUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMA
-        AA7BAAAOwQG4kWvtAAACC0lEQVQ4T52Q309SYRjHz1pz3voH1Nyca66tn2ZFkKFEkXgwvfEvqAtd66IL
+        AA7AAAAOwAFq1okJAAACC0lEQVQ4T52Q309SYRjHz1pz3voH1Nyca66tn2ZFkKFEkXgwvfEvqAtd66IL
         KXWlpeZdN25558ZWG41pOnFCKpIOJI4IChw84AFE8ddNKl5+e993+Gvkxny2z8573vf5ft7zHO6squnj
         ivj+AhyS3c6/aMiUfImWpUswBi+fT/A91Yw2sQTtkdLzCczrr9EhlaEzejV/wcnZLZtv0C3fQI98M/9/
         0dP7iTV+TfEY2m5Bb6L8CLpPz7OtuUUPB0wmDI8M4stc4ykBDS/4BXzs6jpbsra+Cq/ggtsziymHHfKB
@@ -936,12 +930,6 @@
         VA1T/yTSJ6ljfvQfIobdTWElXICI0s75L/9NAPwPh7n6vHvz1lEAAAAASUVORK5CYIIL
 </value>
   </data>
-  <metadata name="cpbInfoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>614, 56</value>
-  </metadata>
-  <metadata name="navbarImageCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>238, 17</value>
-  </metadata>
   <metadata name="cpbInfoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>614, 56</value>
   </metadata>
