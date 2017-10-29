@@ -99,13 +99,13 @@ namespace MegaSet
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.timeEdit1 = new DevExpress.XtraEditors.TimeEdit();
@@ -149,6 +149,7 @@ namespace MegaSet
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -169,10 +170,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeTimeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).BeginInit();
@@ -710,11 +711,31 @@ namespace MegaSet
             // 
             this.DateColumn.Caption = "日期";
             this.DateColumn.ColumnEdit = this.repositoryItemDateEdit1;
-            this.DateColumn.FieldName = "Date";
+            this.DateColumn.FieldName = "StartTime";
             this.DateColumn.Name = "DateColumn";
             this.DateColumn.Visible = true;
             this.DateColumn.VisibleIndex = 2;
             this.DateColumn.Width = 90;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // TimeColumn
+            // 
+            this.TimeColumn.Caption = "起始时间";
+            this.TimeColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.TimeColumn.DisplayFormat.FormatString = "hh:mm:ss";
+            this.TimeColumn.FieldName = "StartTime";
+            this.TimeColumn.Name = "TimeColumn";
+            this.TimeColumn.Visible = true;
+            this.TimeColumn.VisibleIndex = 3;
+            this.TimeColumn.Width = 90;
             // 
             // repositoryItemTimeEdit1
             // 
@@ -731,17 +752,6 @@ namespace MegaSet
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
             this.repositoryItemTimeEdit1.NullText = "_";
             this.repositoryItemTimeEdit1.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
-            // 
-            // TimeColumn
-            // 
-            this.TimeColumn.Caption = "起始时间";
-            this.TimeColumn.ColumnEdit = this.repositoryItemTimeEdit1;
-            this.TimeColumn.DisplayFormat.FormatString = "hh:mm:ss";
-            this.TimeColumn.FieldName = "StartTime";
-            this.TimeColumn.Name = "TimeColumn";
-            this.TimeColumn.Visible = true;
-            this.TimeColumn.VisibleIndex = 3;
-            this.TimeColumn.Width = 90;
             // 
             // DurationColumn
             // 
@@ -776,15 +786,6 @@ namespace MegaSet
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemTimeSpanEdit2.Mask.EditMask = "HH:mm:ss";
             this.repositoryItemTimeSpanEdit2.Name = "repositoryItemTimeSpanEdit2";
-            // 
-            // repositoryItemDateEdit1
-            // 
-            this.repositoryItemDateEdit1.AutoHeight = false;
-            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // repositoryItemDateEdit2
             // 
@@ -1213,12 +1214,23 @@ namespace MegaSet
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(726, 102);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 609);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.button1);
@@ -1249,10 +1261,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeTimeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).EndInit();
@@ -1410,6 +1422,7 @@ namespace MegaSet
         private System.Windows.Forms.BindingSource nodeTimeInfoBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
+        private System.Windows.Forms.Button button2;
 
     }
 }

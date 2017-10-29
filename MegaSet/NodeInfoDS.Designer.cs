@@ -1050,11 +1050,11 @@ namespace MegaSet {
             
             private global::System.Data.DataColumn columnStatus;
             
-            private global::System.Data.DataColumn columnDate;
-            
             private global::System.Data.DataColumn columnStartTime;
             
             private global::System.Data.DataColumn columnEndTime;
+            
+            private global::System.Data.DataColumn columnDuration;
             
             private global::System.Data.DataColumn columnTypeName;
             
@@ -1111,14 +1111,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DateColumn {
-                get {
-                    return this.columnDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn StartTimeColumn {
                 get {
                     return this.columnStartTime;
@@ -1130,6 +1122,14 @@ namespace MegaSet {
             public global::System.Data.DataColumn EndTimeColumn {
                 get {
                     return this.columnEndTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DurationColumn {
+                get {
+                    return this.columnDuration;
                 }
             }
             
@@ -1186,14 +1186,14 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime Date, System.DateTime StartTime, System.DateTime EndTime, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime) {
+            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime) {
                 NodeTimeInfoRow rowNodeTimeInfoRow = ((NodeTimeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
                         Status,
-                        Date,
                         StartTime,
                         EndTime,
+                        Duration,
                         TypeName,
                         null};
                 if ((parentNodeInfoRowBynode_nodetime != null)) {
@@ -1223,9 +1223,9 @@ namespace MegaSet {
             internal void InitVars() {
                 this.columnGroupName = base.Columns["GroupName"];
                 this.columnStatus = base.Columns["Status"];
-                this.columnDate = base.Columns["Date"];
                 this.columnStartTime = base.Columns["StartTime"];
                 this.columnEndTime = base.Columns["EndTime"];
+                this.columnDuration = base.Columns["Duration"];
                 this.columnTypeName = base.Columns["TypeName"];
                 this.columnIP = base.Columns["IP"];
             }
@@ -1237,12 +1237,12 @@ namespace MegaSet {
                 base.Columns.Add(this.columnGroupName);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
-                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDate);
                 this.columnStartTime = new global::System.Data.DataColumn("StartTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartTime);
                 this.columnEndTime = new global::System.Data.DataColumn("EndTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEndTime);
+                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDuration);
                 this.columnTypeName = new global::System.Data.DataColumn("TypeName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTypeName);
                 this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2067,22 +2067,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Date {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableNodeTimeInfo.DateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'NodeTimeInfo\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableNodeTimeInfo.DateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime StartTime {
                 get {
                     try {
@@ -2110,6 +2094,22 @@ namespace MegaSet {
                 }
                 set {
                     this[this.tableNodeTimeInfo.EndTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Duration {
+                get {
+                    try {
+                        return ((string)(this[this.tableNodeTimeInfo.DurationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'NodeTimeInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeTimeInfo.DurationColumn] = value;
                 }
             }
             
@@ -2182,18 +2182,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDateNull() {
-                return this.IsNull(this.tableNodeTimeInfo.DateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDateNull() {
-                this[this.tableNodeTimeInfo.DateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStartTimeNull() {
                 return this.IsNull(this.tableNodeTimeInfo.StartTimeColumn);
             }
@@ -2214,6 +2202,18 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEndTimeNull() {
                 this[this.tableNodeTimeInfo.EndTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDurationNull() {
+                return this.IsNull(this.tableNodeTimeInfo.DurationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDurationNull() {
+                this[this.tableNodeTimeInfo.DurationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

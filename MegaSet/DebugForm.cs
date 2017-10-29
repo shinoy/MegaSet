@@ -72,7 +72,7 @@ namespace MegaSet
             this.richTextBox1.AppendText(" ******************************  NodeTimeInfo  **********************************  \n");
             foreach (DataRow row in myDataset.NodeTimeInfo.Rows)
             {
-                this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} Date:{2} StartTime:{3} EndTime:{4} TypeName:{5} IP:{6} \n", row["GroupName"], row["Status"], row["Date"], row["StartTime"], row["EndTime"], row["TypeName"], row["IP"]));
+                this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} StartTime:{2}  EndTime:{3}  Duration:{4}  TypeName:{5} IP:{6} \n", row["GroupName"], row["Status"], row["StartTime"], row["EndTime"], row["Duration"], row["TypeName"], row["IP"]));
             }
 
             this.richTextBox1.AppendText(" ******************************  DisplayNodeInfo  **********************************  \n");

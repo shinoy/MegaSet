@@ -28,6 +28,8 @@ namespace MegaSet
         private string configFileName = @".\Configuration.mgs";
         private string currentNodeIp =string.Empty;
 
+        private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
+
        // ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
     
@@ -41,7 +43,68 @@ namespace MegaSet
                 InitSkinGallery();
                 dateTimerTicker.Elapsed += dateTimerTicker_Elapsed;
                 dateTimerTicker.Start();
+                protocalAgent.DataArrived += protocalAgent_DataArrived;
+                this.protocalAgent.Connect();
          
+        }
+
+        void protocalAgent_DataArrived(object sender, ProtocalParseEventArg e)
+        {
+            switch (e.Data.TypeName)
+            { 
+                case CPBProtolType.Power:
+
+                    try
+                    { 
+                        PowerFrameType frame = (PowerFrameType)e.Data.Content;
+                       
+
+                        string typeName = "Others";
+                         string powerGroup = typeName+frame.PowerGroup;
+
+
+                        if (frame.PowerGroup.Equals("00"))
+                        {
+                            typeName = "Camera";
+                            powerGroup = "Camera0";
+                        }
+                        if( frame.PowerGroup.Equals("01"))
+                        {
+                            typeName = "Camera";
+                            powerGroup = "Camera1";
+                        }
+                        if (frame.PowerGroup.Equals("02"))
+                        {
+                            typeName = "CPB";
+                            powerGroup = "CPB0";
+                        }
+                          if (frame.PowerGroup.Equals("03"))
+                        {
+                            typeName = "CPB";
+                            powerGroup = "CPB1";
+                        }
+
+                          if (!frame.DayTime.StartsWith("*"))
+                          {
+                              DateTime startTime = DateTime.Parse(String.Format("20{0} {1}", frame.DayTime, frame.StartTime));
+                          }
+                      
+                        //DateTime endTime = startTime.AddSeconds(double.Parse(frame.Duration));
+                        
+
+                        //nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress);
+                     //   nodeInfoDS.NodeTimeInfo.Rows.Add()
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                     //foreach(NodeInfoDS.NodeTimeInfoRow row in nodeInfoDS.NodeTimeInfo.Select())
+                     //   nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
+                  
+                    break;
+            }
         }
 
         private void dateTimerTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -167,8 +230,6 @@ namespace MegaSet
             //reigster dataset event to update controls
             this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
 
-            nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
-            nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "other", "192.192.192.192");
 
         }
 
@@ -195,6 +256,33 @@ namespace MegaSet
 
         void NodeTimeInfo_RowChanged(object sender, DataRowChangeEventArgs e)
         {
+            if (e.Action != DataRowAction.Delete)
+            {
+                this.nodeInfoDS.NodeTimeInfo.RowChanged -= NodeTimeInfo_RowChanged;
+                try
+                {
+                    NodeInfoDS.NodeTimeInfoRow row = (NodeInfoDS.NodeTimeInfoRow)e.Row;
+                    DateTime newTime = new DateTime(row.StartTime.Year, row.StartTime.Month, row.StartTime.Day, row.EndTime.Hour, row.EndTime.Minute, row.EndTime.Second);
+                    if (newTime.CompareTo(row.StartTime) <= 0)
+                    {
+                        row.EndTime = row.StartTime.AddMinutes(1);
+                    }
+                    else
+                    {
+                        row.EndTime = newTime;
+                    }
+
+                    TimeSpan interval = row.EndTime - row.StartTime;
+                    row.Duration = ((Int32)interval.TotalSeconds).ToString();
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+           
+
+                this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
+            }
             //nodeInfoDS.DispNodeInfo.Clear();
             //foreach (DataRow originalRow in this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}'", currentNodeIp.ToString())))
             //{
@@ -287,6 +375,12 @@ namespace MegaSet
                 currentNodeIp = string.Empty;
             }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            this.protocalAgent.SendCMD("get power", "192.168.1.100");
         }
 
       
