@@ -22,7 +22,12 @@ namespace MegaSet
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (this.textEdit1.Text.Length <= 10 && this.textEdit1.Text.Length > 0)
+            if (this.textEdit1.Text == "0")
+            {
+                textEdit1.Text = "";
+                DevExpress.XtraEditors.XtraMessageBox.Show("0不能作为站点名称");
+            }
+            if (this.textEdit1.Text.Length <= 10 && this.textEdit1.Text.Length > 0 )
             {
                 try
                 {

@@ -28,7 +28,7 @@ namespace MegaSet
         private string configFileName = @".\Configuration.mgs";
         private string currentNodeIp =string.Empty;
 
-        ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
+       // ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
     
 
@@ -180,9 +180,15 @@ namespace MegaSet
         {
             foreach (NodeInfoDS.cpbInfoRow cpbRow in nodeInfoDS.cpbInfo.Rows)
             {
-                if (nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'",cpbRow.ID)).Length > 0)
-                { 
-                    //to be done
+                if (cpbRow.ParentID == "0")
+                {
+                    return;
+                }
+                if (nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'",cpbRow.ID)).Length == 0)
+                {
+                
+                    // to add nodeinfo row for orphan tree node 
+                    nodeInfoDS.NodeInfo.Rows.Add(new object[] {cpbRow.ID , "_", "_", "_", "_", "_" });
                 }
             }
         }

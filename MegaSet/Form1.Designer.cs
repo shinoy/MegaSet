@@ -996,7 +996,8 @@ namespace MegaSet
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
             this.digitalGauge3.Bounds = new System.Drawing.Rectangle(-2, 1, 210, 72);
-            this.digitalGauge3.DigitCount = 6;
+            this.digitalGauge3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nodeInfoBindingSource, "DateTime", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "G"));
+            this.digitalGauge3.DigitCount = 10;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge3.Name = "digitalGauge3";
             this.digitalGauge3.Padding = new DevExpress.XtraGauges.Core.Base.TextSpacing(26, 20, 26, 20);
@@ -1004,7 +1005,7 @@ namespace MegaSet
             // 
             // digitalBackgroundLayerComponent4
             // 
-            this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(303.65F, 106.075F);
+            this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(488.75F, 106.075F);
             this.digitalBackgroundLayerComponent4.Name = "digitalBackgroundLayerComponent1";
             this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style10;
             this.digitalBackgroundLayerComponent4.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
@@ -1263,17 +1264,17 @@ namespace MegaSet
                 }
                 if (e.Node.Level == 1)
                 {
-                    System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
-                    nodeInfoDS.NodeInfo.Rows.Add(new object[]{e.Node.GetValue("ID").ToString(),"_",null,"_","_","_"});
+                  //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
+                    nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
                 }
                     
             }
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Remove)
             {
-                foreach (DataRow matchRow in nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'", e.Node.GetValue("IP"))))
-                {
-                    nodeInfoDS.NodeInfo.Rows.Remove(matchRow);
-                }
+                //foreach (DataRow matchRow in nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'", e.Node.GetValue("IP"))))
+                //{
+                //    nodeInfoDS.NodeInfo.Rows.Remove(matchRow);
+                //}
             }
 
             nodeInfoDS.DispNodeInfo.Clear();

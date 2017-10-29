@@ -8,6 +8,10 @@ using System.Net.Sockets;
 
 namespace MegaSet
 {
+    public enum CPBProtolType
+    {
+        Power
+    }
 
     /// <summary>
     /// 8 - get power 
@@ -26,23 +30,24 @@ namespace MegaSet
             set;
         }
 
-        public DateTime DayTime
+        public string DayTime
         {
             get;
             set;
         }
 
-        public DateTime StartTime
+        public string StartTime
         {
             get;
             set;
         }
 
-        public TimeSpan Duration
+        public string Duration
         {
             get;
             set;
         }
+
 
     }
 
@@ -94,26 +99,77 @@ namespace MegaSet
     /// <summary>
     /// Define the frame struct in Queue for receiving
     /// </summary>
-    public struct FrameDataStruct
+    public class cpbProtocalDataCls
     {
-        string typeName;
+        CPBProtolType typeName;
         string ipAddress;
-        object frameData;
+        object content;
+
+       public cpbProtocalDataCls(CPBProtolType type, string ip, object obj)
+        {
+           typeName = type;
+           ipAddress = ip;
+            content = obj;
+        }
+
+       public CPBProtolType TypeName
+       {
+           get { return typeName; }
+       }
+
+       public string IPAddress
+       {
+           get { return ipAddress; }
+       }
+
+       public object Content
+       {
+           get { return content; }
+       }
+    }
+
+
+    public class ProtocalParseEventArg : EventArgs
+    {
+        public cpbProtocalDataCls Data { get; private set; }
+
+
+        public ProtocalParseEventArg(cpbProtocalDataCls date)
+        {
+            Data = date;
+        }
     }
 
     public class ProtocalParserCLS:IDisposable
     {
-        private List<FrameDataStruct> receiveQueue = new List<FrameDataStruct>();
+        private List<cpbProtocalDataCls> receiveQueue = new List<cpbProtocalDataCls>();
 
         private UdpClient updClient = new UdpClient(88);
 
         System.Threading.Thread receiveThread = null;
 
-        public ProtocalParserCLS()
+        public event EventHandler<ProtocalParseEventArg> DataArrived;
+
+        private void ProcessProtocal(string ipAddress, string frame)
         {
-            receiveThread = new System.Threading.Thread(ReceiveMessage) { IsBackground = true };
-            receiveThread.Start();
-           
+             string tag = frame.Substring(0, 1);
+             if (tag.Equals("8"))
+             {
+                 string[] strArray = frame.Split(new char[] { ' ', }, StringSplitOptions.RemoveEmptyEntries);
+                 if (strArray.Length == 5)
+                 {
+                     PowerFrameType group = new PowerFrameType();
+                     group.PowerGroup = strArray[0].Substring(strArray[0].Length - 2, 2);
+                     group.Status = strArray[1].Equals("ON") ? true : false;
+                     group.DayTime = strArray[2];
+                     group.StartTime = strArray[3];
+                     group.Duration = strArray[4];
+
+                     DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Power, ipAddress, group)));
+
+                 }
+             }
+
         }
 
         private void ReceiveMessage()
@@ -127,8 +183,7 @@ namespace MegaSet
                     byte[] receiveBytes = updClient.Receive(ref remoteIpEndPoint);
 
                     string message = Encoding.ASCII.GetString(receiveBytes);
-                    System.Windows.Forms.MessageBox.Show(string.Format("{0}:{1}", remoteIpEndPoint.Address, message));
-                    // to do
+                    ProcessProtocal(remoteIpEndPoint.Address.ToString(), message);
 
                 }
                 catch (SocketException ex)
@@ -137,6 +192,14 @@ namespace MegaSet
                 }
             }
         }
+
+        public void Connect()
+        {
+            receiveThread = new System.Threading.Thread(ReceiveMessage) { IsBackground = true };
+            receiveThread.Start();
+        }
+
+    
 
         public void SendCMD(string command, string ipAddress)
         {

@@ -845,7 +845,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow AddNodeInfoRow(cpbInfoRow parentcpbInfoRowBycpb_node, string Temp, System.DateTime DateTime, string Voltage, string GPSTime, string Version) {
+            public NodeInfoRow AddNodeInfoRow(cpbInfoRow parentcpbInfoRowBycpb_node, string Temp, string DateTime, string Voltage, string GPSTime, string Version) {
                 NodeInfoRow rowNodeInfoRow = ((NodeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -901,7 +901,7 @@ namespace MegaSet {
                 base.Columns.Add(this.columnIP);
                 this.columnTemp = new global::System.Data.DataColumn("Temp", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTemp);
-                this.columnDateTime = new global::System.Data.DataColumn("DateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnDateTime = new global::System.Data.DataColumn("DateTime", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateTime);
                 this.columnVoltage = new global::System.Data.DataColumn("Voltage", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVoltage);
@@ -1874,10 +1874,10 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DateTime {
+            public string DateTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableNodeInfo.DateTimeColumn]));
+                        return ((string)(this[this.tableNodeInfo.DateTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DateTime\' in table \'NodeInfo\' is DBNull.", e);
