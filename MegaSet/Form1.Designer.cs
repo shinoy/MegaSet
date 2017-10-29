@@ -105,6 +105,7 @@ namespace MegaSet
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Repeat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.label3 = new System.Windows.Forms.Label();
@@ -262,7 +263,7 @@ namespace MegaSet
             this.ribbonPageSkins});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1143, 149);
+            this.ribbonControl.Size = new System.Drawing.Size(1241, 149);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -504,10 +505,10 @@ namespace MegaSet
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.datetimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 576);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 720);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1143, 33);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1241, 33);
             // 
             // CPBbar
             // 
@@ -525,7 +526,7 @@ namespace MegaSet
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 353);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 497);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
@@ -549,7 +550,7 @@ namespace MegaSet
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(240, 353);
+            this.cpbTreeView.Size = new System.Drawing.Size(240, 497);
             this.cpbTreeView.TabIndex = 0;
             this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             // 
@@ -622,7 +623,7 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panel1);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(897, 427);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(995, 571);
             this.schedulerSplitContainerControl.SplitterPosition = 450;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -634,7 +635,7 @@ namespace MegaSet
             this.gridSplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(441, 427);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(539, 571);
             this.gridSplitContainer1.TabIndex = 0;
             // 
             // gridControl1
@@ -651,7 +652,7 @@ namespace MegaSet
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2,
             this.repositoryItemTimeEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(441, 427);
+            this.gridControl1.Size = new System.Drawing.Size(539, 571);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -670,7 +671,8 @@ namespace MegaSet
             this.TimeColumn,
             this.DurationColumn,
             this.gridColumn2,
-            this.typeColumn});
+            this.typeColumn,
+            this.Repeat});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
@@ -695,17 +697,15 @@ namespace MegaSet
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 73;
             // 
             // StatusColumn
             // 
             this.StatusColumn.Caption = "状态";
             this.StatusColumn.FieldName = "Status";
             this.StatusColumn.Name = "StatusColumn";
-            this.StatusColumn.OptionsColumn.AllowEdit = false;
             this.StatusColumn.Visible = true;
             this.StatusColumn.VisibleIndex = 1;
-            this.StatusColumn.Width = 61;
+            this.StatusColumn.Width = 40;
             // 
             // DateColumn
             // 
@@ -714,8 +714,8 @@ namespace MegaSet
             this.DateColumn.FieldName = "StartTime";
             this.DateColumn.Name = "DateColumn";
             this.DateColumn.Visible = true;
-            this.DateColumn.VisibleIndex = 2;
-            this.DateColumn.Width = 90;
+            this.DateColumn.VisibleIndex = 3;
+            this.DateColumn.Width = 110;
             // 
             // repositoryItemDateEdit1
             // 
@@ -724,6 +724,7 @@ namespace MegaSet
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // TimeColumn
@@ -734,8 +735,8 @@ namespace MegaSet
             this.TimeColumn.FieldName = "StartTime";
             this.TimeColumn.Name = "TimeColumn";
             this.TimeColumn.Visible = true;
-            this.TimeColumn.VisibleIndex = 3;
-            this.TimeColumn.Width = 90;
+            this.TimeColumn.VisibleIndex = 4;
+            this.TimeColumn.Width = 110;
             // 
             // repositoryItemTimeEdit1
             // 
@@ -761,8 +762,8 @@ namespace MegaSet
             this.DurationColumn.FieldName = "EndTime";
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
-            this.DurationColumn.VisibleIndex = 4;
-            this.DurationColumn.Width = 90;
+            this.DurationColumn.VisibleIndex = 5;
+            this.DurationColumn.Width = 118;
             // 
             // gridColumn2
             // 
@@ -777,6 +778,15 @@ namespace MegaSet
             this.typeColumn.Name = "typeColumn";
             this.typeColumn.Visible = true;
             this.typeColumn.VisibleIndex = 5;
+            // 
+            // Repeat
+            // 
+            this.Repeat.Caption = "重复";
+            this.Repeat.FieldName = "Repeat";
+            this.Repeat.Name = "Repeat";
+            this.Repeat.Visible = true;
+            this.Repeat.VisibleIndex = 2;
+            this.Repeat.Width = 40;
             // 
             // repositoryItemTimeSpanEdit2
             // 
@@ -1163,7 +1173,7 @@ namespace MegaSet
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 240;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(240, 427);
+            this.navBarControl1.Size = new System.Drawing.Size(240, 571);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -1178,7 +1188,7 @@ namespace MegaSet
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(1143, 427);
+            this.splitContainerControl.Size = new System.Drawing.Size(1241, 571);
             this.splitContainerControl.SplitterPosition = 240;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
@@ -1229,7 +1239,7 @@ namespace MegaSet
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 609);
+            this.ClientSize = new System.Drawing.Size(1241, 753);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
@@ -1423,6 +1433,7 @@ namespace MegaSet
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private System.Windows.Forms.Button button2;
+        private DevExpress.XtraGrid.Columns.GridColumn Repeat;
 
     }
 }

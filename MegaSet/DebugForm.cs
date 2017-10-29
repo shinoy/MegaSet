@@ -13,13 +13,13 @@ namespace MegaSet
     public partial class DebugForm : Form
     {
         private NodeInfoDS myDataset;
-        private ProtocalParserCLS agent = new ProtocalParserCLS();
+       // private ProtocalParserCLS agent = new ProtocalParserCLS();
 
         public DebugForm(NodeInfoDS dataset)
         {
             myDataset = dataset;
-            agent.Connect();
-            agent.DataArrived += agent_DataArrived;
+           // agent.Connect();
+           // agent.DataArrived += agent_DataArrived;
             InitializeComponent();
         }
 
@@ -84,7 +84,7 @@ namespace MegaSet
 
         private void button2_Click(object sender, EventArgs e)
         {
-            agent.SendCMD(this.textBox1.Text, this.textBox2.Text);
+          //  agent.SendCMD(this.textBox1.Text, this.textBox2.Text);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace MegaSet
 
         private void DebugForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            agent.Dispose();
+          //  agent.Dispose();
         }
     }
 }
