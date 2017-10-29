@@ -24,9 +24,11 @@ namespace MegaSet {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class NodeInfoDS : global::System.Data.DataSet {
         
-        private NodeInfoDataTable tableNodeInfo;
+        private NodeTimeInfoDataTable tableNodeTimeInfo;
         
         private cpbInfoDataTable tablecpbInfo;
+        
+        private NodeInfoDataTable tableNodeInfo;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -56,11 +58,14 @@ namespace MegaSet {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["NodeInfo"] != null)) {
-                    base.Tables.Add(new NodeInfoDataTable(ds.Tables["NodeInfo"]));
+                if ((ds.Tables["NodeTimeInfo"] != null)) {
+                    base.Tables.Add(new NodeTimeInfoDataTable(ds.Tables["NodeTimeInfo"]));
                 }
                 if ((ds.Tables["cpbInfo"] != null)) {
                     base.Tables.Add(new cpbInfoDataTable(ds.Tables["cpbInfo"]));
+                }
+                if ((ds.Tables["NodeInfo"] != null)) {
+                    base.Tables.Add(new NodeInfoDataTable(ds.Tables["NodeInfo"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +89,9 @@ namespace MegaSet {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NodeInfoDataTable NodeInfo {
+        public NodeTimeInfoDataTable NodeTimeInfo {
             get {
-                return this.tableNodeInfo;
+                return this.tableNodeTimeInfo;
             }
         }
         
@@ -97,6 +102,16 @@ namespace MegaSet {
         public cpbInfoDataTable cpbInfo {
             get {
                 return this.tablecpbInfo;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public NodeInfoDataTable NodeInfo {
+            get {
+                return this.tableNodeInfo;
             }
         }
         
@@ -167,11 +182,14 @@ namespace MegaSet {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["NodeInfo"] != null)) {
-                    base.Tables.Add(new NodeInfoDataTable(ds.Tables["NodeInfo"]));
+                if ((ds.Tables["NodeTimeInfo"] != null)) {
+                    base.Tables.Add(new NodeTimeInfoDataTable(ds.Tables["NodeTimeInfo"]));
                 }
                 if ((ds.Tables["cpbInfo"] != null)) {
                     base.Tables.Add(new cpbInfoDataTable(ds.Tables["cpbInfo"]));
+                }
+                if ((ds.Tables["NodeInfo"] != null)) {
+                    base.Tables.Add(new NodeInfoDataTable(ds.Tables["NodeInfo"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +224,22 @@ namespace MegaSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableNodeInfo = ((NodeInfoDataTable)(base.Tables["NodeInfo"]));
+            this.tableNodeTimeInfo = ((NodeTimeInfoDataTable)(base.Tables["NodeTimeInfo"]));
             if ((initTable == true)) {
-                if ((this.tableNodeInfo != null)) {
-                    this.tableNodeInfo.InitVars();
+                if ((this.tableNodeTimeInfo != null)) {
+                    this.tableNodeTimeInfo.InitVars();
                 }
             }
             this.tablecpbInfo = ((cpbInfoDataTable)(base.Tables["cpbInfo"]));
             if ((initTable == true)) {
                 if ((this.tablecpbInfo != null)) {
                     this.tablecpbInfo.InitVars();
+                }
+            }
+            this.tableNodeInfo = ((NodeInfoDataTable)(base.Tables["NodeInfo"]));
+            if ((initTable == true)) {
+                if ((this.tableNodeInfo != null)) {
+                    this.tableNodeInfo.InitVars();
                 }
             }
         }
@@ -228,21 +252,29 @@ namespace MegaSet {
             this.Namespace = "http://tempuri.org/NodeInfoDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableNodeInfo = new NodeInfoDataTable();
-            base.Tables.Add(this.tableNodeInfo);
+            this.tableNodeTimeInfo = new NodeTimeInfoDataTable();
+            base.Tables.Add(this.tableNodeTimeInfo);
             this.tablecpbInfo = new cpbInfoDataTable();
             base.Tables.Add(this.tablecpbInfo);
+            this.tableNodeInfo = new NodeInfoDataTable();
+            base.Tables.Add(this.tableNodeInfo);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeNodeInfo() {
+        private bool ShouldSerializeNodeTimeInfo() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializecpbInfo() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeNodeInfo() {
             return false;
         }
         
@@ -302,17 +334,20 @@ namespace MegaSet {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void NodeInfoRowChangeEventHandler(object sender, NodeInfoRowChangeEvent e);
+        public delegate void NodeTimeInfoRowChangeEventHandler(object sender, NodeTimeInfoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void cpbInfoRowChangeEventHandler(object sender, cpbInfoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void NodeInfoRowChangeEventHandler(object sender, NodeInfoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NodeInfoDataTable : global::System.Data.TypedTableBase<NodeInfoRow> {
+        public partial class NodeTimeInfoDataTable : global::System.Data.TypedTableBase<NodeTimeInfoRow> {
             
             private global::System.Data.DataColumn columnGroupName;
             
@@ -330,8 +365,8 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoDataTable() {
-                this.TableName = "NodeInfo";
+            public NodeTimeInfoDataTable() {
+                this.TableName = "NodeTimeInfo";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -339,7 +374,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NodeInfoDataTable(global::System.Data.DataTable table) {
+            internal NodeTimeInfoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -356,7 +391,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected NodeInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected NodeTimeInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -428,34 +463,34 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow this[int index] {
+            public NodeTimeInfoRow this[int index] {
                 get {
-                    return ((NodeInfoRow)(this.Rows[index]));
+                    return ((NodeTimeInfoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NodeInfoRowChangeEventHandler NodeInfoRowChanging;
+            public event NodeTimeInfoRowChangeEventHandler NodeTimeInfoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NodeInfoRowChangeEventHandler NodeInfoRowChanged;
+            public event NodeTimeInfoRowChangeEventHandler NodeTimeInfoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NodeInfoRowChangeEventHandler NodeInfoRowDeleting;
+            public event NodeTimeInfoRowChangeEventHandler NodeTimeInfoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NodeInfoRowChangeEventHandler NodeInfoRowDeleted;
+            public event NodeTimeInfoRowChangeEventHandler NodeTimeInfoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddNodeInfoRow(NodeInfoRow row) {
+            public void AddNodeTimeInfoRow(NodeTimeInfoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow AddNodeInfoRow(string GroupName, bool Status, System.DateTime Date, System.DateTime StartTime, System.DateTime EndTime, string TypeName, string IP) {
-                NodeInfoRow rowNodeInfoRow = ((NodeInfoRow)(this.NewRow()));
+            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime Date, System.DateTime StartTime, System.DateTime EndTime, string TypeName, string IP) {
+                NodeTimeInfoRow rowNodeTimeInfoRow = ((NodeTimeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
                         Status,
@@ -464,15 +499,15 @@ namespace MegaSet {
                         EndTime,
                         TypeName,
                         IP};
-                rowNodeInfoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNodeInfoRow);
-                return rowNodeInfoRow;
+                rowNodeTimeInfoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNodeTimeInfoRow);
+                return rowNodeTimeInfoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                NodeInfoDataTable cln = ((NodeInfoDataTable)(base.Clone()));
+                NodeTimeInfoDataTable cln = ((NodeTimeInfoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -480,7 +515,7 @@ namespace MegaSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NodeInfoDataTable();
+                return new NodeTimeInfoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,35 +547,32 @@ namespace MegaSet {
                 base.Columns.Add(this.columnTypeName);
                 this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIP);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnGroupName}, false));
-                this.columnGroupName.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow NewNodeInfoRow() {
-                return ((NodeInfoRow)(this.NewRow()));
+            public NodeTimeInfoRow NewNodeTimeInfoRow() {
+                return ((NodeTimeInfoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NodeInfoRow(builder);
+                return new NodeTimeInfoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(NodeInfoRow);
+                return typeof(NodeTimeInfoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NodeInfoRowChanged != null)) {
-                    this.NodeInfoRowChanged(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                if ((this.NodeTimeInfoRowChanged != null)) {
+                    this.NodeTimeInfoRowChanged(this, new NodeTimeInfoRowChangeEvent(((NodeTimeInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -548,8 +580,8 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NodeInfoRowChanging != null)) {
-                    this.NodeInfoRowChanging(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                if ((this.NodeTimeInfoRowChanging != null)) {
+                    this.NodeTimeInfoRowChanging(this, new NodeTimeInfoRowChangeEvent(((NodeTimeInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -557,8 +589,8 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NodeInfoRowDeleted != null)) {
-                    this.NodeInfoRowDeleted(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                if ((this.NodeTimeInfoRowDeleted != null)) {
+                    this.NodeTimeInfoRowDeleted(this, new NodeTimeInfoRowChangeEvent(((NodeTimeInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -566,14 +598,14 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NodeInfoRowDeleting != null)) {
-                    this.NodeInfoRowDeleting(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                if ((this.NodeTimeInfoRowDeleting != null)) {
+                    this.NodeTimeInfoRowDeleting(this, new NodeTimeInfoRowChangeEvent(((NodeTimeInfoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveNodeInfoRow(NodeInfoRow row) {
+            public void RemoveNodeTimeInfoRow(NodeTimeInfoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -600,7 +632,7 @@ namespace MegaSet {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NodeInfoDataTable";
+                attribute2.FixedValue = "NodeTimeInfoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -772,14 +804,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public cpbInfoRow FindByIDParentID(string ID, string ParentID) {
-                return ((cpbInfoRow)(this.Rows.Find(new object[] {
-                            ID,
-                            ParentID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 cpbInfoDataTable cln = ((cpbInfoDataTable)(base.Clone()));
                 cln.InitVars();
@@ -812,9 +836,6 @@ namespace MegaSet {
                 base.Columns.Add(this.columnAddress);
                 this.columnNodeImage = new global::System.Data.DataColumn("NodeImage", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNodeImage);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("cpbInfoKey1", new global::System.Data.DataColumn[] {
-                                this.columnID,
-                                this.columnParentID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnParentID.AllowDBNull = false;
                 this.columnNodeImage.AllowDBNull = false;
@@ -945,17 +966,264 @@ namespace MegaSet {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Represents the strongly named DataTable class.
         ///</summary>
-        public partial class NodeInfoRow : global::System.Data.DataRow {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NodeInfoDataTable : global::System.Data.TypedTableBase<NodeInfoRow> {
             
-            private NodeInfoDataTable tableNodeInfo;
+            private global::System.Data.DataColumn columnIP;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NodeInfoRow(global::System.Data.DataRowBuilder rb) : 
+            public NodeInfoDataTable() {
+                this.TableName = "NodeInfo";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NodeInfoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NodeInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IPColumn {
+                get {
+                    return this.columnIP;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NodeInfoRow this[int index] {
+                get {
+                    return ((NodeInfoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NodeInfoRowChangeEventHandler NodeInfoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NodeInfoRowChangeEventHandler NodeInfoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NodeInfoRowChangeEventHandler NodeInfoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NodeInfoRowChangeEventHandler NodeInfoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNodeInfoRow(NodeInfoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NodeInfoRow AddNodeInfoRow(string IP) {
+                NodeInfoRow rowNodeInfoRow = ((NodeInfoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        IP};
+                rowNodeInfoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNodeInfoRow);
+                return rowNodeInfoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NodeInfoDataTable cln = ((NodeInfoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NodeInfoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIP = base.Columns["IP"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIP);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NodeInfoRow NewNodeInfoRow() {
+                return ((NodeInfoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NodeInfoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NodeInfoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NodeInfoRowChanged != null)) {
+                    this.NodeInfoRowChanged(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NodeInfoRowChanging != null)) {
+                    this.NodeInfoRowChanging(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NodeInfoRowDeleted != null)) {
+                    this.NodeInfoRowDeleted(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NodeInfoRowDeleting != null)) {
+                    this.NodeInfoRowDeleting(this, new NodeInfoRowChangeEvent(((NodeInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNodeInfoRow(NodeInfoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                NodeInfoDS ds = new NodeInfoDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NodeInfoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class NodeTimeInfoRow : global::System.Data.DataRow {
+            
+            private NodeTimeInfoDataTable tableNodeTimeInfo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NodeTimeInfoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNodeInfo = ((NodeInfoDataTable)(this.Table));
+                this.tableNodeTimeInfo = ((NodeTimeInfoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -963,14 +1231,14 @@ namespace MegaSet {
             public string GroupName {
                 get {
                     try {
-                        return ((string)(this[this.tableNodeInfo.GroupNameColumn]));
+                        return ((string)(this[this.tableNodeTimeInfo.GroupNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GroupName\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupName\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.GroupNameColumn] = value;
+                    this[this.tableNodeTimeInfo.GroupNameColumn] = value;
                 }
             }
             
@@ -979,14 +1247,14 @@ namespace MegaSet {
             public bool Status {
                 get {
                     try {
-                        return ((bool)(this[this.tableNodeInfo.StatusColumn]));
+                        return ((bool)(this[this.tableNodeTimeInfo.StatusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.StatusColumn] = value;
+                    this[this.tableNodeTimeInfo.StatusColumn] = value;
                 }
             }
             
@@ -995,14 +1263,14 @@ namespace MegaSet {
             public System.DateTime Date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableNodeInfo.DateColumn]));
+                        return ((global::System.DateTime)(this[this.tableNodeTimeInfo.DateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.DateColumn] = value;
+                    this[this.tableNodeTimeInfo.DateColumn] = value;
                 }
             }
             
@@ -1011,14 +1279,14 @@ namespace MegaSet {
             public System.DateTime StartTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableNodeInfo.StartTimeColumn]));
+                        return ((global::System.DateTime)(this[this.tableNodeTimeInfo.StartTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'StartTime\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'StartTime\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.StartTimeColumn] = value;
+                    this[this.tableNodeTimeInfo.StartTimeColumn] = value;
                 }
             }
             
@@ -1027,14 +1295,14 @@ namespace MegaSet {
             public System.DateTime EndTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableNodeInfo.EndTimeColumn]));
+                        return ((global::System.DateTime)(this[this.tableNodeTimeInfo.EndTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EndTime\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EndTime\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.EndTimeColumn] = value;
+                    this[this.tableNodeTimeInfo.EndTimeColumn] = value;
                 }
             }
             
@@ -1043,14 +1311,14 @@ namespace MegaSet {
             public string TypeName {
                 get {
                     try {
-                        return ((string)(this[this.tableNodeInfo.TypeNameColumn]));
+                        return ((string)(this[this.tableNodeTimeInfo.TypeNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TypeName\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TypeName\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.TypeNameColumn] = value;
+                    this[this.tableNodeTimeInfo.TypeNameColumn] = value;
                 }
             }
             
@@ -1059,99 +1327,99 @@ namespace MegaSet {
             public string IP {
                 get {
                     try {
-                        return ((string)(this[this.tableNodeInfo.IPColumn]));
+                        return ((string)(this[this.tableNodeTimeInfo.IPColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IP\' in table \'NodeInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'IP\' in table \'NodeTimeInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNodeInfo.IPColumn] = value;
+                    this[this.tableNodeTimeInfo.IPColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsGroupNameNull() {
-                return this.IsNull(this.tableNodeInfo.GroupNameColumn);
+                return this.IsNull(this.tableNodeTimeInfo.GroupNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGroupNameNull() {
-                this[this.tableNodeInfo.GroupNameColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.GroupNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStatusNull() {
-                return this.IsNull(this.tableNodeInfo.StatusColumn);
+                return this.IsNull(this.tableNodeTimeInfo.StatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStatusNull() {
-                this[this.tableNodeInfo.StatusColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.StatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDateNull() {
-                return this.IsNull(this.tableNodeInfo.DateColumn);
+                return this.IsNull(this.tableNodeTimeInfo.DateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDateNull() {
-                this[this.tableNodeInfo.DateColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.DateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStartTimeNull() {
-                return this.IsNull(this.tableNodeInfo.StartTimeColumn);
+                return this.IsNull(this.tableNodeTimeInfo.StartTimeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStartTimeNull() {
-                this[this.tableNodeInfo.StartTimeColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.StartTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEndTimeNull() {
-                return this.IsNull(this.tableNodeInfo.EndTimeColumn);
+                return this.IsNull(this.tableNodeTimeInfo.EndTimeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEndTimeNull() {
-                this[this.tableNodeInfo.EndTimeColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.EndTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNameNull() {
-                return this.IsNull(this.tableNodeInfo.TypeNameColumn);
+                return this.IsNull(this.tableNodeTimeInfo.TypeNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTypeNameNull() {
-                this[this.tableNodeInfo.TypeNameColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.TypeNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIPNull() {
-                return this.IsNull(this.tableNodeInfo.IPColumn);
+                return this.IsNull(this.tableNodeTimeInfo.IPColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIPNull() {
-                this[this.tableNodeInfo.IPColumn] = global::System.Convert.DBNull;
+                this[this.tableNodeTimeInfo.IPColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1232,25 +1500,68 @@ namespace MegaSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class NodeInfoRow : global::System.Data.DataRow {
+            
+            private NodeInfoDataTable tableNodeInfo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NodeInfoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableNodeInfo = ((NodeInfoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string IP {
+                get {
+                    try {
+                        return ((string)(this[this.tableNodeInfo.IPColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IP\' in table \'NodeInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeInfo.IPColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIPNull() {
+                return this.IsNull(this.tableNodeInfo.IPColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIPNull() {
+                this[this.tableNodeInfo.IPColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class NodeInfoRowChangeEvent : global::System.EventArgs {
+        public class NodeTimeInfoRowChangeEvent : global::System.EventArgs {
             
-            private NodeInfoRow eventRow;
+            private NodeTimeInfoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRowChangeEvent(NodeInfoRow row, global::System.Data.DataRowAction action) {
+            public NodeTimeInfoRowChangeEvent(NodeTimeInfoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeInfoRow Row {
+            public NodeTimeInfoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1285,6 +1596,40 @@ namespace MegaSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public cpbInfoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class NodeInfoRowChangeEvent : global::System.EventArgs {
+            
+            private NodeInfoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NodeInfoRowChangeEvent(NodeInfoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NodeInfoRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -54,7 +54,13 @@ namespace MegaSet
                 return;
             }
             string currentIpAddress = spinEdit1.Value.ToString()+"."+spinEdit2.Value.ToString()+"."+spinEdit3.Value.ToString()+"."+spinEdit4.Value.ToString();
-            string endPointTip = "(" + this.textEdit1.Text + ")";
+            string endPointTip = "";
+            if (textEdit1.Text.Length != 0)
+            {
+                endPointTip = "(" + this.textEdit1.Text + ")";
+            }
+
+            
             try
             {
                 myDataset.cpbInfo.Rows.Add(currentIpAddress, this.dropDownButton1.Text, currentIpAddress + endPointTip, 1);
