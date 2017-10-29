@@ -92,8 +92,9 @@ namespace MegaSet
             this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
+            this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeTimeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -101,6 +102,7 @@ namespace MegaSet
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -139,6 +141,7 @@ namespace MegaSet
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.digitalGauge1 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge();
             this.digitalBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
+            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
@@ -161,8 +164,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).BeginInit();
             this.schedulerSplitContainerControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
+            this.gridSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nodeTimeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
@@ -187,6 +192,7 @@ namespace MegaSet
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.navBarControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
@@ -593,7 +599,7 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Name = "schedulerSplitContainerControl";
             this.schedulerSplitContainerControl.Panel1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerSplitContainerControl.Panel1.Appearance.Options.UseFont = true;
-            this.schedulerSplitContainerControl.Panel1.Controls.Add(this.gridControl1);
+            this.schedulerSplitContainerControl.Panel1.Controls.Add(this.gridSplitContainer1);
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label3);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.timeEdit1);
@@ -620,9 +626,19 @@ namespace MegaSet
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
             // 
+            // gridSplitContainer1
+            // 
+            this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSplitContainer1.Grid = this.gridControl1;
+            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.gridSplitContainer1.Name = "gridSplitContainer1";
+            this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(441, 427);
+            this.gridSplitContainer1.TabIndex = 0;
+            // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.dispNodeInfoBindingSource;
+            this.gridControl1.DataSource = this.nodeTimeInfoBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
@@ -639,10 +655,10 @@ namespace MegaSet
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // dispNodeInfoBindingSource
+            // nodeTimeInfoBindingSource
             // 
-            this.dispNodeInfoBindingSource.DataMember = "DispNodeInfo";
-            this.dispNodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
+            this.nodeTimeInfoBindingSource.DataMember = "NodeTimeInfo";
+            this.nodeTimeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
             // 
             // gridView1
             // 
@@ -652,6 +668,7 @@ namespace MegaSet
             this.DateColumn,
             this.TimeColumn,
             this.DurationColumn,
+            this.gridColumn2,
             this.typeColumn});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
@@ -692,10 +709,9 @@ namespace MegaSet
             // DateColumn
             // 
             this.DateColumn.Caption = "日期";
-            this.DateColumn.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.DateColumn.ColumnEdit = this.repositoryItemDateEdit1;
             this.DateColumn.FieldName = "Date";
             this.DateColumn.Name = "DateColumn";
-            this.DateColumn.OptionsColumn.AllowEdit = false;
             this.DateColumn.Visible = true;
             this.DateColumn.VisibleIndex = 2;
             this.DateColumn.Width = 90;
@@ -737,6 +753,12 @@ namespace MegaSet
             this.DurationColumn.Visible = true;
             this.DurationColumn.VisibleIndex = 4;
             this.DurationColumn.Width = 90;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "IP";
+            this.gridColumn2.FieldName = "IP";
+            this.gridColumn2.Name = "gridColumn2";
             // 
             // typeColumn
             // 
@@ -1111,6 +1133,11 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent1.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent1.ZOrder = 1000;
             // 
+            // dispNodeInfoBindingSource
+            // 
+            this.dispNodeInfoBindingSource.DataMember = "DispNodeInfo";
+            this.dispNodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(818, 88);
@@ -1217,8 +1244,10 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).EndInit();
             this.schedulerSplitContainerControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
+            this.gridSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nodeTimeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
@@ -1243,6 +1272,7 @@ namespace MegaSet
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.navBarControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
@@ -1377,6 +1407,9 @@ namespace MegaSet
         private DevExpress.XtraBars.BarButtonItem addUserBtn;
         private DevExpress.XtraBars.BarButtonItem helpBtn;
         private System.Windows.Forms.BindingSource dispNodeInfoBindingSource;
+        private System.Windows.Forms.BindingSource nodeTimeInfoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
 
     }
 }

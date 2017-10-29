@@ -167,8 +167,8 @@ namespace MegaSet
             //reigster dataset event to update controls
             this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
 
-            nodeInfoDS.DispNodeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
-            nodeInfoDS.DispNodeInfo.Rows.Add("group2", false, null, null, null, "other", "192.192.192.192");
+            nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
+            nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "other", "192.192.192.192");
 
         }
 
@@ -195,11 +195,11 @@ namespace MegaSet
 
         void NodeTimeInfo_RowChanged(object sender, DataRowChangeEventArgs e)
         {
-            nodeInfoDS.DispNodeInfo.Clear();
-            foreach (DataRow originalRow in this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}'", currentNodeIp.ToString())))
-            {
-                nodeInfoDS.DispNodeInfo.Rows.Add(originalRow);
-            }
+            //nodeInfoDS.DispNodeInfo.Clear();
+            //foreach (DataRow originalRow in this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}'", currentNodeIp.ToString())))
+            //{
+            //    nodeInfoDS.DispNodeInfo.Rows.Add(originalRow);
+            //}
             
         }
 
@@ -265,12 +265,8 @@ namespace MegaSet
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            foreach (DataRow row in nodeInfoDS.NodeInfo.Rows)
-            {
-                nodeInfoDS.NodeInfo.Rows.Remove(row);
-            }
+          
 
-           nodeInfoDS.NodeInfo.Rows.Add("192.192.192.192",null,null,null,null,null);
            nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "192.192.192.192");
            nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "caemra", "192.192.192.192");
 
