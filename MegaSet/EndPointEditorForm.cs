@@ -58,6 +58,7 @@ namespace MegaSet
             try
             {
                 myDataset.cpbInfo.Rows.Add(currentIpAddress, this.dropDownButton1.Text, currentIpAddress + endPointTip, 1);
+                this.Close();
             }
             catch (System.Data.ConstraintException ex)
             {

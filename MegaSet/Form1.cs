@@ -13,27 +13,33 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraScheduler;
-using DevExpress.Skins;
+using System.Net;
+using System.Net.Sockets;
 
 
 
 namespace MegaSet
 {
-  
+    
 
     public partial class Form1 : RibbonForm
     {
         private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
+        private string configFileName = @".\Configuration.mgs";
+
+        ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
+
+    
 
         private int editingRow = -1;
 
         public Form1()
         {
-            InitializeComponent();
-            InitSkinGallery();
-            dateTimerTicker.Elapsed += dateTimerTicker_Elapsed;
-            dateTimerTicker.Start();
-          
+           
+                InitializeComponent();
+                InitSkinGallery();
+                dateTimerTicker.Elapsed += dateTimerTicker_Elapsed;
+                dateTimerTicker.Start();
          
         }
 
@@ -80,12 +86,12 @@ namespace MegaSet
             //nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.1", "上海", "202.202.202.202(区域五个字)", 1);
             //nodeInfoDS.cpbInfo.Rows.Add("上海_192.168.1.2", "上海", "202.202.202.202(区域五个字)", 1);
             //nodeInfoDS.cpbInfo.Rows.Add("北京_10.0.0.1", "北京", "1.1.1.1()", 1);
-            foreach(NodeInfoDS.cpbInfoRow row in nodeInfoDS.cpbInfo.Select("ID = '192.168.1.1'"))
-            {
-                MessageBox.Show(row.Address);
-            }
-            
+            //foreach(NodeInfoDS.cpbInfoRow row in nodeInfoDS.cpbInfo.Select("ID = '192.168.1.1'"))
+            //{
+            //    MessageBox.Show(row.Address);
+            //}
 
+            this.endpointConnecter.SendCMD("get power", "192.168.1.100");
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
 
            
@@ -128,7 +134,7 @@ namespace MegaSet
           
         }
 
-
+ 
        
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -140,17 +146,16 @@ namespace MegaSet
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
             try
             {
-                this.nodeInfoDS.ReadXml(@".\Configuration.mgs");
+                this.nodeInfoDS.ReadXml(configFileName);
             }
             catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("配置文件读取失败，生成新的配置文件");
-                this.nodeInfoDS.WriteXml(@".\Configuration.mgs");
+                this.nodeInfoDS.WriteXml(configFileName);
             }
 
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
-           
-           
+
         }
 
         void Default_StyleChanged(object sender, EventArgs e)

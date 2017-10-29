@@ -73,7 +73,7 @@ namespace UDPSendTester
             }
             else
             {
-                this.richTextBox2.AppendText(text+"\n");
+                this.richTextBox2.AppendText(text+"|||");
             }
         }
 
