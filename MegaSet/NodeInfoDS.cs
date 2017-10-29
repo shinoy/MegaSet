@@ -2,7 +2,7 @@
     
     
     public partial class NodeInfoDS {
-        partial class NodeInfoDataTable
+        partial class NodeTimeInfoDataTable
         {
         }
     

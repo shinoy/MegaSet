@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraTreeList.Nodes;
+using System.Data;
 
 namespace MegaSet
 {
@@ -92,6 +93,7 @@ namespace MegaSet
             this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -160,6 +162,7 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).BeginInit();
             this.schedulerSplitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
@@ -541,6 +544,7 @@ namespace MegaSet
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
             this.cpbTreeView.Size = new System.Drawing.Size(240, 353);
             this.cpbTreeView.TabIndex = 0;
+            this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             // 
             // AddressName
             // 
@@ -618,7 +622,7 @@ namespace MegaSet
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.nodeInfoBindingSource;
+            this.gridControl1.DataSource = this.dispNodeInfoBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
@@ -634,6 +638,11 @@ namespace MegaSet
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // dispNodeInfoBindingSource
+            // 
+            this.dispNodeInfoBindingSource.DataMember = "DispNodeInfo";
+            this.dispNodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
             // 
             // gridView1
             // 
@@ -1208,6 +1217,7 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.schedulerSplitContainerControl)).EndInit();
             this.schedulerSplitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
@@ -1251,10 +1261,22 @@ namespace MegaSet
                 {
                     e.Node.ParentNode.ExpandAll();
                 }
+                if (e.Node.Level == 1)
+                {
+                    System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
+                    nodeInfoDS.NodeInfo.Rows.Add(new object[]{e.Node.GetValue("ID").ToString(),"_",null,"_","_","_"});
+                }
                     
             }
+            if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Remove)
+            {
+                foreach (DataRow matchRow in nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'", e.Node.GetValue("IP"))))
+                {
+                    nodeInfoDS.NodeInfo.Rows.Remove(matchRow);
+                }
+            }
 
-
+            nodeInfoDS.DispNodeInfo.Clear();
             nodeInfoDS.WriteXml(configFileName);
         }
 
@@ -1353,6 +1375,7 @@ namespace MegaSet
         private DevExpress.XtraBars.BarButtonGroup barButtonGroup1;
         private DevExpress.XtraBars.BarButtonItem addUserBtn;
         private DevExpress.XtraBars.BarButtonItem helpBtn;
+        private System.Windows.Forms.BindingSource dispNodeInfoBindingSource;
 
     }
 }

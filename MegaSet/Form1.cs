@@ -26,6 +26,7 @@ namespace MegaSet
     {
         private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
         private string configFileName = @".\Configuration.mgs";
+        private string currentNodeIp =string.Empty;
 
         ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
@@ -91,10 +92,15 @@ namespace MegaSet
             //    MessageBox.Show(row.Address);
             //}
 
-            this.endpointConnecter.SendCMD("get power", "192.168.1.100");
-            this.gridView1.ShowingEditor += gridView1_ShowingEditor;
+            //nodeInfoDS.NodeTimeInfo.Rows.Add("group3", false, null, null, null, "caemra", "192.192.192.192");
+            //nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "caemra", "192.168.222.222");
 
-           
+
+            //this.endpointConnecter.SendCMD("get power", "192.168.1.100");
+            //this.gridView1.ShowingEditor += gridView1_ShowingEditor;
+            DebugForm debugForm1 = new DebugForm(nodeInfoDS);
+
+            debugForm1.ShowDialog();
         }
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
@@ -147,15 +153,48 @@ namespace MegaSet
             try
             {
                 this.nodeInfoDS.ReadXml(configFileName);
+                updateDataSetAfterLoad();
             }
             catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("配置文件读取失败，生成新的配置文件");
+                this.nodeInfoDS.Clear();
                 this.nodeInfoDS.WriteXml(configFileName);
             }
 
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
 
+            //reigster dataset event to update controls
+            this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
+
+            nodeInfoDS.DispNodeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
+            nodeInfoDS.DispNodeInfo.Rows.Add("group2", false, null, null, null, "other", "192.192.192.192");
+
+        }
+
+
+        /// <summary>
+        /// Add NodeInfo table rows if there's no matched with cpbInfo table, confirmed we have one to one pair
+        /// </summary>
+        public void updateDataSetAfterLoad()
+        {
+            foreach (NodeInfoDS.cpbInfoRow cpbRow in nodeInfoDS.cpbInfo.Rows)
+            {
+                if (nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'",cpbRow.ID)).Length > 0)
+                { 
+                    //to be done
+                }
+            }
+        }
+
+        void NodeTimeInfo_RowChanged(object sender, DataRowChangeEventArgs e)
+        {
+            nodeInfoDS.DispNodeInfo.Clear();
+            foreach (DataRow originalRow in this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}'", currentNodeIp.ToString())))
+            {
+                nodeInfoDS.DispNodeInfo.Rows.Add(originalRow);
+            }
+            
         }
 
         void Default_StyleChanged(object sender, EventArgs e)
@@ -220,7 +259,32 @@ namespace MegaSet
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-           nodeInfoDS.NodeInfo.Rows.Add();
+            foreach (DataRow row in nodeInfoDS.NodeInfo.Rows)
+            {
+                nodeInfoDS.NodeInfo.Rows.Remove(row);
+            }
+
+           nodeInfoDS.NodeInfo.Rows.Add("192.192.192.192",null,null,null,null,null);
+           nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "192.192.192.192");
+           nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "caemra", "192.192.192.192");
+
+          
+        }
+
+        private void cpbTreeView_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            if (e.Node != null)
+            {
+                if (e.Node.Level == 1)
+                {
+                    currentNodeIp = e.Node.GetValue("ID").ToString();
+                }
+            }
+            else
+            {
+                currentNodeIp = string.Empty;
+            }
+            
         }
 
       
