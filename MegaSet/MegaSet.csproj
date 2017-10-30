@@ -244,6 +244,27 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="time3232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gps3232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="voltage3232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="temp3232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="weatherglass3232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="temp23232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="thermograph3232.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
