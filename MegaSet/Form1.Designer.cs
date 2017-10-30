@@ -105,7 +105,6 @@ namespace MegaSet
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Repeat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.label3 = new System.Windows.Forms.Label();
@@ -217,6 +216,8 @@ namespace MegaSet
             // 
             this.nodeInfoDS.DataSetName = "NodeInfoDS";
             this.nodeInfoDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //reigster dataset event to update controls
+            this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
             // 
             // repositoryItemTimeSpanEdit1
             // 
@@ -671,8 +672,7 @@ namespace MegaSet
             this.TimeColumn,
             this.DurationColumn,
             this.gridColumn2,
-            this.typeColumn,
-            this.Repeat});
+            this.typeColumn});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
@@ -689,6 +689,8 @@ namespace MegaSet
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.ViewCaption = "192.168.0.1";
+            this.gridView1.CustomDrawCell += gridView1_CustomDrawCell;
+            
             // 
             // gridColumn1
             // 
@@ -713,8 +715,9 @@ namespace MegaSet
             this.DateColumn.ColumnEdit = this.repositoryItemDateEdit1;
             this.DateColumn.FieldName = "StartTime";
             this.DateColumn.Name = "DateColumn";
+            this.DateColumn.OptionsColumn.AllowEdit = false;
             this.DateColumn.Visible = true;
-            this.DateColumn.VisibleIndex = 3;
+            this.DateColumn.VisibleIndex = 2;
             this.DateColumn.Width = 110;
             // 
             // repositoryItemDateEdit1
@@ -724,6 +727,7 @@ namespace MegaSet
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Mask.EditMask = "yy-mm-dd";
             this.repositoryItemDateEdit1.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
@@ -735,7 +739,7 @@ namespace MegaSet
             this.TimeColumn.FieldName = "StartTime";
             this.TimeColumn.Name = "TimeColumn";
             this.TimeColumn.Visible = true;
-            this.TimeColumn.VisibleIndex = 4;
+            this.TimeColumn.VisibleIndex = 3;
             this.TimeColumn.Width = 110;
             // 
             // repositoryItemTimeEdit1
@@ -762,7 +766,7 @@ namespace MegaSet
             this.DurationColumn.FieldName = "EndTime";
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
-            this.DurationColumn.VisibleIndex = 5;
+            this.DurationColumn.VisibleIndex = 4;
             this.DurationColumn.Width = 118;
             // 
             // gridColumn2
@@ -778,15 +782,6 @@ namespace MegaSet
             this.typeColumn.Name = "typeColumn";
             this.typeColumn.Visible = true;
             this.typeColumn.VisibleIndex = 5;
-            // 
-            // Repeat
-            // 
-            this.Repeat.Caption = "重复";
-            this.Repeat.FieldName = "Repeat";
-            this.Repeat.Name = "Repeat";
-            this.Repeat.Visible = true;
-            this.Repeat.VisibleIndex = 2;
-            this.Repeat.Width = 40;
             // 
             // repositoryItemTimeSpanEdit2
             // 
@@ -1433,7 +1428,6 @@ namespace MegaSet
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private System.Windows.Forms.Button button2;
-        private DevExpress.XtraGrid.Columns.GridColumn Repeat;
 
     }
 }

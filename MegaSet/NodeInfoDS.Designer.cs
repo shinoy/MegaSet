@@ -1060,8 +1060,6 @@ namespace MegaSet {
             
             private global::System.Data.DataColumn columnIP;
             
-            private global::System.Data.DataColumn columnRepeat;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeTimeInfoDataTable() {
@@ -1153,14 +1151,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RepeatColumn {
-                get {
-                    return this.columnRepeat;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1196,7 +1186,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime, bool Repeat) {
+            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime) {
                 NodeTimeInfoRow rowNodeTimeInfoRow = ((NodeTimeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
@@ -1205,8 +1195,7 @@ namespace MegaSet {
                         EndTime,
                         Duration,
                         TypeName,
-                        null,
-                        Repeat};
+                        null};
                 if ((parentNodeInfoRowBynode_nodetime != null)) {
                     columnValuesArray[6] = parentNodeInfoRowBynode_nodetime[0];
                 }
@@ -1239,7 +1228,6 @@ namespace MegaSet {
                 this.columnDuration = base.Columns["Duration"];
                 this.columnTypeName = base.Columns["TypeName"];
                 this.columnIP = base.Columns["IP"];
-                this.columnRepeat = base.Columns["Repeat"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1259,12 +1247,9 @@ namespace MegaSet {
                 base.Columns.Add(this.columnTypeName);
                 this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIP);
-                this.columnRepeat = new global::System.Data.DataColumn("Repeat", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRepeat);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("NodeTimeInfoKey1", new global::System.Data.DataColumn[] {
                                 this.columnGroupName,
                                 this.columnIP}, false));
-                this.columnRepeat.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2162,22 +2147,6 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Repeat {
-                get {
-                    try {
-                        return ((bool)(this[this.tableNodeTimeInfo.RepeatColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Repeat\' in table \'NodeTimeInfo\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableNodeTimeInfo.RepeatColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeInfoRow NodeInfoRow {
                 get {
                     return ((NodeInfoRow)(this.GetParentRow(this.Table.ParentRelations["node_nodetime"])));
@@ -2269,18 +2238,6 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIPNull() {
                 this[this.tableNodeTimeInfo.IPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRepeatNull() {
-                return this.IsNull(this.tableNodeTimeInfo.RepeatColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRepeatNull() {
-                this[this.tableNodeTimeInfo.RepeatColumn] = global::System.Convert.DBNull;
             }
         }
         

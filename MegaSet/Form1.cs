@@ -30,6 +30,8 @@ namespace MegaSet
 
         private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
 
+        delegate void MyDataUpdateCallBack(object sender, ProtocalParseEventArg e);
+
        // ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
     
@@ -48,22 +50,29 @@ namespace MegaSet
          
         }
 
+
+
         void protocalAgent_DataArrived(object sender, ProtocalParseEventArg e)
         {
-            switch (e.Data.TypeName)
-            { 
-                case CPBProtolType.Power:
+            if (this.InvokeRequired)
+            {
+                MyDataUpdateCallBack showMessageforViewCallback = protocalAgent_DataArrived;
+                this.Invoke(showMessageforViewCallback, new object[] { sender,e });
+            }
+            else
+            {
+                switch (e.Data.TypeName)
+                {
+                    case CPBProtolType.Power:
 
-                  
+
                         PowerFrameType frame = (PowerFrameType)e.Data.Content;
 
 
                         string typeName = "Others";
                         string powerGroup = typeName + frame.PowerGroup;
-                    
-                        DateTime startTime;
-                        DateTime endTime;
 
+                    
 
                         if (frame.PowerGroup.Equals("00"))
                         {
@@ -86,99 +95,104 @@ namespace MegaSet
                             powerGroup = "CPB1";
                         }
 
-                      try
-                    {
-                        if (frame.Status == false)
+
+
+                        if (frame.StartTime.StartsWith("*"))
                         {
                             try
                             {
-                                nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress, false);
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress);
                             }
-                            catch(ConstraintException ex)
+                            catch (ConstraintException ex)
                             {
                                 DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
-                                
-                                    row["Status"] = frame.Status;
-                                    row["StartTime"] = DBNull.Value ;
-                                    row["EndTime"] = DBNull.Value;
-                                    row["Duration"] = frame.Duration;
-                                    row["TypeName"] = typeName;
-                                    row["Repeat"] = false;
-                                 
+
+                                row["Status"] = frame.Status;
+                                row["StartTime"] = DBNull.Value;
+                                row["EndTime"] = DBNull.Value;
+                                row["Duration"] = frame.Duration;
+                                row["TypeName"] = typeName;
                             }
-                            
+
                         }
                         else
                         {
-                            if (frame.DayTime.StartsWith("*"))
+                            DateTime startTime = DateTime.Parse(String.Format("{0} {1}", DateTime.Now.ToLongDateString(), frame.StartTime));
+                            DateTime endTime = startTime.AddSeconds(Double.Parse(frame.Duration));
+
+                            try
                             {
-                                startTime = DateTime.Parse(String.Format("1000-01-01 {0}", frame.StartTime));
-                                endTime = startTime.AddSeconds(double.Parse(frame.Duration));
-                                try
-                                {
-                                    nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, true);
-                                }
-                                catch(ConstraintException ex)
-                                {
-                                    DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
-                                  
-                                        row["Status"] = frame.Status;
-                                        row["StartTime"] = startTime;
-                                        row["EndTime"] = endTime;
-                                        row["Duration"] = frame.Duration;
-                                        row["TypeName"] = typeName;
-                                        row["Repeat"] = true;
-                                   
-                                }
                                 
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime , endTime, frame.Duration, typeName, e.Data.IPAddress);
                             }
-                            else
+                            catch (ConstraintException ex)
                             {
-                                startTime = DateTime.Parse(String.Format("20{0} {1}", frame.DayTime, frame.StartTime));
-                                endTime = startTime.AddSeconds(double.Parse(frame.Duration));
-                                try
-                                {
-                                    nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, false);
-                                }
-                                catch (ConstraintException ex)
-                                {
-                                    DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
-                                        row["Status"] = frame.Status;
-                                        row["StartTime"] = startTime;
-                                        row["EndTime"] = endTime;
-                                        row["Duration"] = frame.Duration;
-                                        row["TypeName"] = typeName;
-                                        row["Repeat"] = false;
-                                   
-                                }
-                               
+                                DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
+
+                                row["Status"] = frame.Status;
+                                row["StartTime"] = startTime;
+                                row["EndTime"] = endTime;
+                                row["Duration"] = frame.Duration;
+                                row["TypeName"] = typeName;
                             }
+                        
                         }
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                       
                         
+                                        
 
-                         
-                           
-                            
-                      
-                      
-                        //DateTime endTime = startTime.AddSeconds(double.Parse(frame.Duration));
-                        
+                            //}
+                            //else
+                            //{
+                            //    if (frame.DayTime.StartsWith("*"))
+                            //    {
+                            //        startTime = DateTime.Parse(String.Format("1000-01-01 {0}", frame.StartTime));
+                            //        endTime = startTime.AddSeconds(double.Parse(frame.Duration));
+                            //        try
+                            //        {
+                            //            nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, true);
+                            //        }
+                            //        catch (ConstraintException ex)
+                            //        {
+                            //            DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
 
-                        //nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress);
-                     //   nodeInfoDS.NodeTimeInfo.Rows.Add()
-          
+                            //            row["Status"] = frame.Status;
+                            //            row["StartTime"] = startTime;
+                            //            row["EndTime"] = endTime;
+                            //            row["Duration"] = frame.Duration;
+                            //            row["TypeName"] = typeName;
+                            //            row["Repeat"] = true;
 
-                     //foreach(NodeInfoDS.NodeTimeInfoRow row in nodeInfoDS.NodeTimeInfo.Select())
-                     //   nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "0.0.0.0");
-                    break;
+                            //        }
+
+                            //    }
+                            //    else
+                            //    {
+                            //        startTime = DateTime.Parse(String.Format("20{0} {1}", frame.DayTime, frame.StartTime));
+                            //        endTime = startTime.AddSeconds(double.Parse(frame.Duration));
+                            //        try
+                            //        {
+                            //            nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, false);
+                            //        }
+                            //        catch (ConstraintException ex)
+                            //        {
+                            //            DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
+                            //            row["Status"] = frame.Status;
+                            //            row["StartTime"] = startTime;
+                            //            row["EndTime"] = endTime;
+                            //            row["Duration"] = frame.Duration;
+                            //            row["TypeName"] = typeName;
+                            //            row["Repeat"] = false;
+
+                            //        }
+
+
+                        break;
+                } // end of case
             }
+
+
+           
         }
 
         private void dateTimerTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -245,19 +259,13 @@ namespace MegaSet
         {
             if (gridView1.FocusedColumn.Caption == "日期")
             {
-                try
-                {
                     bool repeated = (bool)gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "Repeat");
                     
                     if (repeated == true)
                     {
                         e.Cancel = true;
                     }
-                }
-                catch (Exception ex)
-                { 
-                
-                }
+             
                
             }
 
@@ -300,7 +308,7 @@ namespace MegaSet
        
         private void Form1_Load(object sender, EventArgs e)
         {
-            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
+            //DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
 
             UserLookAndFeel.Default.StyleChanged += Default_StyleChanged;
             UserLookAndFeel.Default.SetSkinStyle("VS2010");
@@ -322,11 +330,11 @@ namespace MegaSet
 
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
 
-            //reigster dataset event to update controls
-            this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
+         
 
-            this.gridView1.ShowingEditor += gridView1_ShowingEditor;
-            this.gridView1.CustomDrawCell += gridView1_CustomDrawCell;
+           // this.gridView1.ShowingEditor += gridView1_ShowingEditor;
+           //  this.gridView1.CustomDrawCell += gridView1_CustomDrawCell;
+           
         }
 
         /// <summary>
@@ -336,10 +344,19 @@ namespace MegaSet
         /// <param name="e"></param>
         void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            DateTime date  = (DateTime)gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "StartTime");
-            if (e.DisplayText == "1000/1/1" || e.DisplayText == "_" || string.IsNullOrEmpty(e.DisplayText))
+            try
             {
-                e.DisplayText = "*******";
+                // MessageBox.Show((gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "StartTime").ToString()));
+           //    DateTime date = DateTime.Parse((gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "StartTime").ToString()));
+                if (e.DisplayText == "_" )
+                {
+                    e.DisplayText = "*******";
+                }
+              //  this.gridView1.RefreshRowCell(e.RowHandle, e.Column);
+            }
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.Message);
             }
         }
 
@@ -365,35 +382,32 @@ namespace MegaSet
         }
 
         void NodeTimeInfo_RowChanged(object sender, DataRowChangeEventArgs e)
-        {
+        {   
             if (e.Action != DataRowAction.Delete)
             {
+                
                 this.nodeInfoDS.NodeTimeInfo.RowChanged -= NodeTimeInfo_RowChanged;
-                try
-                {
+              
                     NodeInfoDS.NodeTimeInfoRow row = (NodeInfoDS.NodeTimeInfoRow)e.Row;
-                    if (row.Repeat == true)
-                    {
-                        row.StartTime = new DateTime(1001, 1, 1, row.StartTime.Hour, row.StartTime.Minute, row.StartTime.Second);
-                    }
-                    DateTime newTime = new DateTime(row.StartTime.Year, row.StartTime.Month, row.StartTime.Day, row.EndTime.Hour, row.EndTime.Minute, row.EndTime.Second);
-                    if (newTime.CompareTo(row.StartTime) <= 0)
-                    {
-                        row.EndTime = row.StartTime.AddMinutes(1);
-                    }
-                    else
-                    {
-                        row.EndTime = newTime;
-                    }
 
-                    TimeSpan interval = row.EndTime - row.StartTime;
-                    row.Duration = ((Int32)interval.TotalSeconds).ToString();
-                }
-                catch (Exception ex)
-                { 
-                
-                }
-                
+                 
+                    if (row != null && !row.IsStartTimeNull() && !row.IsEndTimeNull())
+                    {
+                        row.StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, row.StartTime.Hour, row.StartTime.Minute, row.StartTime.Second);
+
+                        DateTime newTime = new DateTime(row.StartTime.Year, row.StartTime.Month, row.StartTime.Day, row.EndTime.Hour, row.EndTime.Minute, row.EndTime.Second);
+                        if (newTime.CompareTo(row.StartTime) <= 0)
+                        {
+                            row.EndTime = row.StartTime.AddMinutes(1);
+                        }
+                        else
+                        {
+                            row.EndTime = newTime;
+                        }
+
+                        TimeSpan interval = row.EndTime - row.StartTime;
+                        row.Duration = ((Int32)interval.TotalSeconds).ToString();
+                    }
 
                 this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
             }
