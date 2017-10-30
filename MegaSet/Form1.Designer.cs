@@ -75,6 +75,7 @@ namespace MegaSet
             this.barButtonGroup1 = new DevExpress.XtraBars.BarButtonGroup();
             this.addUserBtn = new DevExpress.XtraBars.BarButtonItem();
             this.helpBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -153,7 +154,6 @@ namespace MegaSet
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -450,6 +450,13 @@ namespace MegaSet
             superToolTip9.Items.Add(toolTipItem9);
             this.helpBtn.SuperTip = superToolTip9;
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "修改节点";
+            this.barButtonItem7.Id = 5;
+            this.barButtonItem7.LargeImageIndex = 13;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
             // ribbonImageCollectionLarge
             // 
             this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -693,8 +700,6 @@ namespace MegaSet
             this.gridView1.RowHeight = 40;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView1.CustomDrawCell += gridView1_CustomDrawCell;
-
             // 
             // gridColumn1
             // 
@@ -1067,7 +1072,6 @@ namespace MegaSet
             // 
             // gaugeControl3
             // 
-            this.gaugeControl3.AutoLayout = false;
             this.gaugeControl3.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1080,11 +1084,11 @@ namespace MegaSet
             // 
             // digitalGauge4
             // 
-            this.digitalGauge4.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0A151A");
-            this.digitalGauge4.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#289FB8");
+            this.digitalGauge4.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#233342");
+            this.digitalGauge4.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#39A7CE");
             this.digitalGauge4.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent5});
-            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(2, 9, 434, 63);
+            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
             this.digitalGauge4.DigitCount = 15;
             this.digitalGauge4.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge4.Name = "digitalGauge4";
@@ -1094,7 +1098,7 @@ namespace MegaSet
             // 
             this.digitalBackgroundLayerComponent5.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(714.1251F, 106.075F);
             this.digitalBackgroundLayerComponent5.Name = "bg1";
-            this.digitalBackgroundLayerComponent5.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style21;
+            this.digitalBackgroundLayerComponent5.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style19;
             this.digitalBackgroundLayerComponent5.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent5.ZOrder = 1000;
             // 
@@ -1154,7 +1158,6 @@ namespace MegaSet
             // 
             // TimeGauge
             // 
-            this.TimeGauge.AutoLayout = false;
             this.TimeGauge.BackColor = System.Drawing.Color.Transparent;
             this.TimeGauge.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.TimeGauge.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1167,11 +1170,11 @@ namespace MegaSet
             // 
             // digitalGauge3
             // 
-            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0FFF5000");
-            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5000");
+            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#404040");
+            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFFFA");
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
-            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(2, 9, 434, 63);
+            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
             this.digitalGauge3.DigitCount = 15;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge3.Name = "digitalGauge3";
@@ -1181,23 +1184,29 @@ namespace MegaSet
             // 
             this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(714.1251F, 106.075F);
             this.digitalBackgroundLayerComponent4.Name = "bg1";
-            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
+            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style13;
             this.digitalBackgroundLayerComponent4.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent4.ZOrder = 1000;
             // 
             // timeEdit1
             // 
+            this.timeEdit1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.timeEdit1.EditValue = new System.DateTime(2017, 10, 28, 0, 0, 0, 0);
-            this.timeEdit1.Location = new System.Drawing.Point(15, 136);
+            this.timeEdit1.Location = new System.Drawing.Point(17, 131);
             this.timeEdit1.MenuManager = this.ribbonControl;
+            this.timeEdit1.MinimumSize = new System.Drawing.Size(0, 30);
             this.timeEdit1.Name = "timeEdit1";
-            this.timeEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.timeEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.timeEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.timeEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.timeEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.timeEdit1.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.timeEdit1.Properties.Mask.EditMask = "G";
+            this.timeEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.timeEdit1.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
-            this.timeEdit1.Size = new System.Drawing.Size(148, 20);
+            this.timeEdit1.ShowToolTips = false;
+            this.timeEdit1.Size = new System.Drawing.Size(149, 22);
             this.timeEdit1.TabIndex = 22;
             // 
             // simpleButton1
@@ -1297,13 +1306,6 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent2.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "修改节点";
-            this.barButtonItem7.Id = 5;
-            this.barButtonItem7.LargeImageIndex = 13;
-            this.barButtonItem7.Name = "barButtonItem7";
             // 
             // Form1
             // 

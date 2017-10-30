@@ -329,7 +329,7 @@ namespace MegaSet
             }
 
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
-
+            this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
          
 
            // this.gridView1.ShowingEditor += gridView1_ShowingEditor;
