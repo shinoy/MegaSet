@@ -27,6 +27,11 @@ namespace MegaSet
         private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
         private string configFileName = @".\Configuration.mgs";
         private string currentNodeIp =string.Empty;
+        private bool isEdited = false;
+
+        private string cmpValueBefore = string.Empty;
+        private string cmpValueAfter = string.Empty;
+        private NodeInfoDS.NodeTimeInfoDataTable backupTable = new NodeInfoDS.NodeTimeInfoDataTable();
 
         private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
 
@@ -47,6 +52,8 @@ namespace MegaSet
                 dateTimerTicker.Start();
                 protocalAgent.DataArrived += protocalAgent_DataArrived;
                 this.protocalAgent.Connect();
+                backupTable.Rows.Add();
+                
          
         }
 
@@ -61,6 +68,11 @@ namespace MegaSet
             }
             else
             {
+                // currently only receive one node info
+                if (e.Data.IPAddress != currentNodeIp)
+                {
+                    return;
+                }
                 switch (e.Data.TypeName)
                 {
                     case CPBProtolType.Power:
@@ -257,18 +269,19 @@ namespace MegaSet
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
         {
-            if (gridView1.FocusedColumn.Caption == "日期")
-            {
-                    bool repeated = (bool)gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "Repeat");
-                    
-                    if (repeated == true)
-                    {
-                        e.Cancel = true;
-                    }
-             
-               
-            }
+            isEdited = true;
+            this.cmpValueBefore = gridView1.FocusedValue.ToString();
+            string rowGroupName = this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "GroupName").ToString();
+            NodeInfoDS.NodeTimeInfoRow temp = (NodeInfoDS.NodeTimeInfoRow)this.nodeInfoDS.NodeTimeInfo.Select(String.Format("GroupName = '{0}'", rowGroupName))[0];
 
+            backupTable.Rows[0]["Duration"]= temp.Duration;
+            backupTable.Rows[0]["EndTime"] = temp.EndTime;
+            backupTable.Rows[0]["GroupName"] = temp.GroupName;
+            backupTable.Rows[0]["IP"] = temp.IP;
+            backupTable.Rows[0]["StartTime"] = temp.StartTime;
+            backupTable.Rows[0]["Status"] = temp.Status;
+            backupTable.Rows[0]["TypeName"] = temp.TypeName;
+            
         //    int currentEditRow = (int)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID");
         //    if (editingRow == -1)
         //    {
@@ -496,12 +509,15 @@ namespace MegaSet
                 if (e.Node.Level == 1)
                 {
                     currentNodeIp = e.Node.GetValue("ID").ToString();
+                    this.protocalAgent.SendCMD("get power",currentNodeIp);
                 }
             }
             else
             {
                 currentNodeIp = string.Empty;
             }
+
+            nodeInfoDS.NodeTimeInfo.Rows.Clear();
             
         }
 
@@ -510,13 +526,6 @@ namespace MegaSet
             
             this.protocalAgent.SendCMD("get power", "192.168.1.100");
         }
-
-      
-
-
-      
-       
-
        
 
     }

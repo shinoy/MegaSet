@@ -6,7 +6,6 @@ namespace MegaSet
     partial class Form1
     {
 
-        private DevExpress.XtraTreeList.Nodes.TreeListNode selectedNode;
 
         /// <summary>
         /// Required designer variable.
@@ -700,6 +699,11 @@ namespace MegaSet
             this.gridView1.RowHeight = 40;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.ShowingEditor +=gridView1_ShowingEditor;
+            this.gridView1.CellValueChanged += gridView1_CellValueChanged;
+            this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
+           
+           
             // 
             // gridColumn1
             // 
@@ -764,7 +768,7 @@ namespace MegaSet
             this.repositoryItemTimeEdit1.Mask.PlaceHolder = '*';
             this.repositoryItemTimeEdit1.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
-            this.repositoryItemTimeEdit1.NullText = "_";
+            this.repositoryItemTimeEdit1.NullText = "--:--:--";
             this.repositoryItemTimeEdit1.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             // 
             // DurationColumn
@@ -1393,6 +1397,50 @@ namespace MegaSet
 
         }
 
+        void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
+        {
+           
+            if (isEdited != true)
+            {
+                return;
+            }
+            if (System.Windows.Forms.MessageBox.Show("当前定时信息已经改变，'确定'更新到节点或'取消'取消更改", "定时信息更改", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                System.Windows.Forms.MessageBox.Show("提交");
+            }
+            else
+            {
+                e.Allow = false;
+                nodeInfoDS.NodeTimeInfo.Rows.Remove(this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}' and GroupName = '{1}'", backupTable.Rows[0]["IP"], backupTable.Rows[0]["GroupName"]))[0]);
+                this.nodeInfoDS.NodeTimeInfo.ImportRow(backupTable.Rows[0]);
+            }
+           
+        }
+
+    
+        void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (this.cmpValueBefore == e.Value.ToString())
+            {
+                System.Windows.Forms.MessageBox.Show("");
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("older value " + this.cmpValueBefore);
+                System.Windows.Forms.MessageBox.Show("new value " + e.Value.ToString());
+            }
+           
+          
+
+        }
+
+        
+
+        void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("focus changed");
+        }
+
         void cpbTreeView_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
         {
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Add)
@@ -1416,7 +1464,6 @@ namespace MegaSet
                 //}
             }
 
-            nodeInfoDS.DispNodeInfo.Clear();
             nodeInfoDS.WriteXml(configFileName);
         }
 
