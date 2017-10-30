@@ -595,19 +595,13 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel1.Controls.Add(this.panelControl2);
             this.schedulerSplitContainerControl.Panel1.Controls.Add(this.panelControl1);
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label3);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.button2);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.timeEdit1);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.button1);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.checkBox1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton7);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton6);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton5);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label5);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panel5);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton4);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton3);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton2);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.checkEdit1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.simpleButton1);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.label2);
@@ -808,8 +802,10 @@ namespace MegaSet
             this.digitalGauge3});
             this.TimeGauge.Location = new System.Drawing.Point(0, 0);
             this.TimeGauge.Name = "TimeGauge";
+            this.TimeGauge.ShowToolTips = true;
             this.TimeGauge.Size = new System.Drawing.Size(569, 94);
             this.TimeGauge.TabIndex = 23;
+            this.TimeGauge.Tag = "测试下";
             // 
             // digitalGauge3
             // 
@@ -834,7 +830,7 @@ namespace MegaSet
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(293, 175);
+            this.label3.Location = new System.Drawing.Point(788, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 7;
@@ -842,7 +838,7 @@ namespace MegaSet
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(207, 200);
+            this.button2.Location = new System.Drawing.Point(947, 89);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -865,7 +861,7 @@ namespace MegaSet
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(79, 216);
+            this.button1.Location = new System.Drawing.Point(1048, 93);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -876,7 +872,7 @@ namespace MegaSet
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(52, 151);
+            this.checkBox1.Location = new System.Drawing.Point(660, 94);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(85, 18);
             this.checkBox1.TabIndex = 1;
@@ -962,7 +958,7 @@ namespace MegaSet
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(372, 257);
+            this.simpleButton4.Location = new System.Drawing.Point(860, 70);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(69, 42);
             this.simpleButton4.TabIndex = 16;
@@ -978,7 +974,7 @@ namespace MegaSet
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(250, 257);
+            this.simpleButton2.Location = new System.Drawing.Point(1159, 101);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(70, 42);
             this.simpleButton2.TabIndex = 14;
@@ -1169,8 +1165,14 @@ namespace MegaSet
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 753);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.simpleButton4);
+            this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.ribbonControl);
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl;
