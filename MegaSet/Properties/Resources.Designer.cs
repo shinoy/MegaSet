@@ -73,26 +73,6 @@ namespace MegaSet.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap temp23232 {
-            get {
-                object obj = ResourceManager.GetObject("temp23232", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap temp3232 {
-            get {
-                object obj = ResourceManager.GetObject("temp3232", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap thermograph3232 {
             get {
                 object obj = ResourceManager.GetObject("thermograph3232", resourceCulture);
@@ -113,9 +93,9 @@ namespace MegaSet.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap voltage3232 {
+        internal static System.Drawing.Bitmap ver3232 {
             get {
-                object obj = ResourceManager.GetObject("voltage3232", resourceCulture);
+                object obj = ResourceManager.GetObject("ver3232", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +103,9 @@ namespace MegaSet.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap weatherglass3232 {
+        internal static System.Drawing.Bitmap voltage3232 {
             get {
-                object obj = ResourceManager.GetObject("weatherglass3232", resourceCulture);
+                object obj = ResourceManager.GetObject("voltage3232", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
