@@ -29,6 +29,8 @@ namespace MegaSet
         private string currentNodeIp =string.Empty;
         private bool isEdited = false;
 
+      
+
         private NodeInfoDS.NodeTimeInfoDataTable backupTable = new NodeInfoDS.NodeTimeInfoDataTable();
 
         private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
@@ -368,6 +370,7 @@ namespace MegaSet
                 this.nodeInfoDS.WriteXml(configFileName);
             }
 
+            this.nodeInfoDS.DispNodeInfo.Rows.Add(null, null, null, null, null);
 
             this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
@@ -461,7 +464,15 @@ namespace MegaSet
                         DateTime newTime = new DateTime(row.StartTime.Year, row.StartTime.Month, row.StartTime.Day, row.EndTime.Hour, row.EndTime.Minute, row.EndTime.Second);
                         if (newTime.CompareTo(row.StartTime) <= 0)
                         {
-                            row.EndTime = row.StartTime.AddMinutes(1);
+                            if ((row.StartTime.Hour == 23) && (row.StartTime.Minute == 59))
+                            {
+                                row.EndTime = row.StartTime;
+                            }
+                            else
+                            {
+                                row.EndTime = row.StartTime.AddMinutes(1);
+                            }
+                           
                         }
                         else
                         {
@@ -541,11 +552,53 @@ namespace MegaSet
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
+           
+            NodeInfoDS.NodeTimeInfoRow sendRow = (NodeInfoDS.NodeTimeInfoRow)nodeInfoDS.NodeTimeInfo.Rows[editingRow];
+            if (sendRow.IsStartTimeNull() || sendRow.IsEndTimeNull())
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("节点定时信息不完整，请返回修改");
+                return;
+            }
+
             isEdited = false;
             this.updateInfoBtn.Enabled = false;
             this.updateInfoBtn.Enabled = false;
 
             // get row data = update cpb
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["StartTime"] = originalRow.StartTime;
+
+
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Duration"] = backupTable.Rows[0]["Duration"];
+
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupName"] = backupTable.Rows[0]["GroupName"];
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["IP"] = backupTable.Rows[0]["IP"];
+
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"] = backupTable.Rows[0]["Status"];
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["TypeName"] = backupTable.Rows[0]["TypeName"];
+            //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"] = backupTable.Rows[0]["GroupID"];
+            this.gridView1.CloseEditor();
+          
+            //MessageBox.Show(nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"].ToString());
+
+           
+
+            if (!(bool)nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"])
+            {
+
+                protocalAgent.SendCMD(string.Format("power off {0}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString()), currentNodeIp);
+            }
+            else
+            {
+               
+                    TimeSpan powerDuration = sendRow.EndTime - sendRow.StartTime;
+                    
+
+                    string command = string.Format("power on {0} {1} {2}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString(), sendRow.StartTime.ToString("HHmmss"), Math.Floor(powerDuration.TotalMinutes).ToString());
+                  //  MessageBox.Show(command);
+                    protocalAgent.SendCMD(command ,currentNodeIp);
+               
+                    
+            }
 
 
 
@@ -557,7 +610,7 @@ namespace MegaSet
 
         private void cpbTreeView_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-
+          
             // if focus on endpoint node, we save the ip address and refresh cpb infomation
             if (e.Node != null)
             {
@@ -598,11 +651,7 @@ namespace MegaSet
 
         private void addUserBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.nodeInfoDS.NodeTimeInfo.RejectChanges();
-            foreach (NodeInfoDS.NodeTimeInfoRow row in this.nodeInfoDS.NodeTimeInfo.Rows)
-            {
-                MessageBox.Show(row.StartTime.ToString()  +"  " + row.EndTime.ToString());
-            }
+           
         }
 
         private void cancelInfoChangeBtn_ItemClick(object sender, ItemClickEventArgs e)

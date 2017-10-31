@@ -150,7 +150,6 @@ namespace MegaSet
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DisableRowStateHelper = new MegaSet.RowStateHelper();
             this.ChangedRowStateHelper = new MegaSet.RowStateHelper();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -158,7 +157,6 @@ namespace MegaSet
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -964,6 +962,7 @@ namespace MegaSet
             this.digitalGauge1.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent1});
             this.digitalGauge1.Bounds = new System.Drawing.Rectangle(-5, -1, 119, 55);
+            this.digitalGauge1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Temp", true));
             this.digitalGauge1.DigitCount = 3;
             this.digitalGauge1.Name = "digitalGauge1";
             this.digitalGauge1.Text = "__._";
@@ -1041,6 +1040,7 @@ namespace MegaSet
             this.digitalGauge2.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent3});
             this.digitalGauge2.Bounds = new System.Drawing.Rectangle(-5, -1, 120, 55);
+            this.digitalGauge2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Voltage", true));
             this.digitalGauge2.DigitCount = 3;
             this.digitalGauge2.Name = "digitalGauge2";
             this.digitalGauge2.Text = "__._";
@@ -1114,6 +1114,7 @@ namespace MegaSet
             this.digitalGauge4.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent5});
             this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
+            this.digitalGauge4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "GPSTime", true));
             this.digitalGauge4.DigitCount = 15;
             this.digitalGauge4.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge4.Name = "digitalGauge4";
@@ -1195,21 +1196,22 @@ namespace MegaSet
             // 
             // digitalGauge3
             // 
-            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#404040");
-            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFFFA");
+            this.digitalGauge3.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#00FFFFFF");
+            this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:WhiteSmoke");
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
             this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
+            this.digitalGauge3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "DateTime", true));
             this.digitalGauge3.DigitCount = 15;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge3.Name = "digitalGauge3";
-            this.digitalGauge3.Text = "____-__-__ __:__:__";
+            this.digitalGauge3.Text = "__-__-__ __:__:__";
             // 
             // digitalBackgroundLayerComponent4
             // 
             this.digitalBackgroundLayerComponent4.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(714.1251F, 106.075F);
             this.digitalBackgroundLayerComponent4.Name = "bg1";
-            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style13;
+            this.digitalBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style10;
             this.digitalBackgroundLayerComponent4.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent4.ZOrder = 1000;
             // 
@@ -1261,17 +1263,7 @@ namespace MegaSet
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
             this.ChangedRowStateHelper.GridView = this.gridView1;
-            this.ChangedRowStateHelper.ReadonlyRow = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(854, 82);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ChangedRowStateHelper.ReadonlyRow = true;
             // 
             // button1
             // 
@@ -1346,23 +1338,14 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(693, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 5;
-            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 753);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ribbonControl);
@@ -1550,6 +1533,7 @@ namespace MegaSet
                 //}
             }
 
+            this.nodeInfoDS.NodeTimeInfo.Clear();
             nodeInfoDS.WriteXml(configFileName);
         }
 
@@ -1632,7 +1616,6 @@ namespace MegaSet
         private System.Windows.Forms.BindingSource nodeTimeInfoBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
-        private System.Windows.Forms.Button button2;
         private DevExpress.XtraGauges.Win.GaugeControl TimeGauge;
         private DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge digitalGauge3;
         private DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent digitalBackgroundLayerComponent4;
@@ -1659,7 +1642,6 @@ namespace MegaSet
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private RowStateHelper DisableRowStateHelper;
         private RowStateHelper ChangedRowStateHelper;
-        private System.Windows.Forms.TextBox textBox1;
         private DevExpress.XtraBars.BarButtonItem cancelInfoChangeBtn;
         private DevExpress.XtraGrid.Columns.GridColumn GroupID;
 

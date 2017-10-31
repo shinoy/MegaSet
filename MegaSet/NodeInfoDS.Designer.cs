@@ -1397,19 +1397,15 @@ namespace MegaSet {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DispNodeInfoDataTable : global::System.Data.TypedTableBase<DispNodeInfoRow> {
             
-            private global::System.Data.DataColumn columnGroupName;
+            private global::System.Data.DataColumn columnTemp;
             
-            private global::System.Data.DataColumn columnStatus;
+            private global::System.Data.DataColumn columnVoltage;
             
-            private global::System.Data.DataColumn columnDate;
+            private global::System.Data.DataColumn columnGPSTime;
             
-            private global::System.Data.DataColumn columnStartTime;
+            private global::System.Data.DataColumn columnDateTime;
             
-            private global::System.Data.DataColumn columnEndTime;
-            
-            private global::System.Data.DataColumn columnTypeName;
-            
-            private global::System.Data.DataColumn columnIP;
+            private global::System.Data.DataColumn columnVersion;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1446,57 +1442,41 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GroupNameColumn {
+            public global::System.Data.DataColumn TempColumn {
                 get {
-                    return this.columnGroupName;
+                    return this.columnTemp;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StatusColumn {
+            public global::System.Data.DataColumn VoltageColumn {
                 get {
-                    return this.columnStatus;
+                    return this.columnVoltage;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DateColumn {
+            public global::System.Data.DataColumn GPSTimeColumn {
                 get {
-                    return this.columnDate;
+                    return this.columnGPSTime;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StartTimeColumn {
+            public global::System.Data.DataColumn DateTimeColumn {
                 get {
-                    return this.columnStartTime;
+                    return this.columnDateTime;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EndTimeColumn {
+            public global::System.Data.DataColumn VersionColumn {
                 get {
-                    return this.columnEndTime;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TypeNameColumn {
-                get {
-                    return this.columnTypeName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IPColumn {
-                get {
-                    return this.columnIP;
+                    return this.columnVersion;
                 }
             }
             
@@ -1537,16 +1517,14 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DispNodeInfoRow AddDispNodeInfoRow(string GroupName, bool Status, System.DateTime Date, System.DateTime StartTime, System.DateTime EndTime, string TypeName, string IP) {
+            public DispNodeInfoRow AddDispNodeInfoRow(string Temp, string Voltage, string GPSTime, string DateTime, string Version) {
                 DispNodeInfoRow rowDispNodeInfoRow = ((DispNodeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        GroupName,
-                        Status,
-                        Date,
-                        StartTime,
-                        EndTime,
-                        TypeName,
-                        IP};
+                        Temp,
+                        Voltage,
+                        GPSTime,
+                        DateTime,
+                        Version};
                 rowDispNodeInfoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDispNodeInfoRow);
                 return rowDispNodeInfoRow;
@@ -1569,35 +1547,31 @@ namespace MegaSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnGroupName = base.Columns["GroupName"];
-                this.columnStatus = base.Columns["Status"];
-                this.columnDate = base.Columns["Date"];
-                this.columnStartTime = base.Columns["StartTime"];
-                this.columnEndTime = base.Columns["EndTime"];
-                this.columnTypeName = base.Columns["TypeName"];
-                this.columnIP = base.Columns["IP"];
+                this.columnTemp = base.Columns["Temp"];
+                this.columnVoltage = base.Columns["Voltage"];
+                this.columnGPSTime = base.Columns["GPSTime"];
+                this.columnDateTime = base.Columns["DateTime"];
+                this.columnVersion = base.Columns["Version"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnGroupName = new global::System.Data.DataColumn("GroupName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGroupName);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
-                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDate);
-                this.columnStartTime = new global::System.Data.DataColumn("StartTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStartTime);
-                this.columnEndTime = new global::System.Data.DataColumn("EndTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEndTime);
-                this.columnTypeName = new global::System.Data.DataColumn("TypeName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTypeName);
-                this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIP);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("DispNodeInfoKey1", new global::System.Data.DataColumn[] {
-                                this.columnGroupName,
-                                this.columnIP}, false));
+                this.columnTemp = new global::System.Data.DataColumn("Temp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTemp);
+                this.columnVoltage = new global::System.Data.DataColumn("Voltage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVoltage);
+                this.columnGPSTime = new global::System.Data.DataColumn("GPSTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGPSTime);
+                this.columnDateTime = new global::System.Data.DataColumn("DateTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateTime);
+                this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVersion);
+                this.columnTemp.DefaultValue = ((string)("__._"));
+                this.columnVoltage.DefaultValue = ((string)("__._"));
+                this.columnGPSTime.DefaultValue = ((string)("____-__-__ __:__:__"));
+                this.columnDateTime.DefaultValue = ((string)("____-__-__ __:__:__"));
+                this.columnVersion.DefaultValue = ((string)("_._._"));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2299,198 +2273,142 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GroupName {
+            public string Temp {
                 get {
-                    try {
-                        return ((string)(this[this.tableDispNodeInfo.GroupNameColumn]));
+                    if (this.IsTempNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GroupName\' in table \'DispNodeInfo\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDispNodeInfo.TempColumn]));
                     }
                 }
                 set {
-                    this[this.tableDispNodeInfo.GroupNameColumn] = value;
+                    this[this.tableDispNodeInfo.TempColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Status {
+            public string Voltage {
                 get {
-                    try {
-                        return ((bool)(this[this.tableDispNodeInfo.StatusColumn]));
+                    if (this.IsVoltageNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'DispNodeInfo\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDispNodeInfo.VoltageColumn]));
                     }
                 }
                 set {
-                    this[this.tableDispNodeInfo.StatusColumn] = value;
+                    this[this.tableDispNodeInfo.VoltageColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Date {
+            public string GPSTime {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDispNodeInfo.DateColumn]));
+                    if (this.IsGPSTimeNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'DispNodeInfo\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDispNodeInfo.GPSTimeColumn]));
                     }
                 }
                 set {
-                    this[this.tableDispNodeInfo.DateColumn] = value;
+                    this[this.tableDispNodeInfo.GPSTimeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime StartTime {
+            public string DateTime {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDispNodeInfo.StartTimeColumn]));
+                    if (this.IsDateTimeNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'StartTime\' in table \'DispNodeInfo\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDispNodeInfo.DateTimeColumn]));
                     }
                 }
                 set {
-                    this[this.tableDispNodeInfo.StartTimeColumn] = value;
+                    this[this.tableDispNodeInfo.DateTimeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime EndTime {
+            public string Version {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDispNodeInfo.EndTimeColumn]));
+                    if (this.IsVersionNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EndTime\' in table \'DispNodeInfo\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDispNodeInfo.VersionColumn]));
                     }
                 }
                 set {
-                    this[this.tableDispNodeInfo.EndTimeColumn] = value;
+                    this[this.tableDispNodeInfo.VersionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TypeName {
-                get {
-                    try {
-                        return ((string)(this[this.tableDispNodeInfo.TypeNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TypeName\' in table \'DispNodeInfo\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDispNodeInfo.TypeNameColumn] = value;
-                }
+            public bool IsTempNull() {
+                return this.IsNull(this.tableDispNodeInfo.TempColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string IP {
-                get {
-                    try {
-                        return ((string)(this[this.tableDispNodeInfo.IPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IP\' in table \'DispNodeInfo\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDispNodeInfo.IPColumn] = value;
-                }
+            public void SetTempNull() {
+                this[this.tableDispNodeInfo.TempColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGroupNameNull() {
-                return this.IsNull(this.tableDispNodeInfo.GroupNameColumn);
+            public bool IsVoltageNull() {
+                return this.IsNull(this.tableDispNodeInfo.VoltageColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGroupNameNull() {
-                this[this.tableDispNodeInfo.GroupNameColumn] = global::System.Convert.DBNull;
+            public void SetVoltageNull() {
+                this[this.tableDispNodeInfo.VoltageColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStatusNull() {
-                return this.IsNull(this.tableDispNodeInfo.StatusColumn);
+            public bool IsGPSTimeNull() {
+                return this.IsNull(this.tableDispNodeInfo.GPSTimeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStatusNull() {
-                this[this.tableDispNodeInfo.StatusColumn] = global::System.Convert.DBNull;
+            public void SetGPSTimeNull() {
+                this[this.tableDispNodeInfo.GPSTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDateNull() {
-                return this.IsNull(this.tableDispNodeInfo.DateColumn);
+            public bool IsDateTimeNull() {
+                return this.IsNull(this.tableDispNodeInfo.DateTimeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDateNull() {
-                this[this.tableDispNodeInfo.DateColumn] = global::System.Convert.DBNull;
+            public void SetDateTimeNull() {
+                this[this.tableDispNodeInfo.DateTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStartTimeNull() {
-                return this.IsNull(this.tableDispNodeInfo.StartTimeColumn);
+            public bool IsVersionNull() {
+                return this.IsNull(this.tableDispNodeInfo.VersionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStartTimeNull() {
-                this[this.tableDispNodeInfo.StartTimeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEndTimeNull() {
-                return this.IsNull(this.tableDispNodeInfo.EndTimeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEndTimeNull() {
-                this[this.tableDispNodeInfo.EndTimeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTypeNameNull() {
-                return this.IsNull(this.tableDispNodeInfo.TypeNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTypeNameNull() {
-                this[this.tableDispNodeInfo.TypeNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIPNull() {
-                return this.IsNull(this.tableDispNodeInfo.IPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIPNull() {
-                this[this.tableDispNodeInfo.IPColumn] = global::System.Convert.DBNull;
+            public void SetVersionNull() {
+                this[this.tableDispNodeInfo.VersionColumn] = global::System.Convert.DBNull;
             }
         }
         
