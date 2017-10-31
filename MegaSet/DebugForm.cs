@@ -15,7 +15,7 @@ namespace MegaSet
         private NodeInfoDS myDataset;
        // private ProtocalParserCLS agent = new ProtocalParserCLS();
 
-        public DebugForm(NodeInfoDS dataset)
+        public DebugForm(NodeInfoDS dataset )
         {
             myDataset = dataset;
            // agent.Connect();
@@ -72,7 +72,7 @@ namespace MegaSet
             this.richTextBox1.AppendText(" ******************************  NodeTimeInfo  **********************************  \n");
             foreach (DataRow row in myDataset.NodeTimeInfo.Rows)
             {
-                this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} StartTime:{2}  EndTime:{3}  Duration:{4}  TypeName:{5} IP:{6} \n", row["GroupName"], row["Status"], row["StartTime"], row["EndTime"], row["Duration"], row["TypeName"], row["IP"]));
+                this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} StartTime:{2}  EndTime:{3}  Duration:{4}  TypeName:{5} IP:{6}  GroupID:{7}\n", row["GroupName"], row["Status"], row["StartTime"], row["EndTime"], row["Duration"], row["TypeName"], row["IP"],row["GroupID"]));
             }
 
             this.richTextBox1.AppendText(" ******************************  DisplayNodeInfo  **********************************  \n");
@@ -80,6 +80,11 @@ namespace MegaSet
             {
                 this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} Date:{2} StartTime:{3} EndTime:{4} TypeName:{5} IP:{6} \n", row["GroupName"], row["Status"], row["Date"], row["StartTime"], row["EndTime"], row["TypeName"], row["IP"]));
             }
+
+            //this.richTextBox1.AppendText(" ******************************  backup Table  **********************************  \n");
+         
+            //    this.richTextBox1.AppendText(String.Format("GroupName:{0} Status:{1} Date:{2} StartTime:{3} EndTime:{4} TypeName:{5} IP:{6} \n", ["GroupName"], row["Status"], row["Date"], row["StartTime"], row["EndTime"], row["TypeName"], row["IP"]));
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Utils;
 
-namespace WindowsApplication1
+namespace MegaSet
 {
     [DesignerCategory("")]
     [Designer("")]
@@ -22,11 +22,40 @@ namespace WindowsApplication1
             get { return _AppearanceDisabledRow; }
         }
 
+        public RowStateHelper(bool isReadOnly)
+        {
+            _ReadOnlyRow = isReadOnly;
+            _DisabledRows = new List<int>();
+            _AppearanceDisabledRow = new AppearanceObject();
+            AppearanceDisabledRow.Changed += _AppearanceDisabledRow_Changed;
+        }
+
         private GridView _GridView;
         public GridView GridView
         {
             get { return _GridView; }
             set { UnSubscribeEvents(_GridView); _GridView = value; SubscribeEvents(value); }
+        }
+
+        private bool _ReadOnlyRow = true;
+
+        public bool ReadonlyRow
+        {
+            get { return _ReadOnlyRow; }
+            set 
+            {
+                if ((_GridView != null) && (_ReadOnlyRow != value))
+                {
+                    if (_ReadOnlyRow == true)
+                    {
+                        UnSubscribeReadyEvents(_GridView);
+                    }
+                    else
+                    {
+                        SubscribeEvents(_GridView);
+                    }
+                }
+            }
         }
 
 
@@ -60,7 +89,11 @@ namespace WindowsApplication1
             if (view != null)
             {
                 view.RowCellStyle -= view_RowCellStyle;
-                view.ShowingEditor -= view_ShowingEditor;
+                if (_ReadOnlyRow == true)
+                {
+                    view.ShowingEditor -= view_ShowingEditor;
+                }
+              
             }
 
         }
@@ -69,6 +102,26 @@ namespace WindowsApplication1
             if (view != null)
             {
                 view.RowCellStyle += view_RowCellStyle;
+                if (_ReadOnlyRow == true)
+                {
+                    view.ShowingEditor += view_ShowingEditor;
+                }
+              
+            }
+        }
+
+        private void UnSubscribeReadyEvents(GridView view)
+        {
+            if (view != null)
+            {
+                view.ShowingEditor -= view_ShowingEditor;
+            }
+
+        }
+        private void SubscribeReadyOnlyEvents(GridView view)
+        {
+            if (view != null)
+            {
                 view.ShowingEditor += view_ShowingEditor;
             }
         }

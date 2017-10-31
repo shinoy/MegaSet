@@ -1060,6 +1060,8 @@ namespace MegaSet {
             
             private global::System.Data.DataColumn columnIP;
             
+            private global::System.Data.DataColumn columnGroupID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeTimeInfoDataTable() {
@@ -1151,6 +1153,14 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GroupIDColumn {
+                get {
+                    return this.columnGroupID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1186,7 +1196,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeTimeInfoRow AddNodeTimeInfoRow(string GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime) {
+            public NodeTimeInfoRow AddNodeTimeInfoRow(ushort GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime, ushort GroupID) {
                 NodeTimeInfoRow rowNodeTimeInfoRow = ((NodeTimeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
@@ -1195,7 +1205,8 @@ namespace MegaSet {
                         EndTime,
                         Duration,
                         TypeName,
-                        null};
+                        null,
+                        GroupID};
                 if ((parentNodeInfoRowBynode_nodetime != null)) {
                     columnValuesArray[6] = parentNodeInfoRowBynode_nodetime[0];
                 }
@@ -1228,12 +1239,13 @@ namespace MegaSet {
                 this.columnDuration = base.Columns["Duration"];
                 this.columnTypeName = base.Columns["TypeName"];
                 this.columnIP = base.Columns["IP"];
+                this.columnGroupID = base.Columns["GroupID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnGroupName = new global::System.Data.DataColumn("GroupName", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnGroupName = new global::System.Data.DataColumn("GroupName", typeof(ushort), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGroupName);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
@@ -1247,9 +1259,11 @@ namespace MegaSet {
                 base.Columns.Add(this.columnTypeName);
                 this.columnIP = new global::System.Data.DataColumn("IP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIP);
+                this.columnGroupID = new global::System.Data.DataColumn("GroupID", typeof(ushort), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("NodeTimeInfoKey1", new global::System.Data.DataColumn[] {
-                                this.columnGroupName,
-                                this.columnIP}, false));
+                                this.columnIP,
+                                this.columnGroupID}, false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2035,10 +2049,10 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GroupName {
+            public ushort GroupName {
                 get {
                     try {
-                        return ((string)(this[this.tableNodeTimeInfo.GroupNameColumn]));
+                        return ((ushort)(this[this.tableNodeTimeInfo.GroupNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'GroupName\' in table \'NodeTimeInfo\' is DBNull.", e);
@@ -2147,6 +2161,22 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ushort GroupID {
+                get {
+                    try {
+                        return ((ushort)(this[this.tableNodeTimeInfo.GroupIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GroupID\' in table \'NodeTimeInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeTimeInfo.GroupIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeInfoRow NodeInfoRow {
                 get {
                     return ((NodeInfoRow)(this.GetParentRow(this.Table.ParentRelations["node_nodetime"])));
@@ -2238,6 +2268,18 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIPNull() {
                 this[this.tableNodeTimeInfo.IPColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGroupIDNull() {
+                return this.IsNull(this.tableNodeTimeInfo.GroupIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGroupIDNull() {
+                this[this.tableNodeTimeInfo.GroupIDColumn] = global::System.Convert.DBNull;
             }
         }
         

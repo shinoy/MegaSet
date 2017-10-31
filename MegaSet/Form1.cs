@@ -29,8 +29,6 @@ namespace MegaSet
         private string currentNodeIp =string.Empty;
         private bool isEdited = false;
 
-        private string cmpValueBefore = string.Empty;
-        private string cmpValueAfter = string.Empty;
         private NodeInfoDS.NodeTimeInfoDataTable backupTable = new NodeInfoDS.NodeTimeInfoDataTable();
 
         private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
@@ -39,9 +37,6 @@ namespace MegaSet
 
        // ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
-    
-
-        private int editingRow = -1;
 
         public Form1()
         {
@@ -81,31 +76,35 @@ namespace MegaSet
                         PowerFrameType frame = (PowerFrameType)e.Data.Content;
 
 
-                        string typeName = "Others";
-                        string powerGroup = typeName + frame.PowerGroup;
+                        
+                        int groupID = int.Parse(frame.PowerGroup);
+                        int groupName;
+                        string typeName;
+                     //   MessageBox.Show(String.Format("{0}",groupID));
 
-                    
+                        if (frame.PowerGroup.Equals("00") || frame.PowerGroup.Equals("01"))
+                        {
+                            typeName = "1-摄像头";
+                            groupName = groupID;
+                        }
+                        else
+                        {
 
-                        if (frame.PowerGroup.Equals("00"))
-                        {
-                            typeName = "Camera";
-                            powerGroup = "Camera0";
+                            if (frame.PowerGroup.Equals("02") || frame.PowerGroup.Equals("03"))
+                            {
+                                typeName = "2-通道板";
+                                groupName = groupID - 2;
+                            }
+                            else
+                            {
+                                typeName = "3-其他设备";
+                                groupName = groupID - 4;
+                            }
                         }
-                        if (frame.PowerGroup.Equals("01"))
-                        {
-                            typeName = "Camera";
-                            powerGroup = "Camera1";
-                        }
-                        if (frame.PowerGroup.Equals("02"))
-                        {
-                            typeName = "CPB";
-                            powerGroup = "CPB0";
-                        }
-                        if (frame.PowerGroup.Equals("03"))
-                        {
-                            typeName = "CPB";
-                            powerGroup = "CPB1";
-                        }
+
+
+                      
+                       
 
 
 
@@ -113,17 +112,18 @@ namespace MegaSet
                         {
                             try
                             {
-                                nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress);
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress, groupID);
                             }
                             catch (ConstraintException ex)
                             {
-                                DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
+                                DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupID = '{1}'", e.Data.IPAddress, groupID))[0];
 
                                 row["Status"] = frame.Status;
                                 row["StartTime"] = DBNull.Value;
                                 row["EndTime"] = DBNull.Value;
                                 row["Duration"] = frame.Duration;
                                 row["TypeName"] = typeName;
+                                row["GroupName"] = groupName;
                             }
 
                         }
@@ -135,17 +135,18 @@ namespace MegaSet
                             try
                             {
                                 
-                                nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime , endTime, frame.Duration, typeName, e.Data.IPAddress);
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, startTime , endTime, frame.Duration, typeName, e.Data.IPAddress,groupID);
                             }
                             catch (ConstraintException ex)
                             {
-                                DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
+                                DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupID = '{1}'", e.Data.IPAddress, groupID))[0];
 
                                 row["Status"] = frame.Status;
                                 row["StartTime"] = startTime;
                                 row["EndTime"] = endTime;
                                 row["Duration"] = frame.Duration;
                                 row["TypeName"] = typeName;
+                                row["GroupName"] = groupName;
                             }
                         
                         }
@@ -197,7 +198,7 @@ namespace MegaSet
                             //            row["Repeat"] = false;
 
                             //        }
-
+                       // MessageBox.Show(String.Format("{0}", groupID));
 
                         break;
                 } // end of case
@@ -269,18 +270,42 @@ namespace MegaSet
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
         {
-            isEdited = true;
-            this.cmpValueBefore = gridView1.FocusedValue.ToString();
-            string rowGroupName = this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "GroupName").ToString();
-            NodeInfoDS.NodeTimeInfoRow temp = (NodeInfoDS.NodeTimeInfoRow)this.nodeInfoDS.NodeTimeInfo.Select(String.Format("GroupName = '{0}'", rowGroupName))[0];
+                // here we save entire old row which is be editing, only need to save once because only can edit one row at a time  
+                // this.cmpValueBefore = gridView1.FocusedValue.ToString();
+            if (isEdited == false)
+            {
+                int rowGroupID =  int.Parse( this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "GroupID").ToString());
+                NodeInfoDS.NodeTimeInfoRow temp = (NodeInfoDS.NodeTimeInfoRow)this.nodeInfoDS.NodeTimeInfo.Select(String.Format("GroupID = '{0}'", rowGroupID))[0];
 
-            backupTable.Rows[0]["Duration"]= temp.Duration;
-            backupTable.Rows[0]["EndTime"] = temp.EndTime;
-            backupTable.Rows[0]["GroupName"] = temp.GroupName;
-            backupTable.Rows[0]["IP"] = temp.IP;
-            backupTable.Rows[0]["StartTime"] = temp.StartTime;
-            backupTable.Rows[0]["Status"] = temp.Status;
-            backupTable.Rows[0]["TypeName"] = temp.TypeName;
+
+                if (temp.IsEndTimeNull())
+                {
+                    backupTable.Rows[0]["EndTime"] = DBNull.Value;
+                }
+                else
+                {
+                    backupTable.Rows[0]["EndTime"] = temp.EndTime;
+                }
+
+                if (temp.IsStartTimeNull())
+                {
+                    backupTable.Rows[0]["StartTime"] = DBNull.Value;
+                }
+                else
+                {
+                    backupTable.Rows[0]["StartTime"] = temp.StartTime;
+                }
+
+                backupTable.Rows[0]["GroupName"] = temp.GroupName;
+                backupTable.Rows[0]["IP"] = temp.IP;
+              
+                backupTable.Rows[0]["Status"] = temp.Status;
+                backupTable.Rows[0]["TypeName"] = temp.TypeName;
+                backupTable.Rows[0]["GroupID"] = temp.GroupID;
+                isEdited = true;
+            }
+                
+           
             
         //    int currentEditRow = (int)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "ID");
         //    if (editingRow == -1)
@@ -327,8 +352,10 @@ namespace MegaSet
             UserLookAndFeel.Default.SetSkinStyle("VS2010");
             Skin skin = GridSkins.GetSkin(this.cpbTreeView.LookAndFeel);
             skin.Properties[GridSkins.OptShowTreeLine] = true;
+
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.None;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
+           
             try
             {
                 this.nodeInfoDS.ReadXml(configFileName);
@@ -341,14 +368,19 @@ namespace MegaSet
                 this.nodeInfoDS.WriteXml(configFileName);
             }
 
+
+            this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
             this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
-         
+            this.gridView1.CellValueChanged += gridView1_CellValueChanged;
+            this.gridView1.ShowingEditor += gridView1_ShowingEditor;
+            this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
 
-           // this.gridView1.ShowingEditor += gridView1_ShowingEditor;
-           //  this.gridView1.CustomDrawCell += gridView1_CustomDrawCell;
            
         }
+
+ 
+ 
 
         /// <summary>
         /// want to disable date cell in repeat row
@@ -357,6 +389,7 @@ namespace MegaSet
         /// <param name="e"></param>
         void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
+            // TBD, we don't use this now
             try
             {
                 // MessageBox.Show((gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, "StartTime").ToString()));
@@ -395,12 +428,29 @@ namespace MegaSet
         }
 
         void NodeTimeInfo_RowChanged(object sender, DataRowChangeEventArgs e)
-        {   
-            if (e.Action != DataRowAction.Delete)
+        {
+
+
+          //  MessageBox.Show("row changed");
+
+            // enable update and cancel button ;
+         
+               
+ 
+
+            // Here we check start and end time, to sync correct time and save 
+            if (e.Action != DataRowAction.Delete && e.Action != DataRowAction.Add)
             {
                 
                 this.nodeInfoDS.NodeTimeInfo.RowChanged -= NodeTimeInfo_RowChanged;
+
+                if (isEdited)
+                {
+                    this.updateInfoBtn.Enabled = true;
+                    this.cancelInfoChangeBtn.Enabled = true;
               
+                }
+               
                     NodeInfoDS.NodeTimeInfoRow row = (NodeInfoDS.NodeTimeInfoRow)e.Row;
 
                  
@@ -421,14 +471,11 @@ namespace MegaSet
                         TimeSpan interval = row.EndTime - row.StartTime;
                         row.Duration = ((Int32)interval.TotalSeconds).ToString();
                     }
-
+                    this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
+                   
                 this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
             }
-            //nodeInfoDS.DispNodeInfo.Clear();
-            //foreach (DataRow originalRow in this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}'", currentNodeIp.ToString())))
-            //{
-            //    nodeInfoDS.DispNodeInfo.Rows.Add(originalRow);
-            //}
+            
             
         }
 
@@ -494,22 +541,43 @@ namespace MegaSet
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-          
+            isEdited = false;
+            this.updateInfoBtn.Enabled = false;
+            this.updateInfoBtn.Enabled = false;
 
-           nodeInfoDS.NodeTimeInfo.Rows.Add("group1", false, null, null, null, "cpb", "192.192.192.192");
-           nodeInfoDS.NodeTimeInfo.Rows.Add("group2", false, null, null, null, "caemra", "192.192.192.192");
+            // get row data = update cpb
 
-          
+
+
+
+            this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
+            this.ChangedRowStateHelper.DisabledRows.Clear();
+            this.DisableRowStateHelper.DisabledRows.Clear();
         }
 
         private void cpbTreeView_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+
+            // if focus on endpoint node, we save the ip address and refresh cpb infomation
             if (e.Node != null)
             {
                 if (e.Node.Level == 1)
                 {
+                    isEdited = false;
+                    editingRow = -1;
+                    this.updateInfoBtn.Enabled = false;
+                    this.cancelInfoChangeBtn.Enabled = false;
+                    
+                    this.DisableRowStateHelper.DisabledRows.Clear();
+                    this.ChangedRowStateHelper.DisabledRows.Clear();
                     currentNodeIp = e.Node.GetValue("ID").ToString();
-                    this.protocalAgent.SendCMD("get power",currentNodeIp);
+                    nodeInfoDS.NodeTimeInfo.Rows.Clear();
+                    if (currentNodeIp != string.Empty)
+                    {
+                        this.protocalAgent.SendCMD("get power", currentNodeIp);
+                    }
+                   
+                  
                 }
             }
             else
@@ -517,14 +585,73 @@ namespace MegaSet
                 currentNodeIp = string.Empty;
             }
 
-            nodeInfoDS.NodeTimeInfo.Rows.Clear();
+          
             
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            this.protocalAgent.SendCMD("get power", "192.168.1.100");
+
+            this.protocalAgent.SendCMD("get power", currentNodeIp);
+
+        }
+
+        private void addUserBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.nodeInfoDS.NodeTimeInfo.RejectChanges();
+            foreach (NodeInfoDS.NodeTimeInfoRow row in this.nodeInfoDS.NodeTimeInfo.Rows)
+            {
+                MessageBox.Show(row.StartTime.ToString()  +"  " + row.EndTime.ToString());
+            }
+        }
+
+        private void cancelInfoChangeBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            isEdited = false;
+
+            this.cancelInfoChangeBtn.Enabled = false;
+            this.updateInfoBtn.Enabled = false;
+
+
+
+            if (editingRow > -1)
+            {
+                NodeInfoDS.NodeTimeInfoRow originalRow = (NodeInfoDS.NodeTimeInfoRow)backupTable.Rows[0];
+                if (originalRow.IsStartTimeNull())
+                {
+                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["StartTime"] = DBNull.Value;
+                }
+                else
+                {
+                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["StartTime"] = originalRow.StartTime;
+                }
+                if (originalRow.IsEndTimeNull())
+                {
+                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = DBNull.Value;
+                }
+                else
+                {
+                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = originalRow.EndTime;
+                }
+
+
+               
+
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Duration"] = backupTable.Rows[0]["Duration"];
+
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupName"] = backupTable.Rows[0]["GroupName"];
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["IP"] = backupTable.Rows[0]["IP"];
+
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"] = backupTable.Rows[0]["Status"];
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["TypeName"] = backupTable.Rows[0]["TypeName"];
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"] = backupTable.Rows[0]["GroupID"];
+
+            }
+
+            this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
+            this.ChangedRowStateHelper.DisabledRows.Clear();
+            this.DisableRowStateHelper.DisabledRows.Clear();
         }
        
 

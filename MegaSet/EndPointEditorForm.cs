@@ -41,8 +41,12 @@ namespace MegaSet
             this.dropDownButton1.Text = e.Item.Caption;
         }
 
+
+      
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+
+           
             if (this.dropDownButton1.Text.Length == 0)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("请选择站点名称，新节点将加入选择的站点");
@@ -71,6 +75,7 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("该节点已经存在于"+this.dropDownButton1.Text+",请确认后重新添加");
                 
             }
+           
         }
 
        

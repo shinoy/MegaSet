@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraTreeList.Nodes;
 using System.Data;
+using System;
 
 namespace MegaSet
 {
@@ -11,6 +12,7 @@ namespace MegaSet
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private int editingRow = -1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -70,11 +72,12 @@ namespace MegaSet
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.datetimeInfo = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.updateInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonGroup1 = new DevExpress.XtraBars.BarButtonGroup();
             this.addUserBtn = new DevExpress.XtraBars.BarButtonItem();
             this.helpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.cancelInfoChangeBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -104,6 +107,7 @@ namespace MegaSet
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GroupID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -144,6 +148,8 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent4 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
             this.timeEdit1 = new DevExpress.XtraEditors.TimeEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.DisableRowStateHelper = new MegaSet.RowStateHelper();
+            this.ChangedRowStateHelper = new MegaSet.RowStateHelper();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -151,8 +157,8 @@ namespace MegaSet
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.GroupColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -265,14 +271,15 @@ namespace MegaSet
             this.barButtonItem4,
             this.barButtonItem5,
             this.datetimeInfo,
-            this.barButtonItem6,
+            this.updateInfoBtn,
             this.barButtonGroup1,
             this.addUserBtn,
             this.helpBtn,
-            this.barButtonItem7});
+            this.barButtonItem7,
+            this.cancelInfoChangeBtn});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 6;
+            this.ribbonControl.MaxItemId = 7;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -411,16 +418,17 @@ namespace MegaSet
             this.datetimeInfo.Name = "datetimeInfo";
             this.datetimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // barButtonItem6
+            // updateInfoBtn
             // 
-            this.barButtonItem6.Caption = "更新定时表";
-            this.barButtonItem6.Id = 5;
-            this.barButtonItem6.LargeImageIndex = 3;
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.updateInfoBtn.Caption = "更新定时表";
+            this.updateInfoBtn.Enabled = false;
+            this.updateInfoBtn.Id = 5;
+            this.updateInfoBtn.LargeImageIndex = 3;
+            this.updateInfoBtn.Name = "updateInfoBtn";
             toolTipItem7.Text = "更新当前节点的定时表";
             superToolTip7.Items.Add(toolTipItem7);
-            this.barButtonItem6.SuperTip = superToolTip7;
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            this.updateInfoBtn.SuperTip = superToolTip7;
+            this.updateInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonGroup1
             // 
@@ -438,6 +446,7 @@ namespace MegaSet
             toolTipItem8.Text = "管理用户信息";
             superToolTip8.Items.Add(toolTipItem8);
             this.addUserBtn.SuperTip = superToolTip8;
+            this.addUserBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.addUserBtn_ItemClick);
             // 
             // helpBtn
             // 
@@ -455,6 +464,15 @@ namespace MegaSet
             this.barButtonItem7.Id = 5;
             this.barButtonItem7.LargeImageIndex = 13;
             this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // cancelInfoChangeBtn
+            // 
+            this.cancelInfoChangeBtn.Caption = "取消更改";
+            this.cancelInfoChangeBtn.Enabled = false;
+            this.cancelInfoChangeBtn.Id = 6;
+            this.cancelInfoChangeBtn.LargeImageIndex = 14;
+            this.cancelInfoChangeBtn.Name = "cancelInfoChangeBtn";
+            this.cancelInfoChangeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cancelInfoChangeBtn_ItemClick);
             // 
             // ribbonImageCollectionLarge
             // 
@@ -474,6 +492,7 @@ namespace MegaSet
             this.ribbonImageCollectionLarge.Images.SetKeyName(11, "usermgmt3232.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(12, "help3232.png");
             this.ribbonImageCollectionLarge.Images.SetKeyName(13, "modify3232.png");
+            this.ribbonImageCollectionLarge.Images.SetKeyName(14, "cancel3232.png");
             // 
             // fileRibbonPage1
             // 
@@ -500,7 +519,8 @@ namespace MegaSet
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem7);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup2.ItemLinks.Add(this.updateInfoBtn);
+            this.ribbonPageGroup2.ItemLinks.Add(this.cancelInfoChangeBtn);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "节点管理";
@@ -578,7 +598,6 @@ namespace MegaSet
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
             this.cpbTreeView.Size = new System.Drawing.Size(240, 497);
             this.cpbTreeView.TabIndex = 0;
-            this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             // 
             // AddressName
             // 
@@ -683,6 +702,7 @@ namespace MegaSet
             this.TimeColumn,
             this.DurationColumn,
             this.gridColumn2,
+            this.GroupID,
             this.typeColumn});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
@@ -699,11 +719,6 @@ namespace MegaSet
             this.gridView1.RowHeight = 40;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView1.ShowingEditor +=gridView1_ShowingEditor;
-            this.gridView1.CellValueChanged += gridView1_CellValueChanged;
-            this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
-           
-           
             // 
             // gridColumn1
             // 
@@ -787,6 +802,12 @@ namespace MegaSet
             this.gridColumn2.Caption = "IP";
             this.gridColumn2.FieldName = "IP";
             this.gridColumn2.Name = "gridColumn2";
+            // 
+            // GroupID
+            // 
+            this.GroupID.Caption = "gridColumn3";
+            this.GroupID.FieldName = "GroupID";
+            this.GroupID.Name = "GroupID";
             // 
             // typeColumn
             // 
@@ -880,7 +901,7 @@ namespace MegaSet
             this.digitalGauge5.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge5.Name = "digitalGauge5";
             this.digitalGauge5.Padding = new DevExpress.XtraGauges.Core.Base.TextSpacing(26, 20, 26, 20);
-            this.digitalGauge5.Text = "V1.7.2";
+            this.digitalGauge5.Text = "_._._";
             // 
             // digitalBackgroundLayerComponent6
             // 
@@ -945,7 +966,7 @@ namespace MegaSet
             this.digitalGauge1.Bounds = new System.Drawing.Rectangle(-5, -1, 119, 55);
             this.digitalGauge1.DigitCount = 3;
             this.digitalGauge1.Name = "digitalGauge1";
-            this.digitalGauge1.Text = "31.5";
+            this.digitalGauge1.Text = "__._";
             // 
             // digitalBackgroundLayerComponent1
             // 
@@ -1022,7 +1043,7 @@ namespace MegaSet
             this.digitalGauge2.Bounds = new System.Drawing.Rectangle(-5, -1, 120, 55);
             this.digitalGauge2.DigitCount = 3;
             this.digitalGauge2.Name = "digitalGauge2";
-            this.digitalGauge2.Text = "31.5";
+            this.digitalGauge2.Text = "__._";
             // 
             // digitalBackgroundLayerComponent3
             // 
@@ -1182,7 +1203,7 @@ namespace MegaSet
             this.digitalGauge3.DigitCount = 15;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge3.Name = "digitalGauge3";
-            this.digitalGauge3.Text = "2017-11-22 21:23:33";
+            this.digitalGauge3.Text = "____-__-__ __:__:__";
             // 
             // digitalBackgroundLayerComponent4
             // 
@@ -1220,6 +1241,27 @@ namespace MegaSet
             this.simpleButton1.Size = new System.Drawing.Size(108, 32);
             this.simpleButton1.TabIndex = 10;
             this.simpleButton1.Text = "设置时间";
+            // 
+            // DisableRowStateHelper
+            // 
+            this.DisableRowStateHelper.AppearanceDisabledRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DisableRowStateHelper.AppearanceDisabledRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DisableRowStateHelper.AppearanceDisabledRow.ForeColor = System.Drawing.Color.Gray;
+            this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseBackColor = true;
+            this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
+            this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
+            this.DisableRowStateHelper.GridView = this.gridView1;
+            this.DisableRowStateHelper.ReadonlyRow = true;
+            // 
+            // ChangedRowStateHelper
+            // 
+            this.ChangedRowStateHelper.AppearanceDisabledRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangedRowStateHelper.AppearanceDisabledRow.ForeColor = System.Drawing.Color.Red;
+            this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseBackColor = true;
+            this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
+            this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
+            this.ChangedRowStateHelper.GridView = this.gridView1;
+            this.ChangedRowStateHelper.ReadonlyRow = false;
             // 
             // button2
             // 
@@ -1296,13 +1338,6 @@ namespace MegaSet
             this.nodeInfoBindingSource1.DataMember = "NodeInfo";
             this.nodeInfoBindingSource1.DataSource = this.nodeInfoDSBindingSource;
             // 
-            // GroupColumn
-            // 
-            this.GroupColumn.Caption = "组别";
-            this.GroupColumn.FieldName = "GroupName";
-            this.GroupColumn.Name = "GroupColumn";
-            this.GroupColumn.Width = 85;
-            // 
             // digitalBackgroundLayerComponent2
             // 
             this.digitalBackgroundLayerComponent2.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(211.85F, 99.9625F);
@@ -1311,12 +1346,20 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(693, 83);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 753);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.button2);
@@ -1399,48 +1442,91 @@ namespace MegaSet
 
         void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-           
-            if (isEdited != true)
+
+            if (! this.cancelInfoChangeBtn.Enabled)
             {
-                return;
+                isEdited = false; // user leave previous row without any change, so we think the edit mode cancelled; if value changed, we disable the other rows already, so keep in edit mode to persist backup table
             }
-            if (System.Windows.Forms.MessageBox.Show("当前定时信息已经改变，'确定'更新到节点或'取消'取消更改", "定时信息更改", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-            {
-                System.Windows.Forms.MessageBox.Show("提交");
-            }
-            else
-            {
-                e.Allow = false;
-                nodeInfoDS.NodeTimeInfo.Rows.Remove(this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}' and GroupName = '{1}'", backupTable.Rows[0]["IP"], backupTable.Rows[0]["GroupName"]))[0]);
-                this.nodeInfoDS.NodeTimeInfo.ImportRow(backupTable.Rows[0]);
-            }
+
+            //  **********  TBD currently we don't use this.******
+         
+            //if (isEdited != true)
+            //{
+            //    return;
+            //}
+            //if (System.Windows.Forms.MessageBox.Show("当前定时信息已经改变，'确定'更新到节点或'取消'取消更改", "定时信息更改", System.Windows.Forms.MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    System.Windows.Forms.MessageBox.Show("提交");
+            //}
+            //else
+            //{
+            //    e.Allow = false;
+            //    nodeInfoDS.NodeTimeInfo.Rows.Remove(this.nodeInfoDS.NodeTimeInfo.Select(string.Format("IP = '{0}' and GroupName = '{1}'", backupTable.Rows[0]["IP"], backupTable.Rows[0]["GroupName"]))[0]);
+            //    this.nodeInfoDS.NodeTimeInfo.ImportRow(backupTable.Rows[0]);
+            //}
            
         }
 
     
         void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (this.cmpValueBefore == e.Value.ToString())
+         
+ 
+            int currentRowIndex = gridView1.GetDataSourceRowIndex(e.RowHandle);
+
+            int totalIndex = this.gridView1.RowCount;
+
+            for (int index = 0; index < totalIndex; index++)
             {
-                System.Windows.Forms.MessageBox.Show("");
+                if (index != currentRowIndex)
+                {
+                    this.DisableRowStateHelper.DisabledRows.Add(index);
+                }
+                else
+                {
+                    this.ChangedRowStateHelper.DisabledRows.Add(index);
+                    editingRow = index;
+                }
             }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("older value " + this.cmpValueBefore);
-                System.Windows.Forms.MessageBox.Show("new value " + e.Value.ToString());
-            }
+            this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
+            this.gridView1.UpdateSummary();
+
            
+            //this.gridView1.UpdateSummary();
+
+            //if (e.Column.FieldName != "StartTime" && e.Column.FieldName != "EndTime")
+            //    return;
+
+            //NodeInfoDS.NodeTimeInfoRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format("GroupName = '{0}'",e.Column.))
+                
+                
+            //    (NodeInfoDS.NodeTimeInfoRow)( this.gridView1.GetRow(e.RowHandle));
+
+
+            //if (row != null && !row.IsStartTimeNull() && !row.IsEndTimeNull())
+            //{
+                
+            //    row.StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, row.StartTime.Hour, row.StartTime.Minute, row.StartTime.Second);
+
+            //    DateTime newTime = new DateTime(row.StartTime.Year, row.StartTime.Month, row.StartTime.Day, row.EndTime.Hour, row.EndTime.Minute, row.EndTime.Second);
+            //    if (newTime.CompareTo(row.StartTime) <= 0)
+            //    {
+            //        row.EndTime = row.StartTime.AddMinutes(1);
+            //    }
+            //    else
+            //    {
+            //        row.EndTime = newTime;
+            //    }
+
+            //    TimeSpan interval = row.EndTime - row.StartTime;
+            //    row.Duration = ((Int32)interval.TotalSeconds).ToString();
+            //}
+            
           
 
         }
 
         
-
-        void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("focus changed");
-        }
-
         void cpbTreeView_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
         {
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Add)
@@ -1516,7 +1602,7 @@ namespace MegaSet
         private DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent digitalBackgroundLayerComponent1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit repositoryItemTimeSpanEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn GroupColumn;
+        //private DevExpress.XtraGrid.Columns.GridColumn GroupColumn;
         private DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent digitalBackgroundLayerComponent2;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl2;
@@ -1532,7 +1618,7 @@ namespace MegaSet
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarStaticItem datetimeInfo;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem updateInfoBtn;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
@@ -1571,6 +1657,11 @@ namespace MegaSet
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private RowStateHelper DisableRowStateHelper;
+        private RowStateHelper ChangedRowStateHelper;
+        private System.Windows.Forms.TextBox textBox1;
+        private DevExpress.XtraBars.BarButtonItem cancelInfoChangeBtn;
+        private DevExpress.XtraGrid.Columns.GridColumn GroupID;
 
     }
 }
