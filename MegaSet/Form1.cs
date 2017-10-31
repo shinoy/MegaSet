@@ -24,7 +24,9 @@ namespace MegaSet
 
     public partial class Form1 : RibbonForm
     {
-        private System.Timers.Timer dateTimerTicker = new System.Timers.Timer(500);
+        private System.Timers.Timer systemTimerTicker = new System.Timers.Timer(500);
+        private System.Timers.Timer cpbTimeTicker = new System.Timers.Timer(1000);
+
         private string configFileName = @".\Configuration.mgs";
         private string currentNodeIp =string.Empty;
         private bool isEdited = false;
@@ -45,14 +47,16 @@ namespace MegaSet
            
                 InitializeComponent();
                 InitSkinGallery();
-                dateTimerTicker.Elapsed += dateTimerTicker_Elapsed;
-                dateTimerTicker.Start();
+                systemTimerTicker.Elapsed += dateTimerTicker_Elapsed;
+                systemTimerTicker.Start();
                 protocalAgent.DataArrived += protocalAgent_DataArrived;
                 this.protocalAgent.Connect();
                 backupTable.Rows.Add();
                 
          
         }
+
+  
 
 
 
@@ -73,12 +77,7 @@ namespace MegaSet
                 switch (e.Data.TypeName)
                 {
                     case CPBProtolType.Power:
-
-
-                        PowerFrameType frame = (PowerFrameType)e.Data.Content;
-
-
-                        
+                        PowerFrameType frame = (PowerFrameType)e.Data.Content;                    
                         int groupID = int.Parse(frame.PowerGroup);
                         int groupName;
                         string typeName;
@@ -103,11 +102,6 @@ namespace MegaSet
                                 groupName = groupID - 4;
                             }
                         }
-
-
-                      
-                       
-
 
 
                         if (frame.StartTime.StartsWith("*"))
@@ -152,56 +146,27 @@ namespace MegaSet
                             }
                         
                         }
-                       
-                        
                                         
+                        break;
 
-                            //}
-                            //else
-                            //{
-                            //    if (frame.DayTime.StartsWith("*"))
-                            //    {
-                            //        startTime = DateTime.Parse(String.Format("1000-01-01 {0}", frame.StartTime));
-                            //        endTime = startTime.AddSeconds(double.Parse(frame.Duration));
-                            //        try
-                            //        {
-                            //            nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, true);
-                            //        }
-                            //        catch (ConstraintException ex)
-                            //        {
-                            //            DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
+                    case CPBProtolType.Date:
+                        this.cpbTimeTicker.Stop();
+                        this.nodeInfoDS.DispNodeInfo[0]["DateTime"] = e.Data.Content;
+                        this.cpbTimeTicker.Start();
+                        break;
 
-                            //            row["Status"] = frame.Status;
-                            //            row["StartTime"] = startTime;
-                            //            row["EndTime"] = endTime;
-                            //            row["Duration"] = frame.Duration;
-                            //            row["TypeName"] = typeName;
-                            //            row["Repeat"] = true;
+                    case CPBProtolType.Temp:
+                        this.nodeInfoDS.DispNodeInfo[0]["Temp"] = e.Data.Content;
+                        break;
+                    case CPBProtolType.Version:
+                        this.nodeInfoDS.DispNodeInfo[0]["Version"] = e.Data.Content;
+                        break;
 
-                            //        }
+                    case CPBProtolType.Valtage:
+                        this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content;
+                        break;
 
-                            //    }
-                            //    else
-                            //    {
-                            //        startTime = DateTime.Parse(String.Format("20{0} {1}", frame.DayTime, frame.StartTime));
-                            //        endTime = startTime.AddSeconds(double.Parse(frame.Duration));
-                            //        try
-                            //        {
-                            //            nodeInfoDS.NodeTimeInfo.Rows.Add(powerGroup, frame.Status, startTime, endTime, frame.Duration, typeName, e.Data.IPAddress, false);
-                            //        }
-                            //        catch (ConstraintException ex)
-                            //        {
-                            //            DataRow row = nodeInfoDS.NodeTimeInfo.Select(String.Format(" IP = '{0}' and GroupName = '{1}'", e.Data.IPAddress, powerGroup))[0];
-                            //            row["Status"] = frame.Status;
-                            //            row["StartTime"] = startTime;
-                            //            row["EndTime"] = endTime;
-                            //            row["Duration"] = frame.Duration;
-                            //            row["TypeName"] = typeName;
-                            //            row["Repeat"] = false;
-
-                            //        }
-                       // MessageBox.Show(String.Format("{0}", groupID));
-
+                    default:
                         break;
                 } // end of case
             }
@@ -378,8 +343,15 @@ namespace MegaSet
             this.gridView1.CellValueChanged += gridView1_CellValueChanged;
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
             this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
-
+            this.cpbTimeTicker.Elapsed += cpbTimeTicker_Elapsed;
            
+        }
+
+        void cpbTimeTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+             DateTime tempTime = DateTime.Parse(nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"].ToString());
+             tempTime = tempTime.AddSeconds(1);
+             nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = tempTime.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
  
@@ -562,7 +534,7 @@ namespace MegaSet
 
             isEdited = false;
             this.updateInfoBtn.Enabled = false;
-            this.updateInfoBtn.Enabled = false;
+            this.cancelInfoChangeBtn.Enabled = false;
 
             // get row data = update cpb
             //nodeInfoDS.NodeTimeInfo.Rows[editingRow]["StartTime"] = originalRow.StartTime;
@@ -701,6 +673,72 @@ namespace MegaSet
             this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
             this.ChangedRowStateHelper.DisabledRows.Clear();
             this.DisableRowStateHelper.DisabledRows.Clear();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                protocalAgent.SendCMD("get time",currentNodeIp);
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+            }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                protocalAgent.SendCMD("get voltage", currentNodeIp);
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+            }
+        }
+
+        private void simpleButton10_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                protocalAgent.SendCMD("get temp", currentNodeIp);
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+            }
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                protocalAgent.SendCMD("get version", currentNodeIp);
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+            }
+        }
+
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                if (DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("确定重启节点{0}?", currentNodeIp), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    protocalAgent.SendCMD("reset", currentNodeIp);
+                }
+
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后操作");
+            }
+
+          
         }
        
 

@@ -46,15 +46,17 @@ namespace MegaSet
             {
                 if ((_GridView != null) && (_ReadOnlyRow != value))
                 {
-                    if (_ReadOnlyRow == true)
+                    if (value == true)
                     {
-                        UnSubscribeReadyEvents(_GridView);
+                        SubscribeReadyOnlyEvents(_GridView);
                     }
                     else
                     {
-                        SubscribeEvents(_GridView);
+                        UnSubscribeReadOnlyEvents(_GridView);
                     }
                 }
+
+                _ReadOnlyRow = value;
             }
         }
 
@@ -86,14 +88,12 @@ namespace MegaSet
 
         private void UnSubscribeEvents(GridView view)
         {
+
+           
             if (view != null)
             {
                 view.RowCellStyle -= view_RowCellStyle;
-                if (_ReadOnlyRow == true)
-                {
-                    view.ShowingEditor -= view_ShowingEditor;
-                }
-              
+                view.ShowingEditor -= view_ShowingEditor;
             }
 
         }
@@ -110,7 +110,7 @@ namespace MegaSet
             }
         }
 
-        private void UnSubscribeReadyEvents(GridView view)
+        private void UnSubscribeReadOnlyEvents(GridView view)
         {
             if (view != null)
             {

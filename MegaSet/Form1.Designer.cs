@@ -118,6 +118,7 @@ namespace MegaSet
             this.gaugeControl5 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.digitalGauge5 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge();
             this.digitalBackgroundLayerComponent6 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
+            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -149,10 +150,9 @@ namespace MegaSet
             this.timeEdit1 = new DevExpress.XtraEditors.TimeEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DisableRowStateHelper = new MegaSet.RowStateHelper();
-            this.ChangedRowStateHelper = new MegaSet.RowStateHelper();
+            this.ChangedRowStateHelper = new MegaSet.RowStateHelper(false);
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -188,6 +188,7 @@ namespace MegaSet
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -214,7 +215,6 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.navBarControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
@@ -723,6 +723,7 @@ namespace MegaSet
             this.gridColumn1.Caption = "组别";
             this.gridColumn1.FieldName = "GroupName";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
@@ -858,6 +859,7 @@ namespace MegaSet
             this.simpleButton12.Size = new System.Drawing.Size(78, 23);
             this.simpleButton12.TabIndex = 19;
             this.simpleButton12.Text = "重启";
+            this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
             // 
             // simpleButton11
             // 
@@ -866,6 +868,7 @@ namespace MegaSet
             this.simpleButton11.Size = new System.Drawing.Size(78, 23);
             this.simpleButton11.TabIndex = 18;
             this.simpleButton11.Text = "刷新";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
             // panel5
             // 
@@ -895,6 +898,7 @@ namespace MegaSet
             this.digitalGauge5.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent6});
             this.digitalGauge5.Bounds = new System.Drawing.Rectangle(-8, 1, 72, 30);
+            this.digitalGauge5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Version", true));
             this.digitalGauge5.DigitCount = 3;
             this.digitalGauge5.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge5.Name = "digitalGauge5";
@@ -908,6 +912,11 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent6.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style18;
             this.digitalBackgroundLayerComponent6.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent6.ZOrder = 1000;
+            // 
+            // dispNodeInfoBindingSource
+            // 
+            this.dispNodeInfoBindingSource.DataMember = "DispNodeInfo";
+            this.dispNodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
             // 
             // groupControl4
             // 
@@ -933,6 +942,7 @@ namespace MegaSet
             this.simpleButton10.Size = new System.Drawing.Size(78, 23);
             this.simpleButton10.TabIndex = 15;
             this.simpleButton10.Text = "刷新";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
             // 
             // panel1
             // 
@@ -1060,6 +1070,7 @@ namespace MegaSet
             this.simpleButton2.Size = new System.Drawing.Size(78, 23);
             this.simpleButton2.TabIndex = 14;
             this.simpleButton2.Text = "刷新";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // groupControl3
             // 
@@ -1171,6 +1182,7 @@ namespace MegaSet
             this.simpleButton3.Size = new System.Drawing.Size(108, 32);
             this.simpleButton3.TabIndex = 24;
             this.simpleButton3.Text = "刷新时间";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // panelControl1
             // 
@@ -1253,7 +1265,6 @@ namespace MegaSet
             this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
             this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
             this.DisableRowStateHelper.GridView = this.gridView1;
-            this.DisableRowStateHelper.ReadonlyRow = true;
             // 
             // ChangedRowStateHelper
             // 
@@ -1263,7 +1274,6 @@ namespace MegaSet
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
             this.ChangedRowStateHelper.GridView = this.gridView1;
-            this.ChangedRowStateHelper.ReadonlyRow = true;
             // 
             // button1
             // 
@@ -1285,11 +1295,6 @@ namespace MegaSet
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
-            // 
-            // dispNodeInfoBindingSource
-            // 
-            this.dispNodeInfoBindingSource.DataMember = "DispNodeInfo";
-            this.dispNodeInfoBindingSource.DataSource = this.nodeInfoDSBindingSource;
             // 
             // navBarControl1
             // 
@@ -1385,6 +1390,7 @@ namespace MegaSet
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -1411,7 +1417,6 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dispNodeInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.navBarControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
@@ -1454,7 +1459,6 @@ namespace MegaSet
         void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
          
- 
             int currentRowIndex = gridView1.GetDataSourceRowIndex(e.RowHandle);
 
             int totalIndex = this.gridView1.RowCount;

@@ -10,7 +10,11 @@ namespace MegaSet
 {
     public enum CPBProtolType
     {
-        Power
+        Power,
+        Date,
+        Valtage,
+        Temp,
+        Version
     }
 
     /// <summary>
@@ -71,17 +75,7 @@ namespace MegaSet
 
     }
 
-    /// <summary>
-    /// 1 - get time 
-    /// </summary>
-    public class TimeFrameType
-    {
-        public DateTime Time
-        {
-            get;
-            set;
-        }
-    }
+ 
 
 
     /// <summary>
@@ -168,7 +162,36 @@ namespace MegaSet
                      DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Power, ipAddress, group)));
 
                  }
+                 
+             } // end of get power
+
+             if( tag.Equals("1") )
+             {
+                string dateStr = frame.Substring(6,frame.Length -6);
+                DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Date, ipAddress, dateStr)));
              }
+
+            // get temp
+             if (tag.Equals("0"))
+             {
+                 string tempStr = frame.Substring(frame.Length-4, 4);
+                 DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Temp, ipAddress, tempStr)));
+             }
+
+            // get valotage
+             if (tag.Equals("6"))
+             {
+                 string volStr = frame.Substring(frame.Length-4, 4);
+                 DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Valtage, ipAddress, volStr)));
+             }
+
+             // get version
+             if (tag.Equals("5"))
+             {
+                 string verStr = frame.Substring(frame.Length - 5, 5);
+                 DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Version, ipAddress, verStr)));
+             }
+
 
         }
 
