@@ -777,7 +777,7 @@ namespace MegaSet
                 {
                     DateTime timeSet = DateTime.Parse(timeEdit1.Text);
                     string str = timeSet.ToString("HHmmssyyMMdd");
-                    MessageBox.Show(string.Format("set time {0}", str));
+                  //  MessageBox.Show(string.Format("set time {0}", str));
                     protocalAgent.SendCMD(string.Format("set time {0}", str), currentNodeIp);
                 }
                 else
