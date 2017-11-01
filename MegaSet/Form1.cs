@@ -590,7 +590,8 @@ namespace MegaSet
             // if focus on endpoint node, we save the ip address and refresh cpb infomation
             if (e.Node != null)
             {
-                string newIP = (e.Node.GetValue("ID").ToString()).Split('(')[0];
+                string newIP = e.Node.GetValue("ID").ToString();
+                MessageBox.Show(newIP);
                
                 if ((e.Node.Level == 1 )&& (newIP != currentNodeIp))
                 {

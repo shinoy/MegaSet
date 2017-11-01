@@ -211,7 +211,16 @@ namespace MegaSet
                 }
                 catch (SocketException ex)
                 {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("网络连接异常，请重新运行程序");
+                    if (ex.SocketErrorCode == SocketError.ConnectionReset)
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("节点IP可达但端口无响应，请确认IP地址为通道控制板地址");
+                    }
+                    else
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("网络连接异常,错误原因{0}，请重新运行程序",ex.SocketErrorCode.ToString()));
+                    }
+                
+                   
                 }
             }
         }
