@@ -799,6 +799,8 @@ namespace MegaSet
             this.nodeInfoDS.DispNodeInfo.Rows.Clear();
             this.nodeInfoDS.WriteXml(configFileName);
         }
+
+       
        
 
     }

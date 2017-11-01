@@ -124,7 +124,7 @@
     <value>17, 56</value>
   </metadata>
   <metadata name="nodeInfoDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1296, 17</value>
+    <value>1150, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ribbonControl.ApplicationIcon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -176,7 +176,7 @@
 </value>
   </data>
   <metadata name="ribbonImageCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>914, 17</value>
+    <value>768, 17</value>
   </metadata>
   <assembly alias="DevExpress.Utils.v15.2" name="DevExpress.Utils.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="ribbonImageCollection.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v15.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -372,7 +372,7 @@
 </value>
   </data>
   <metadata name="ribbonImageCollectionLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1090, 17</value>
+    <value>944, 17</value>
   </metadata>
   <data name="ribbonImageCollectionLarge.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v15.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1371,9 +1371,6 @@
         n+M4nvPKAP04AP3SP+MgnnbBP61RED+PW+CKAAAAAElFTkSuQmCCCw==
 </value>
   </data>
-  <metadata name="schedulerStorage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>768, 17</value>
-  </metadata>
   <metadata name="nodeTimeInfoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>955, 56</value>
   </metadata>
@@ -1442,12 +1439,6 @@
         Ly3twHf/HW/Bv0fwf2TA/y8BQv4LmTJfUbway18AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="DisableRowStateHelper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="ChangedRowStateHelper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>196, 17</value>
-  </metadata>
   <metadata name="nodeInfoBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>392, 56</value>
   </metadata>
