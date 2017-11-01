@@ -586,16 +586,34 @@ namespace MegaSet
             // if focus on endpoint node, we save the ip address and refresh cpb infomation
             if (e.Node != null)
             {
-                if (e.Node.Level == 1)
+                string newIP = (e.Node.GetValue("ID").ToString()).Split('(')[0];
+               
+                if ((e.Node.Level == 1 )&& (newIP != currentNodeIp))
                 {
+                    if (MessageBox.Show(string.Format("确定要切换到{0}么？", newIP), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                        this.cpbTreeView.SetFocusedNode(e.OldNode);
+                        return;
+                    }
+
+                    currentNodeIp = newIP;
                     isEdited = false;
                     editingRow = -1;
+                   
                     this.updateInfoBtn.Enabled = false;
                     this.cancelInfoChangeBtn.Enabled = false;
                     
                     this.DisableRowStateHelper.DisabledRows.Clear();
                     this.ChangedRowStateHelper.DisabledRows.Clear();
-                    currentNodeIp = e.Node.GetValue("ID").ToString();
+
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Temp"] = "__._";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Voltage"] = "__._";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["GPSTime"] = "____-__-__ __:__:__";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = "____-__-__ __:__:__";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Version"] = "_._._";
+
+                    this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
+
                     nodeInfoDS.NodeTimeInfo.Rows.Clear();
                     if (currentNodeIp != string.Empty)
                     {
@@ -749,6 +767,37 @@ namespace MegaSet
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentNodeIp != string.Empty)
+                {
+                    DateTime timeSet = DateTime.Parse(timeEdit1.Text);
+                    string str = timeSet.ToString("HHmmssyyMMdd");
+                    MessageBox.Show(string.Format("set time {0}", str));
+                    protocalAgent.SendCMD(string.Format("set time {0}", str), currentNodeIp);
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后操作");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("设置时间失败，请确认设置时间值有效");
+            }
+           
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
+            this.nodeInfoDS.DispNodeInfo.Rows.Clear();
+            this.nodeInfoDS.WriteXml(configFileName);
         }
        
 
