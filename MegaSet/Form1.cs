@@ -740,6 +740,16 @@ namespace MegaSet
 
           
         }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
        
 
     }

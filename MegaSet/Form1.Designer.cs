@@ -35,7 +35,6 @@ namespace MegaSet
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -55,12 +54,12 @@ namespace MegaSet
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource();
+            this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource();
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
             this.repositoryItemTimeSpanEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection();
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -78,7 +77,7 @@ namespace MegaSet
             this.helpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.cancelInfoChangeBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
+            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -90,14 +89,14 @@ namespace MegaSet
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
             this.AddressName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
-            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
-            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
+            this.cpbInfoBindingSource = new System.Windows.Forms.BindingSource();
+            this.navbarImageCollection = new DevExpress.Utils.ImageCollection();
+            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection();
+            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.nodeTimeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeTimeInfoBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -118,7 +117,7 @@ namespace MegaSet
             this.gaugeControl5 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.digitalGauge5 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalGauge();
             this.digitalBackgroundLayerComponent6 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
-            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dispNodeInfoBindingSource = new System.Windows.Forms.BindingSource();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -150,13 +149,15 @@ namespace MegaSet
             this.timeEdit1 = new DevExpress.XtraEditors.TimeEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DisableRowStateHelper = new MegaSet.RowStateHelper();
-            this.ChangedRowStateHelper = new MegaSet.RowStateHelper(false);
+            this.ChangedRowStateHelper = new MegaSet.RowStateHelper();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
-            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nodeInfoBindingSource1 = new System.Windows.Forms.BindingSource();
             this.digitalBackgroundLayerComponent2 = new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -221,6 +222,12 @@ namespace MegaSet
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
+            this.panelControl5.SuspendLayout();
             this.SuspendLayout();
             // 
             // nodeInfoBindingSource
@@ -285,7 +292,7 @@ namespace MegaSet
             this.ribbonPageSkins});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1250, 149);
+            this.ribbonControl.Size = new System.Drawing.Size(1071, 147);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -401,6 +408,7 @@ namespace MegaSet
             toolTipItem6.Text = "修改软件登陆密码";
             superToolTip6.Items.Add(toolTipItem6);
             this.barButtonItem4.SuperTip = superToolTip6;
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -462,6 +470,7 @@ namespace MegaSet
             this.barButtonItem7.Id = 5;
             this.barButtonItem7.LargeImageIndex = 13;
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // cancelInfoChangeBtn
             // 
@@ -549,17 +558,17 @@ namespace MegaSet
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.datetimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 720);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 694);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1250, 33);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1071, 31);
             // 
             // CPBbar
             // 
             this.CPBbar.Caption = "站点信息";
             this.CPBbar.ControlContainer = this.navBarGroupControlContainer1;
             this.CPBbar.Expanded = true;
-            this.CPBbar.GroupClientHeight = 353;
+            this.CPBbar.GroupClientHeight = 461;
             this.CPBbar.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.CPBbar.LargeImageIndex = 2;
             this.CPBbar.Name = "CPBbar";
@@ -570,7 +579,7 @@ namespace MegaSet
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 497);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(240, 461);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
@@ -594,7 +603,7 @@ namespace MegaSet
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(240, 497);
+            this.cpbTreeView.Size = new System.Drawing.Size(240, 461);
             this.cpbTreeView.TabIndex = 0;
             // 
             // AddressName
@@ -646,13 +655,13 @@ namespace MegaSet
             this.schedulerSplitContainerControl.Panel1.Appearance.Options.UseFont = true;
             this.schedulerSplitContainerControl.Panel1.Controls.Add(this.gridSplitContainer1);
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.groupControl5);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.groupControl4);
-            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.groupControl2);
+            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panelControl5);
+            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panelControl4);
+            this.schedulerSplitContainerControl.Panel2.Controls.Add(this.panelControl3);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.groupControl3);
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.groupControl1);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(1004, 571);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(826, 547);
             this.schedulerSplitContainerControl.SplitterPosition = 450;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -664,7 +673,7 @@ namespace MegaSet
             this.gridSplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(548, 571);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(371, 547);
             this.gridSplitContainer1.TabIndex = 0;
             // 
             // gridControl1
@@ -681,7 +690,7 @@ namespace MegaSet
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2,
             this.repositoryItemTimeEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(548, 571);
+            this.gridControl1.Size = new System.Drawing.Size(371, 547);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -836,9 +845,6 @@ namespace MegaSet
             // 
             // groupControl5
             // 
-            this.groupControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl5.Appearance.Options.UseFont = true;
             this.groupControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -846,26 +852,27 @@ namespace MegaSet
             this.groupControl5.Controls.Add(this.simpleButton12);
             this.groupControl5.Controls.Add(this.simpleButton11);
             this.groupControl5.Controls.Add(this.panel5);
-            this.groupControl5.Location = new System.Drawing.Point(311, 374);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl5.Location = new System.Drawing.Point(2, 2);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(134, 181);
+            this.groupControl5.Size = new System.Drawing.Size(144, 207);
             this.groupControl5.TabIndex = 27;
             this.groupControl5.Text = "版本/控制";
             // 
             // simpleButton12
             // 
-            this.simpleButton12.Location = new System.Drawing.Point(29, 135);
+            this.simpleButton12.Location = new System.Drawing.Point(39, 143);
             this.simpleButton12.Name = "simpleButton12";
-            this.simpleButton12.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton12.Size = new System.Drawing.Size(67, 21);
             this.simpleButton12.TabIndex = 19;
             this.simpleButton12.Text = "重启";
             this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
             // 
             // simpleButton11
             // 
-            this.simpleButton11.Location = new System.Drawing.Point(29, 101);
+            this.simpleButton11.Location = new System.Drawing.Point(39, 112);
             this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton11.Size = new System.Drawing.Size(67, 21);
             this.simpleButton11.TabIndex = 18;
             this.simpleButton11.Text = "刷新";
             this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
@@ -873,14 +880,14 @@ namespace MegaSet
             // panel5
             // 
             this.panel5.Controls.Add(this.gaugeControl5);
-            this.panel5.Location = new System.Drawing.Point(35, 46);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(2, 39);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(61, 33);
+            this.panel5.Size = new System.Drawing.Size(140, 57);
             this.panel5.TabIndex = 17;
             // 
             // gaugeControl5
             // 
-            this.gaugeControl5.AutoLayout = false;
             this.gaugeControl5.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -888,7 +895,7 @@ namespace MegaSet
             this.digitalGauge5});
             this.gaugeControl5.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl5.Name = "gaugeControl5";
-            this.gaugeControl5.Size = new System.Drawing.Size(61, 33);
+            this.gaugeControl5.Size = new System.Drawing.Size(140, 57);
             this.gaugeControl5.TabIndex = 17;
             // 
             // digitalGauge5
@@ -897,7 +904,7 @@ namespace MegaSet
             this.digitalGauge5.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#59616F");
             this.digitalGauge5.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent6});
-            this.digitalGauge5.Bounds = new System.Drawing.Rectangle(-8, 1, 72, 30);
+            this.digitalGauge5.Bounds = new System.Drawing.Rectangle(6, 6, 128, 45);
             this.digitalGauge5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Version", true));
             this.digitalGauge5.DigitCount = 3;
             this.digitalGauge5.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
@@ -920,26 +927,25 @@ namespace MegaSet
             // 
             // groupControl4
             // 
-            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl4.Appearance.Options.UseFont = true;
+            this.groupControl4.AutoSize = true;
             this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.groupControl4.CaptionImage = global::MegaSet.Properties.Resources.thermograph3232;
             this.groupControl4.Controls.Add(this.simpleButton10);
             this.groupControl4.Controls.Add(this.panel1);
-            this.groupControl4.Location = new System.Drawing.Point(156, 374);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(2, 2);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(134, 181);
+            this.groupControl4.Size = new System.Drawing.Size(149, 207);
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "温度(C)";
             // 
             // simpleButton10
             // 
-            this.simpleButton10.Location = new System.Drawing.Point(28, 136);
+            this.simpleButton10.Location = new System.Drawing.Point(41, 126);
             this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton10.Size = new System.Drawing.Size(67, 21);
             this.simpleButton10.TabIndex = 15;
             this.simpleButton10.Text = "刷新";
             this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
@@ -947,14 +953,14 @@ namespace MegaSet
             // panel1
             // 
             this.panel1.Controls.Add(this.gaugeControl1);
-            this.panel1.Location = new System.Drawing.Point(11, 46);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(2, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(112, 57);
+            this.panel1.Size = new System.Drawing.Size(145, 64);
             this.panel1.TabIndex = 1;
             // 
             // gaugeControl1
             // 
-            this.gaugeControl1.AutoLayout = false;
             this.gaugeControl1.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -962,7 +968,7 @@ namespace MegaSet
             this.digitalGauge1});
             this.gaugeControl1.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(112, 57);
+            this.gaugeControl1.Size = new System.Drawing.Size(145, 64);
             this.gaugeControl1.TabIndex = 0;
             // 
             // digitalGauge1
@@ -971,7 +977,7 @@ namespace MegaSet
             this.digitalGauge1.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5000");
             this.digitalGauge1.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent1});
-            this.digitalGauge1.Bounds = new System.Drawing.Rectangle(-5, -1, 119, 55);
+            this.digitalGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 133, 52);
             this.digitalGauge1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Temp", true));
             this.digitalGauge1.DigitCount = 3;
             this.digitalGauge1.Name = "digitalGauge1";
@@ -987,52 +993,50 @@ namespace MegaSet
             // 
             // groupControl2
             // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl2.Appearance.Options.UseFont = true;
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.groupControl2.CaptionImage = global::MegaSet.Properties.Resources.voltage3232;
             this.groupControl2.Controls.Add(this.panel2);
             this.groupControl2.Controls.Add(this.simpleButton2);
-            this.groupControl2.Location = new System.Drawing.Point(0, 374);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(2, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(134, 181);
+            this.groupControl2.Size = new System.Drawing.Size(145, 207);
             this.groupControl2.TabIndex = 25;
             this.groupControl2.Text = "电压（伏）";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gaugeControl2);
-            this.panel2.Location = new System.Drawing.Point(5, 36);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(2, 39);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(124, 76);
+            this.panel2.Size = new System.Drawing.Size(141, 62);
             this.panel2.TabIndex = 3;
             // 
             // gaugeControl2
             // 
-            this.gaugeControl2.AutoLayout = false;
             this.gaugeControl2.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl2.Controls.Add(this.panel3);
             this.gaugeControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaugeControl2.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl2.Name = "gaugeControl2";
-            this.gaugeControl2.Size = new System.Drawing.Size(124, 76);
+            this.gaugeControl2.Size = new System.Drawing.Size(141, 62);
             this.gaugeControl2.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.gaugeControl4);
-            this.panel3.Location = new System.Drawing.Point(5, 10);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(119, 69);
+            this.panel3.Size = new System.Drawing.Size(141, 64);
             this.panel3.TabIndex = 23;
             // 
             // gaugeControl4
             // 
-            this.gaugeControl4.AutoLayout = false;
             this.gaugeControl4.BackColor = System.Drawing.Color.Transparent;
             this.gaugeControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1040,7 +1044,7 @@ namespace MegaSet
             this.digitalGauge2});
             this.gaugeControl4.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl4.Name = "gaugeControl4";
-            this.gaugeControl4.Size = new System.Drawing.Size(119, 69);
+            this.gaugeControl4.Size = new System.Drawing.Size(141, 64);
             this.gaugeControl4.TabIndex = 0;
             // 
             // digitalGauge2
@@ -1049,7 +1053,7 @@ namespace MegaSet
             this.digitalGauge2.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5000");
             this.digitalGauge2.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent3});
-            this.digitalGauge2.Bounds = new System.Drawing.Rectangle(-5, -1, 120, 55);
+            this.digitalGauge2.Bounds = new System.Drawing.Rectangle(6, 6, 129, 52);
             this.digitalGauge2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "Voltage", true));
             this.digitalGauge2.DigitCount = 3;
             this.digitalGauge2.Name = "digitalGauge2";
@@ -1065,9 +1069,9 @@ namespace MegaSet
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(28, 136);
+            this.simpleButton2.Location = new System.Drawing.Point(40, 126);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(67, 21);
             this.simpleButton2.TabIndex = 14;
             this.simpleButton2.Text = "刷新";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -1082,17 +1086,18 @@ namespace MegaSet
             this.groupControl3.Controls.Add(this.panelControl2);
             this.groupControl3.Controls.Add(this.simpleButton9);
             this.groupControl3.Controls.Add(this.checkEdit1);
-            this.groupControl3.Location = new System.Drawing.Point(0, 187);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl3.Location = new System.Drawing.Point(0, 168);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(447, 181);
+            this.groupControl3.Size = new System.Drawing.Size(450, 168);
             this.groupControl3.TabIndex = 24;
             this.groupControl3.Text = "GPS时间";
             // 
             // simpleButton8
             // 
-            this.simpleButton8.Location = new System.Drawing.Point(310, 129);
+            this.simpleButton8.Location = new System.Drawing.Point(266, 120);
             this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(108, 32);
+            this.simpleButton8.Size = new System.Drawing.Size(93, 30);
             this.simpleButton8.TabIndex = 24;
             this.simpleButton8.Text = "校准时间";
             // 
@@ -1101,9 +1106,9 @@ namespace MegaSet
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.gaugeControl3);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(2, 33);
+            this.panelControl2.Location = new System.Drawing.Point(2, 39);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(443, 79);
+            this.panelControl2.Size = new System.Drawing.Size(446, 73);
             this.panelControl2.TabIndex = 6;
             // 
             // gaugeControl3
@@ -1115,7 +1120,7 @@ namespace MegaSet
             this.digitalGauge4});
             this.gaugeControl3.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl3.Name = "gaugeControl3";
-            this.gaugeControl3.Size = new System.Drawing.Size(443, 79);
+            this.gaugeControl3.Size = new System.Drawing.Size(446, 73);
             this.gaugeControl3.TabIndex = 23;
             // 
             // digitalGauge4
@@ -1124,7 +1129,7 @@ namespace MegaSet
             this.digitalGauge4.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#39A7CE");
             this.digitalGauge4.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent5});
-            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
+            this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 434, 61);
             this.digitalGauge4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "GPSTime", true));
             this.digitalGauge4.DigitCount = 15;
             this.digitalGauge4.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
@@ -1141,22 +1146,22 @@ namespace MegaSet
             // 
             // simpleButton9
             // 
-            this.simpleButton9.Location = new System.Drawing.Point(182, 129);
+            this.simpleButton9.Location = new System.Drawing.Point(156, 120);
             this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(108, 32);
+            this.simpleButton9.Size = new System.Drawing.Size(93, 30);
             this.simpleButton9.TabIndex = 10;
             this.simpleButton9.Text = "获取GPS时间";
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(17, 133);
+            this.checkEdit1.Location = new System.Drawing.Point(15, 123);
             this.checkEdit1.MenuManager = this.ribbonControl;
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit1.Properties.Appearance.Options.UseFont = true;
             this.checkEdit1.Properties.Caption = "GPS开启";
             this.checkEdit1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style16;
-            this.checkEdit1.Size = new System.Drawing.Size(100, 22);
+            this.checkEdit1.Size = new System.Drawing.Size(86, 22);
             this.checkEdit1.TabIndex = 12;
             // 
             // groupControl1
@@ -1169,17 +1174,18 @@ namespace MegaSet
             this.groupControl1.Controls.Add(this.panelControl1);
             this.groupControl1.Controls.Add(this.timeEdit1);
             this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(447, 181);
+            this.groupControl1.Size = new System.Drawing.Size(450, 168);
             this.groupControl1.TabIndex = 23;
             this.groupControl1.Text = "当前节点时间";
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(310, 129);
+            this.simpleButton3.Location = new System.Drawing.Point(266, 120);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(108, 32);
+            this.simpleButton3.Size = new System.Drawing.Size(93, 30);
             this.simpleButton3.TabIndex = 24;
             this.simpleButton3.Text = "刷新时间";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -1189,9 +1195,9 @@ namespace MegaSet
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.TimeGauge);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(2, 33);
+            this.panelControl1.Location = new System.Drawing.Point(2, 39);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(443, 79);
+            this.panelControl1.Size = new System.Drawing.Size(446, 73);
             this.panelControl1.TabIndex = 6;
             // 
             // TimeGauge
@@ -1203,7 +1209,7 @@ namespace MegaSet
             this.digitalGauge3});
             this.TimeGauge.Location = new System.Drawing.Point(0, 0);
             this.TimeGauge.Name = "TimeGauge";
-            this.TimeGauge.Size = new System.Drawing.Size(443, 79);
+            this.TimeGauge.Size = new System.Drawing.Size(446, 73);
             this.TimeGauge.TabIndex = 23;
             // 
             // digitalGauge3
@@ -1212,7 +1218,7 @@ namespace MegaSet
             this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:WhiteSmoke");
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
-            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 431, 67);
+            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 434, 61);
             this.digitalGauge3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "DateTime", true));
             this.digitalGauge3.DigitCount = 15;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
@@ -1231,7 +1237,7 @@ namespace MegaSet
             // 
             this.timeEdit1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.timeEdit1.EditValue = new System.DateTime(2017, 10, 28, 0, 0, 0, 0);
-            this.timeEdit1.Location = new System.Drawing.Point(17, 131);
+            this.timeEdit1.Location = new System.Drawing.Point(49, 122);
             this.timeEdit1.MenuManager = this.ribbonControl;
             this.timeEdit1.MinimumSize = new System.Drawing.Size(0, 30);
             this.timeEdit1.Name = "timeEdit1";
@@ -1245,14 +1251,14 @@ namespace MegaSet
             this.timeEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.timeEdit1.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             this.timeEdit1.ShowToolTips = false;
-            this.timeEdit1.Size = new System.Drawing.Size(149, 22);
+            this.timeEdit1.Size = new System.Drawing.Size(128, 30);
             this.timeEdit1.TabIndex = 22;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(182, 129);
+            this.simpleButton1.Location = new System.Drawing.Point(156, 120);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(108, 32);
+            this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 10;
             this.simpleButton1.Text = "设置时间";
             // 
@@ -1265,6 +1271,7 @@ namespace MegaSet
             this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
             this.DisableRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
             this.DisableRowStateHelper.GridView = this.gridView1;
+            this.DisableRowStateHelper.ReadonlyRow = true;
             // 
             // ChangedRowStateHelper
             // 
@@ -1274,27 +1281,18 @@ namespace MegaSet
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseFont = true;
             this.ChangedRowStateHelper.AppearanceDisabledRow.Options.UseForeColor = true;
             this.ChangedRowStateHelper.GridView = this.gridView1;
+            this.ChangedRowStateHelper.ReadonlyRow = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(987, 82);
+            this.button1.Location = new System.Drawing.Point(846, 76);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(64, 21);
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1122, 82);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 18);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Visible = false;
             // 
             // navBarControl1
             // 
@@ -1310,7 +1308,7 @@ namespace MegaSet
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 240;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(240, 571);
+            this.navBarControl1.Size = new System.Drawing.Size(240, 547);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -1318,14 +1316,14 @@ namespace MegaSet
             // splitContainerControl
             // 
             this.splitContainerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl.Location = new System.Drawing.Point(0, 149);
+            this.splitContainerControl.Location = new System.Drawing.Point(0, 147);
             this.splitContainerControl.Name = "splitContainerControl";
-            this.splitContainerControl.Padding = new System.Windows.Forms.Padding(6);
+            this.splitContainerControl.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.splitContainerControl.Panel1.Controls.Add(this.navBarControl1);
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(1250, 571);
+            this.splitContainerControl.Size = new System.Drawing.Size(1071, 547);
             this.splitContainerControl.SplitterPosition = 240;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
@@ -1343,15 +1341,41 @@ namespace MegaSet
             this.digitalBackgroundLayerComponent2.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(20F, 0F);
             this.digitalBackgroundLayerComponent2.ZOrder = 1000;
             // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.groupControl2);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelControl3.Location = new System.Drawing.Point(0, 336);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(149, 211);
+            this.panelControl3.TabIndex = 25;
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.groupControl4);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelControl4.Location = new System.Drawing.Point(149, 336);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(153, 211);
+            this.panelControl4.TabIndex = 26;
+            // 
+            // panelControl5
+            // 
+            this.panelControl5.Controls.Add(this.groupControl5);
+            this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl5.Location = new System.Drawing.Point(302, 336);
+            this.panelControl5.Name = "panelControl5";
+            this.panelControl5.Size = new System.Drawing.Size(148, 211);
+            this.panelControl5.TabIndex = 27;
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1250, 753);
+            this.ClientSize = new System.Drawing.Size(1071, 725);
             this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ribbonControl);
             this.Name = "Form1";
@@ -1423,6 +1447,13 @@ namespace MegaSet
             this.splitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalBackgroundLayerComponent2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
+            this.panelControl5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1611,7 +1642,6 @@ namespace MegaSet
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private DevExpress.XtraEditors.TimeEdit timeEdit1;
         private DevExpress.XtraBars.BarButtonGroup barButtonGroup1;
         private DevExpress.XtraBars.BarButtonItem addUserBtn;
@@ -1648,6 +1678,9 @@ namespace MegaSet
         private RowStateHelper ChangedRowStateHelper;
         private DevExpress.XtraBars.BarButtonItem cancelInfoChangeBtn;
         private DevExpress.XtraGrid.Columns.GridColumn GroupID;
+        private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
 
     }
 }
