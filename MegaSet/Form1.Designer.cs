@@ -14,6 +14,8 @@ namespace MegaSet
         private System.ComponentModel.IContainer components = null;
         private int editingRow = -1;
 
+        LocationsEditor nodeLocationEditor;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -596,6 +598,7 @@ namespace MegaSet
             this.cpbTreeView.Location = new System.Drawing.Point(0, 0);
             this.cpbTreeView.Name = "cpbTreeView";
             this.cpbTreeView.OptionsBehavior.Editable = false;
+            this.cpbTreeView.OptionsSelection.SelectNodesOnRightClick = true;
             this.cpbTreeView.OptionsView.ShowColumns = false;
             this.cpbTreeView.OptionsView.ShowHorzLines = false;
             this.cpbTreeView.OptionsView.ShowIndicator = false;
@@ -1271,7 +1274,6 @@ namespace MegaSet
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // navBarControl1
@@ -1458,6 +1460,32 @@ namespace MegaSet
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        void cpbTreeView_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+          
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                if (nodeLocationEditor != null)
+                {
+                    nodeLocationEditor.Close();
+                    
+                }
+                nodeLocationEditor = new LocationsEditor(this.nodeInfoDS);
+                nodeLocationEditor.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                nodeLocationEditor.Location = System.Windows.Forms.Control.MousePosition;
+
+                nodeLocationEditor.Show();
+              
+
+            }
+        }
+
+        void cpbTreeView_DoubleClick(object sender, EventArgs e)
+        {
+            this.cpbTreeView.ShowFindPanel();
+            
         }
 
         void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)

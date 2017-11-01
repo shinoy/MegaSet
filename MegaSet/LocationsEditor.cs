@@ -45,8 +45,8 @@ namespace MegaSet
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("站点名称不允许超过10个字符或者为空，请修改");
             }
-            
-            
+
+          
         }
 
        

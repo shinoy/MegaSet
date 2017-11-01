@@ -228,11 +228,13 @@ namespace MegaSet
 
 
             //this.endpointConnecter.SendCMD("get power", "192.168.1.100");
-        
-           
-            DebugForm debugForm1 = new DebugForm(nodeInfoDS);
 
-            debugForm1.ShowDialog();
+
+            nodeInfoDS.NodeTimeInfo.Rows.Add(1, true, null, null, "200", "caemra", "192.168.1.1", (int)1);
+
+          //  DebugForm debugForm1 = new DebugForm(nodeInfoDS);
+
+            //debugForm1.ShowDialog();
         }
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
@@ -344,6 +346,8 @@ namespace MegaSet
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
             this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
             this.cpbTimeTicker.Elapsed += cpbTimeTicker_Elapsed;
+
+           
            
         }
 

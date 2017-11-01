@@ -104,30 +104,10 @@ namespace MegaSet
 
         private void TestPars(string frame)
         {
-            string tag = frame.Substring(0, 1);
-            if (tag.Equals("8"))
-            {
-                string[] strArray = frame.Split(new char[] { ' ',  }, StringSplitOptions.RemoveEmptyEntries);
-                if(strArray.Length == 5)
-                {
-                 PowerFrameType group = new PowerFrameType();
-                 group.PowerGroup = strArray[0].Substring(strArray[0].Length - 2, 2);
-                 group.Status = strArray[1].Equals("ON") ? true : false;
-                 group.DayTime = strArray[2];
-                 group.StartTime = strArray[3];
-                 group.Duration = strArray[4];
-
-                 this.richTextBox1.AppendText(group.PowerGroup + "\n" +
-                                              group.Status.ToString() + "\n" +
-                                              group.DayTime + "\n" +
-                                              group.StartTime + "\n" +
-                                              group.Duration);
-                    
-                }
-
+            
                
                
-            }
+           
         }
 
         private void DebugForm_FormClosing(object sender, FormClosingEventArgs e)
