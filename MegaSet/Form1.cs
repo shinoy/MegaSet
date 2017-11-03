@@ -841,6 +841,16 @@ namespace MegaSet
            
         }
 
+        private void rightChangeItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void rightDelItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            cpbTreeView.DeleteNode(cpbTreeView.FocusedNode);
+        }
+
        
        
 

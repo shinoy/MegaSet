@@ -8,11 +8,11 @@
   <Shapes>
     <Shape ID="DesignTable:cpbInfo" ZOrder="5" X="931" Y="44" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
     <Shape ID="DesignTable:NodeInfo" ZOrder="6" X="465" Y="202" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
-    <Shape ID="DesignTable:NodeTimeInfo" ZOrder="1" X="502" Y="-31" Height="163" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:NodeTimeInfo" ZOrder="3" X="502" Y="-31" Height="163" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:DispNodeInfo" ZOrder="4" X="54" Y="381" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:cpb_node" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:cpb_node" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>948</X>
@@ -28,7 +28,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:node_nodetime" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:node_nodetime" ZOrder="1" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>558</X>
