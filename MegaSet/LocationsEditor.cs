@@ -13,10 +13,21 @@ namespace MegaSet
     public partial class LocationsEditor : Form
     {
         public NodeInfoDS locationDataset;
+        private bool isCheckEnabled;
+        private string upLevelNodeName;
 
         public LocationsEditor(NodeInfoDS dataset)
         {
             locationDataset = dataset;
+            isCheckEnabled = true;
+            InitializeComponent();
+        }
+
+        public LocationsEditor(NodeInfoDS dataset, bool isLevel2, string upLevelName)
+        {
+            locationDataset = dataset;
+            isCheckEnabled = isLevel2;
+            upLevelNodeName = upLevelName;
             InitializeComponent();
         }
 
@@ -31,7 +42,8 @@ namespace MegaSet
             {
                 try
                 {
-                    this.locationDataset.cpbInfo.Rows.Add(this.textEdit1.Text, "0", this.textEdit1.Text, 0);
+                    this.locationDataset.cpbInfo.Rows.Add(this.textEdit1.Text, checkBox1.Checked ? this.rootLocationDropDownBtn.Text : "0", this.textEdit1.Text, checkBox1.Checked ? 6:0);
+                    MessageBox.Show(this.locationDataset.cpbInfo.Rows[0]["ParentID"].ToString());
                     this.Close();
                 }
                 catch (System.Data.ConstraintException ex)
@@ -47,6 +59,61 @@ namespace MegaSet
             }
 
           
+        }
+
+        private void refreshRootList()
+        {
+            foreach (NodeInfoDS.cpbInfoRow row in locationDataset.cpbInfo.Rows)
+            {
+                if (row.NodeImage == 0)
+                {
+                    DevExpress.XtraBars.BarButtonItem item = new DevExpress.XtraBars.BarButtonItem();
+                    item.Caption = row.ID;
+                    this.rootListPopMenu.AddItem(item);
+                    item.ItemClick += item_ItemClick;
+                    this.rootLocationDropDownBtn.Text = item.Caption;
+                }
+            }
+            if (this.rootLocationDropDownBtn.Text == "")
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("第一级站点列表为空，请创建后选择");
+                this.rootLocationDropDownBtn.Enabled = false;
+                this.checkBox1.Checked = false;
+            }
+        }
+
+        private void cleanUpRootList()
+        {
+            this.rootLocationDropDownBtn.Text = "";
+            this.rootListPopMenu.ClearLinks();
+        }
+
+        private void item_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.rootLocationDropDownBtn.Text = e.Item.Caption;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBox1.Checked == true)
+            {
+                this.rootLocationDropDownBtn.Enabled = true;
+                refreshRootList();
+            }
+            else
+            {
+                this.rootLocationDropDownBtn.Enabled = false;
+                cleanUpRootList();
+            }
+        }
+
+        private void LocationsEditor_Load(object sender, EventArgs e)
+        {
+            if (isCheckEnabled == false)
+            {
+                this.checkBox1.Enabled = false;
+                this.rootLocationDropDownBtn.Text = upLevelNodeName;
+            }
         }
 
        

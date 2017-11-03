@@ -28,29 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.rootLocationDropDownBtn = new DevExpress.XtraEditors.DropDownButton();
+            this.rootListPopMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.rootBarManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rootListPopMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rootBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.checkBox1);
+            this.panelControl1.Controls.Add(this.rootLocationDropDownBtn);
             this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(262, 57);
+            this.panelControl1.Size = new System.Drawing.Size(262, 130);
             this.panelControl1.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(188, 30);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(50, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "上级";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // rootLocationDropDownBtn
+            // 
+            this.rootLocationDropDownBtn.DropDownControl = this.rootListPopMenu;
+            this.rootLocationDropDownBtn.Enabled = false;
+            this.rootLocationDropDownBtn.Location = new System.Drawing.Point(13, 26);
+            this.rootLocationDropDownBtn.Name = "rootLocationDropDownBtn";
+            this.rootLocationDropDownBtn.Size = new System.Drawing.Size(156, 23);
+            this.rootLocationDropDownBtn.TabIndex = 2;
+            // 
+            // rootListPopMenu
+            // 
+            this.rootListPopMenu.Manager = this.rootBarManager;
+            this.rootListPopMenu.Name = "rootListPopMenu";
+            // 
+            // rootBarManager
+            // 
+            this.rootBarManager.DockControls.Add(this.barDockControlTop);
+            this.rootBarManager.DockControls.Add(this.barDockControlBottom);
+            this.rootBarManager.DockControls.Add(this.barDockControlLeft);
+            this.rootBarManager.DockControls.Add(this.barDockControlRight);
+            this.rootBarManager.Form = this;
+            this.rootBarManager.MaxItemId = 0;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(262, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 130);
+            this.barDockControlBottom.Size = new System.Drawing.Size(262, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 130);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(262, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 130);
             // 
             // simpleButton1
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(175, 15);
+            this.simpleButton1.Location = new System.Drawing.Point(175, 70);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 25);
             this.simpleButton1.TabIndex = 1;
@@ -60,7 +135,7 @@
             // textEdit1
             // 
             this.textEdit1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.textEdit1.Location = new System.Drawing.Point(12, 13);
+            this.textEdit1.Location = new System.Drawing.Point(12, 71);
             this.textEdit1.MinimumSize = new System.Drawing.Size(112, 27);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.AutoHeight = false;
@@ -72,14 +147,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(262, 57);
+            this.ClientSize = new System.Drawing.Size(262, 130);
             this.Controls.Add(this.panelControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "LocationsEditor";
             this.Text = "添加站点";
+            this.Load += new System.EventHandler(this.LocationsEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rootListPopMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rootBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -88,6 +172,14 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit textEdit1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private DevExpress.XtraEditors.DropDownButton rootLocationDropDownBtn;
+        private DevExpress.XtraBars.PopupMenu rootListPopMenu;
+        private DevExpress.XtraBars.BarManager rootBarManager;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
 
 
     }

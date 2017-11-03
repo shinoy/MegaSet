@@ -21,7 +21,7 @@ namespace MegaSet
         public EndPointEditorForm(NodeInfoDS dataset)
         {
             myDataset = dataset;
-            isParentEditable = false;
+            isParentEditable = true;
             InitializeComponent();
         }
 
@@ -45,7 +45,7 @@ namespace MegaSet
                 //TBD, 3 level enhence need
                 foreach (NodeInfoDS.cpbInfoRow row in myDataset.cpbInfo.Rows)
                 {
-                    if (row.ParentID == "0")
+                    if (row.NodeImage == 6)
                     {
                         DevExpress.XtraBars.BarButtonItem item = new DevExpress.XtraBars.BarButtonItem();
                         item.Caption = row.ID;
@@ -71,12 +71,12 @@ namespace MegaSet
            
             if (this.dropDownButton1.Text.Length == 0)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("请选择站点名称，新节点将加入选择的站点");
+                DevExpress.XtraEditors.XtraMessageBox.Show("请选择二级站点名称，新节点将加入选择的站点");
                 return;
             }
-            if (textEdit1.Text.Length > 5)
+            if (textEdit1.Text.Length > 15)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("节点备注信息最多允许5个字符，请修改");
+                DevExpress.XtraEditors.XtraMessageBox.Show("节点备注信息最多允许15个字符，请修改");
                 return;
             }
             string currentIpAddress = spinEdit1.Value.ToString()+"."+spinEdit2.Value.ToString()+"."+spinEdit3.Value.ToString()+"."+spinEdit4.Value.ToString();
@@ -89,12 +89,12 @@ namespace MegaSet
             
             try
             {
-                myDataset.cpbInfo.Rows.Add(currentIpAddress, this.dropDownButton1.Text, currentIpAddress + endPointTip, 1);
+                myDataset.cpbInfo.Rows.Add(currentIpAddress, this.dropDownButton1.Text, endPointTip + currentIpAddress, 1);
                 this.Close();
             }
             catch (System.Data.ConstraintException ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("该节点已经存在于"+this.dropDownButton1.Text+",请确认后重新添加");
+                DevExpress.XtraEditors.XtraMessageBox.Show("该节点IP地址已经存在,请确认后重新添加");
                 
             }
            

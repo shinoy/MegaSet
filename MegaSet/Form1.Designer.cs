@@ -62,7 +62,6 @@ namespace MegaSet
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
             this.repositoryItemTimeSpanEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -80,6 +79,9 @@ namespace MegaSet
             this.helpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.cancelInfoChangeBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.rightAdditem = new DevExpress.XtraBars.BarButtonItem();
+            this.rightChangeItem = new DevExpress.XtraBars.BarButtonItem();
+            this.rightDelItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -88,6 +90,7 @@ namespace MegaSet
             this.ribbonPageSkins = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.skinsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.CPBbar = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.cpbTreeView = new DevExpress.XtraTreeList.TreeList();
@@ -161,13 +164,19 @@ namespace MegaSet
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.treeRightBarManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.treeRightPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
             this.navBarGroupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbInfoBindingSource)).BeginInit();
@@ -231,6 +240,8 @@ namespace MegaSet
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeRightBarManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeRightPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // nodeInfoBindingSource
@@ -265,7 +276,6 @@ namespace MegaSet
             this.ribbonControl.ApplicationButtonText = null;
             this.ribbonControl.ApplicationIcon = ((System.Drawing.Bitmap)(resources.GetObject("ribbonControl.ApplicationIcon")));
             this.ribbonControl.ExpandCollapseItem.Id = 0;
-            this.ribbonControl.Images = this.ribbonImageCollection;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
             this.iHelp,
@@ -284,7 +294,10 @@ namespace MegaSet
             this.addUserBtn,
             this.helpBtn,
             this.barButtonItem7,
-            this.cancelInfoChangeBtn});
+            this.cancelInfoChangeBtn,
+            this.rightAdditem,
+            this.rightChangeItem,
+            this.rightDelItem});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 1;
@@ -300,14 +313,6 @@ namespace MegaSet
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
-            // 
-            // ribbonImageCollection
-            // 
-            this.ribbonImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ribbonImageCollection.ImageStream")));
-            this.ribbonImageCollection.Images.SetKeyName(0, "Ribbon_Exit_16x16.png");
-            this.ribbonImageCollection.Images.SetKeyName(1, "Ribbon_Content_16x16.png");
-            this.ribbonImageCollection.Images.SetKeyName(2, "Ribbon_Info_16x16.png");
-            this.ribbonImageCollection.Images.SetKeyName(15, "document_save_2_256px_539656_easyicon.net.png");
             // 
             // iHelp
             // 
@@ -484,6 +489,28 @@ namespace MegaSet
             this.cancelInfoChangeBtn.Name = "cancelInfoChangeBtn";
             this.cancelInfoChangeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.cancelInfoChangeBtn_ItemClick);
             // 
+            // rightAdditem
+            // 
+            this.rightAdditem.Caption = "添加下级";
+            this.rightAdditem.Id = 1;
+            this.rightAdditem.ImageUri.Uri = "Add";
+            this.rightAdditem.Name = "rightAdditem";
+            this.rightAdditem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rightAdditem_ItemClick);
+            // 
+            // rightChangeItem
+            // 
+            this.rightChangeItem.Caption = "修改描述";
+            this.rightChangeItem.Id = 2;
+            this.rightChangeItem.ImageUri.Uri = "Edit";
+            this.rightChangeItem.Name = "rightChangeItem";
+            // 
+            // rightDelItem
+            // 
+            this.rightDelItem.Caption = "删除";
+            this.rightDelItem.Id = 3;
+            this.rightDelItem.ImageUri.Uri = "Delete";
+            this.rightDelItem.Name = "rightDelItem";
+            // 
             // ribbonImageCollectionLarge
             // 
             this.ribbonImageCollectionLarge.ImageSize = new System.Drawing.Size(32, 32);
@@ -566,6 +593,14 @@ namespace MegaSet
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1235, 31);
             // 
+            // ribbonImageCollection
+            // 
+            this.ribbonImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ribbonImageCollection.ImageStream")));
+            this.ribbonImageCollection.Images.SetKeyName(0, "Ribbon_Exit_16x16.png");
+            this.ribbonImageCollection.Images.SetKeyName(1, "Ribbon_Content_16x16.png");
+            this.ribbonImageCollection.Images.SetKeyName(2, "Ribbon_Info_16x16.png");
+            this.ribbonImageCollection.Images.SetKeyName(15, "document_save_2_256px_539656_easyicon.net.png");
+            // 
             // CPBbar
             // 
             this.CPBbar.Caption = "站点信息";
@@ -635,6 +670,7 @@ namespace MegaSet
             this.navbarImageCollection.Images.SetKeyName(3, "break1616.png");
             this.navbarImageCollection.Images.SetKeyName(4, "break.png");
             this.navbarImageCollection.Images.SetKeyName(5, "good1616.png");
+            this.navbarImageCollection.Images.SetKeyName(6, "level23232.png");
             // 
             // navbarImageCollectionLarge
             // 
@@ -1392,6 +1428,52 @@ namespace MegaSet
             this.panelControl3.Size = new System.Drawing.Size(454, 182);
             this.panelControl3.TabIndex = 0;
             // 
+            // treeRightBarManager
+            // 
+            this.treeRightBarManager.DockControls.Add(this.barDockControlTop);
+            this.treeRightBarManager.DockControls.Add(this.barDockControlBottom);
+            this.treeRightBarManager.DockControls.Add(this.barDockControlLeft);
+            this.treeRightBarManager.DockControls.Add(this.barDockControlRight);
+            this.treeRightBarManager.Form = this;
+            this.treeRightBarManager.MaxItemId = 0;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1235, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 759);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1235, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 759);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1235, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 759);
+            // 
+            // treeRightPopupMenu
+            // 
+            this.treeRightPopupMenu.ItemLinks.Add(this.rightAdditem);
+            this.treeRightPopupMenu.ItemLinks.Add(this.rightChangeItem);
+            this.treeRightPopupMenu.ItemLinks.Add(this.rightDelItem);
+            this.treeRightPopupMenu.MultiColumn = DevExpress.Utils.DefaultBoolean.False;
+            this.treeRightPopupMenu.Name = "treeRightPopupMenu";
+            this.treeRightPopupMenu.Ribbon = this.ribbonControl;
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -1402,6 +1484,10 @@ namespace MegaSet
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ribbonControl);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
@@ -1413,8 +1499,8 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
             this.navBarGroupControlContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cpbTreeView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbInfoBindingSource)).EndInit();
@@ -1479,6 +1565,8 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeRightBarManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeRightPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1495,17 +1583,29 @@ namespace MegaSet
 
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                if (nodeLocationEditor != null)
-                {
-                    nodeLocationEditor.Close();
+                //if (nodeLocationEditor != null)
+                //{
+                //    nodeLocationEditor.Close();
                     
-                }
-                nodeLocationEditor = new LocationsEditor(this.nodeInfoDS);
-                nodeLocationEditor.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-                nodeLocationEditor.Location = System.Windows.Forms.Control.MousePosition;
-
-                nodeLocationEditor.Show();
-              
+                //}
+                //nodeLocationEditor = new LocationsEditor(this.nodeInfoDS);
+                //nodeLocationEditor.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                //nodeLocationEditor.Location = System.Windows.Forms.Control.MousePosition;
+                if (cpbTreeView.FocusedNode.Level < 2)  // 1/2 level, enable all 3 buttons
+                {
+                   rightAdditem.Enabled = true;
+                   rightDelItem.Enabled = true;
+                   rightChangeItem.Enabled = true;
+                } else
+                    if (cpbTreeView.FocusedNode.Level == 2) // endPoint level, disable add button
+                    {
+                        rightAdditem.Enabled = false;
+                        rightDelItem.Enabled = true;
+                        rightChangeItem.Enabled = true;
+                    }
+                
+                treeRightPopupMenu.ShowPopup(System.Windows.Forms.Control.MousePosition);
+                
 
             }
         }
@@ -1601,20 +1701,35 @@ namespace MegaSet
 
         }
 
-        
+
+        void expandNodeAllLevel( TreeListNode node)
+        {
+            if (node != null)
+            {
+                if (node.ParentNode != null)
+                {
+                    node.ParentNode.ExpandAll();
+                    expandNodeAllLevel(node.ParentNode);
+                }
+            }
+        }
+
         void cpbTreeView_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
         {
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Add)
             {
-                if (e.Node.ParentNode != null)
+                if (e.Node != null)
                 {
-                    e.Node.ParentNode.ExpandAll();
+                    expandNodeAllLevel(e.Node);
+
+                    if (e.Node.Level == 2)
+                    {
+                        //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
+                        nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
+                    }
+                    
                 }
-                if (e.Node.Level == 1)
-                {
-                  //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
-                    nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
-                }
+               
                     
             }
             if (e.ChangeType == DevExpress.XtraTreeList.NodeChangeTypeEnum.Remove)
@@ -1738,6 +1853,15 @@ namespace MegaSet
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
+        private DevExpress.XtraBars.BarButtonItem rightAdditem;
+        private DevExpress.XtraBars.BarButtonItem rightChangeItem;
+        private DevExpress.XtraBars.BarButtonItem rightDelItem;
+        private DevExpress.XtraBars.BarManager treeRightBarManager;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.PopupMenu treeRightPopupMenu;
 
     }
 }

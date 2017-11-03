@@ -501,7 +501,7 @@ namespace MegaSet
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS, "test");
+            EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS);
             endPointForm.StartPosition = FormStartPosition.CenterParent;
             endPointForm.ShowDialog();
         }
@@ -601,12 +601,12 @@ namespace MegaSet
         {
           
             // if focus on endpoint node, we save the ip address and refresh cpb infomation
-            if (e.Node != null)
+            if (e.Node != null && (System.Windows.Forms.Control.MouseButtons != System.Windows.Forms.MouseButtons.Right))
             {
                 string newIP = e.Node.GetValue("ID").ToString();
                // MessageBox.Show(newIP);
                
-                if ((e.Node.Level == 1 )&& (newIP != currentNodeIp))
+                if ((e.Node.Level == 2 )&& (newIP != currentNodeIp))
                 {
                     if (MessageBox.Show(string.Format("确定要切换到{0}么？", newIP), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
                     {
@@ -818,6 +818,26 @@ namespace MegaSet
             this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
             this.nodeInfoDS.DispNodeInfo.Rows.Clear();
             this.nodeInfoDS.WriteXml(configFileName);
+        }
+
+        private void rightAdditem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (this.cpbTreeView.FocusedNode.Level < 2)
+            {
+                LocationsEditor locationEditor = new LocationsEditor(this.nodeInfoDS, false, cpbTreeView.FocusedNode.GetValue("ID").ToString());
+
+                //  MessageBox.Show(cpbTreeView.FocusedNode.GetValue("ID").ToString());
+                locationEditor.StartPosition = FormStartPosition.CenterParent;
+                locationEditor.ShowDialog();
+
+            }
+            else
+            {
+                EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS, cpbTreeView.FocusedNode.GetValue("ID").ToString());
+                endPointForm.StartPosition = FormStartPosition.CenterParent;
+                endPointForm.ShowDialog();
+            }
+           
         }
 
        
