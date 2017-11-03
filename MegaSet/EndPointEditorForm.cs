@@ -14,26 +14,49 @@ namespace MegaSet
     {
         private NodeInfoDS myDataset;
 
+        private bool isParentEditable = true;
+
+        private string parentName;
+
         public EndPointEditorForm(NodeInfoDS dataset)
         {
             myDataset = dataset;
+            isParentEditable = false;
+            InitializeComponent();
+        }
+
+        public EndPointEditorForm(NodeInfoDS dataset, string ParentName)
+        {
+            myDataset = dataset;
+            isParentEditable = false;
+            parentName = ParentName;
             InitializeComponent();
         }
 
         private void EndPointEditorForm_Load(object sender, EventArgs e)
         {
-
-            foreach (NodeInfoDS.cpbInfoRow row in myDataset.cpbInfo.Rows)
+            if (!isParentEditable)
             {
-                if(row.ParentID == "0")
-                {
-                    DevExpress.XtraBars.BarButtonItem item = new DevExpress.XtraBars.BarButtonItem();
-                    item.Caption = row.ID;
-                    popupMenu1.AddItem(item);
-                    item.ItemClick += item_ItemClick;
-                }
-             
+                this.dropDownButton1.Text = parentName;
+                this.dropDownButton1.Enabled = false;
             }
+            else
+            {
+                //TBD, 3 level enhence need
+                foreach (NodeInfoDS.cpbInfoRow row in myDataset.cpbInfo.Rows)
+                {
+                    if (row.ParentID == "0")
+                    {
+                        DevExpress.XtraBars.BarButtonItem item = new DevExpress.XtraBars.BarButtonItem();
+                        item.Caption = row.ID;
+                        popupMenu1.AddItem(item);
+                        item.ItemClick += item_ItemClick;
+                    }
+
+                }
+            }
+
+         
         }
 
         void item_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -45,7 +68,6 @@ namespace MegaSet
       
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
            
             if (this.dropDownButton1.Text.Length == 0)
             {

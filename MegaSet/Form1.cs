@@ -230,7 +230,7 @@ namespace MegaSet
             //this.endpointConnecter.SendCMD("get power", "192.168.1.100");
 
 
-            nodeInfoDS.NodeTimeInfo.Rows.Add(1, true, null, null, "200", "caemra", "192.168.1.1", (int)1);
+            nodeInfoDS.NodeTimeInfo.Rows.Add(1, true, null, null, "******", "caemra", "192.168.1.1", (int)1);
 
           //  DebugForm debugForm1 = new DebugForm(nodeInfoDS);
 
@@ -247,14 +247,17 @@ namespace MegaSet
                 NodeInfoDS.NodeTimeInfoRow temp = (NodeInfoDS.NodeTimeInfoRow)this.nodeInfoDS.NodeTimeInfo.Select(String.Format("GroupID = '{0}'", rowGroupID))[0];
 
 
-                if (temp.IsEndTimeNull())
-                {
-                    backupTable.Rows[0]["EndTime"] = DBNull.Value;
-                }
-                else
-                {
-                    backupTable.Rows[0]["EndTime"] = temp.EndTime;
-                }
+                // change to use duration instead of endTime, we don't process endTime
+                //if (temp.IsEndTimeNull())
+                //{
+                //    backupTable.Rows[0]["EndTime"] = DBNull.Value;
+                //}
+                //else
+                //{
+                //    backupTable.Rows[0]["EndTime"] = temp.EndTime;
+                //}
+
+
 
                 if (temp.IsStartTimeNull())
                 {
@@ -264,7 +267,7 @@ namespace MegaSet
                 {
                     backupTable.Rows[0]["StartTime"] = temp.StartTime;
                 }
-
+                backupTable.Rows[0]["Duration"] = temp.Duration;
                 backupTable.Rows[0]["GroupName"] = temp.GroupName;
                 backupTable.Rows[0]["IP"] = temp.IP;
               
@@ -341,11 +344,13 @@ namespace MegaSet
 
             this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
+            this.cpbTreeView.MouseClick +=cpbTreeView_MouseClick;
             this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
             this.gridView1.CellValueChanged += gridView1_CellValueChanged;
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
             this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
             this.cpbTimeTicker.Elapsed += cpbTimeTicker_Elapsed;
+         
 
            
            
@@ -430,6 +435,9 @@ namespace MegaSet
               
                 }
                
+
+
+                /*
                     NodeInfoDS.NodeTimeInfoRow row = (NodeInfoDS.NodeTimeInfoRow)e.Row;
 
                  
@@ -459,6 +467,7 @@ namespace MegaSet
                         row.Duration = ((Int32)interval.TotalSeconds).ToString();
                     }
                     this.nodeInfoDS.NodeTimeInfo.AcceptChanges();
+                */
                    
                 this.nodeInfoDS.NodeTimeInfo.RowChanged += NodeTimeInfo_RowChanged;
             }
@@ -492,7 +501,7 @@ namespace MegaSet
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS);
+            EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS, "test");
             endPointForm.StartPosition = FormStartPosition.CenterParent;
             endPointForm.ShowDialog();
         }
@@ -528,9 +537,13 @@ namespace MegaSet
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+            this.gridView1.CloseEditor();
             NodeInfoDS.NodeTimeInfoRow sendRow = (NodeInfoDS.NodeTimeInfoRow)nodeInfoDS.NodeTimeInfo.Rows[editingRow];
-            if (sendRow.IsStartTimeNull() || sendRow.IsEndTimeNull())
+            uint durationTemp;
+            bool parseResult = uint.TryParse(sendRow.Duration, out durationTemp);
+           // MessageBox.Show(uint.Parse(sendRow.Duration).ToString());
+           // MessageBox.Show(sendRow["Status"].ToString());
+            if ((sendRow.IsStartTimeNull() || !parseResult) && sendRow.Status )
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("节点定时信息不完整，请返回修改");
                 return;
@@ -566,11 +579,11 @@ namespace MegaSet
             else
             {
                
-                    TimeSpan powerDuration = sendRow.EndTime - sendRow.StartTime;
+                    //TimeSpan powerDuration = sendRow.EndTime - sendRow.StartTime;
                     
 
-                    string command = string.Format("power on {0} {1} {2}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString(), sendRow.StartTime.ToString("HHmmss"), Math.Floor(powerDuration.TotalMinutes).ToString());
-                  //  MessageBox.Show(command);
+                    string command = string.Format("power on {0} {1} {2}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString(), sendRow.StartTime.ToString("HHmmss"), durationTemp.ToString());
+                     MessageBox.Show(command);
                     protocalAgent.SendCMD(command ,currentNodeIp);
                
                     
@@ -591,7 +604,7 @@ namespace MegaSet
             if (e.Node != null)
             {
                 string newIP = e.Node.GetValue("ID").ToString();
-                MessageBox.Show(newIP);
+               // MessageBox.Show(newIP);
                
                 if ((e.Node.Level == 1 )&& (newIP != currentNodeIp))
                 {
@@ -670,14 +683,16 @@ namespace MegaSet
                 {
                     nodeInfoDS.NodeTimeInfo.Rows[editingRow]["StartTime"] = originalRow.StartTime;
                 }
-                if (originalRow.IsEndTimeNull())
-                {
-                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = DBNull.Value;
-                }
-                else
-                {
-                    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = originalRow.EndTime;
-                }
+
+                // Use duration instead of endtime
+                //if (originalRow.IsEndTimeNull())
+                //{
+                //    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = DBNull.Value;
+                //}
+                //else
+                //{
+                //    nodeInfoDS.NodeTimeInfo.Rows[editingRow]["EndTime"] = originalRow.EndTime;
+                //}
 
 
                

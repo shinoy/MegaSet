@@ -106,6 +106,7 @@ namespace MegaSet
             this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.DurationColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GroupID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.typeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -180,6 +181,7 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
@@ -580,7 +582,7 @@ namespace MegaSet
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(237, 457);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(245, 495);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
@@ -605,7 +607,7 @@ namespace MegaSet
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(237, 457);
+            this.cpbTreeView.Size = new System.Drawing.Size(245, 495);
             this.cpbTreeView.TabIndex = 0;
             // 
             // AddressName
@@ -660,7 +662,7 @@ namespace MegaSet
             // 
             this.gridControl1.DataSource = this.nodeTimeInfoBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbonControl;
@@ -669,7 +671,8 @@ namespace MegaSet
             this.repositoryItemTimeSpanEdit2,
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2,
-            this.repositoryItemTimeEdit1});
+            this.repositoryItemTimeEdit1,
+            this.repositoryItemSpinEdit1});
             this.gridControl1.Size = new System.Drawing.Size(526, 581);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -776,14 +779,32 @@ namespace MegaSet
             // 
             // DurationColumn
             // 
-            this.DurationColumn.Caption = "中止时间";
-            this.DurationColumn.ColumnEdit = this.repositoryItemTimeEdit1;
-            this.DurationColumn.DisplayFormat.FormatString = "hh:mm:ss";
-            this.DurationColumn.FieldName = "EndTime";
+            this.DurationColumn.Caption = "工作时长（分）";
+            this.DurationColumn.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.DurationColumn.FieldName = "Duration";
             this.DurationColumn.Name = "DurationColumn";
             this.DurationColumn.Visible = true;
             this.DurationColumn.VisibleIndex = 4;
             this.DurationColumn.Width = 118;
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.IsFloatValue = false;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
+            1440,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
             // 
             // gridColumn2
             // 
@@ -1289,7 +1310,7 @@ namespace MegaSet
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 245;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
-            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
+            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl1.Size = new System.Drawing.Size(245, 581);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
@@ -1407,6 +1428,7 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
@@ -1464,7 +1486,13 @@ namespace MegaSet
 
         void cpbTreeView_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-          
+
+            if (cpbTreeView.CalcHitInfo(e.Location).HitInfoType != DevExpress.XtraTreeList.HitInfoType.Cell)
+            {
+                return;
+            }
+
+
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 if (nodeLocationEditor != null)
@@ -1709,6 +1737,7 @@ namespace MegaSet
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
 
     }
 }
