@@ -42,8 +42,8 @@ namespace MegaSet
             {
                 try
                 {
-                    this.locationDataset.cpbInfo.Rows.Add(this.textEdit1.Text, checkBox1.Checked ? this.rootLocationDropDownBtn.Text : "0", this.textEdit1.Text, checkBox1.Checked ? 6:0);
-                    MessageBox.Show(this.locationDataset.cpbInfo.Rows[0]["ParentID"].ToString());
+                    this.locationDataset.cpbInfo.Rows.Add(this.textEdit1.Text, String.IsNullOrEmpty(this.rootLocationDropDownBtn.Text) ? "0" : this.rootLocationDropDownBtn.Text, this.textEdit1.Text, String.IsNullOrEmpty(this.rootLocationDropDownBtn.Text) ? 0 : 6);
+                    //MessageBox.Show(this.locationDataset.cpbInfo.Rows[0]["ParentID"].ToString());
                     this.Close();
                 }
                 catch (System.Data.ConstraintException ex)
@@ -103,6 +103,7 @@ namespace MegaSet
             else
             {
                 this.rootLocationDropDownBtn.Enabled = false;
+                this.rootLocationDropDownBtn.Text = "";
                 cleanUpRootList();
             }
         }

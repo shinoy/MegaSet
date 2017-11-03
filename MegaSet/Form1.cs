@@ -822,7 +822,7 @@ namespace MegaSet
 
         private void rightAdditem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (this.cpbTreeView.FocusedNode.Level < 2)
+            if (this.cpbTreeView.FocusedNode.Level == 0)
             {
                 LocationsEditor locationEditor = new LocationsEditor(this.nodeInfoDS, false, cpbTreeView.FocusedNode.GetValue("ID").ToString());
 
@@ -832,6 +832,7 @@ namespace MegaSet
 
             }
             else
+            if(this.cpbTreeView.FocusedNode.Level == 1)
             {
                 EndPointEditorForm endPointForm = new EndPointEditorForm(this.nodeInfoDS, cpbTreeView.FocusedNode.GetValue("ID").ToString());
                 endPointForm.StartPosition = FormStartPosition.CenterParent;
