@@ -12,9 +12,17 @@ using System.IO;
 
 namespace MegaSet
 {
+    
+
     public partial class LogonForm : Form
     {
+        
+
         private string keyFileName = System.Environment.CurrentDirectory + @"\keyE";
+
+        private UserPassDateSetCLS myDataset = new UserPassDateSetCLS();
+
+        private Dictionary<string, UserInfo> userInformationDict = new Dictionary<string, UserInfo>();
 
         public LogonForm()
         {    
@@ -92,7 +100,7 @@ namespace MegaSet
             string keyXmlStr = keyReader.ReadToEnd();
             string EncyptKeyStr = EDncpytString(keyXmlStr, true);
 
-            FileStream fs = new FileStream(keyFileName+"E", FileMode.Truncate);
+            FileStream fs = new FileStream(keyFileName+"E", FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write("test");
             sw.Flush();
@@ -106,11 +114,102 @@ namespace MegaSet
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserPassDateSetCLS myDataset = new UserPassDateSetCLS();
-            myDataset.ReadXml(LoadEncrytedKeyFile());
-            MessageBox.Show(myDataset.Account[0].UserName);
-            myDataset.Account.Rows.Add("test1", "test1", 1);
-            WriteEncryptedKeyFile(myDataset);
+            if (textBox2.Text.Length < 1)
+            {
+                MessageBox.Show("请输入密码登录");
+            }
+            else
+            {
+                if (userInformationDict[this.comboBox1.Text].Password == this.textBox2.Text)
+                {
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("密码错误");
+                }
+            }
+        }
+
+        private void LogonForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                // read key file
+                myDataset.ReadXml(LoadEncrytedKeyFile());
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("用户数据库损坏，请用默认管理员帐户密码登录");
+                // restore default admin user 
+                myDataset.Account.Rows.Clear();
+                myDataset.Account.Rows.Add("Admin", "Admin", "0");
+                WriteEncryptedKeyFile(myDataset);
+            }
+
+
+            // fill account dictionary and select box
+            foreach (UserPassDateSetCLS.AccountRow row in myDataset.Account.Rows)
+            {
+                this.comboBox1.Items.Add(row.UserName);
+                userInformationDict.Add(row.UserName, new UserInfo(row.Password, row.Level));
+            }
+            if (this.comboBox1.Items.Count != 0)
+            {
+                this.comboBox1.SelectedIndex = 0;
+            }
+           
+           
+        }
+
+      
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (textBox2.Text.Length < 1)
+                {
+                    MessageBox.Show("请输入密码登录");
+                }
+                else
+                {
+                    if (userInformationDict[this.comboBox1.Text].Password == this.textBox2.Text)
+                    {
+                        DialogResult = System.Windows.Forms.DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("密码错误");
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+    public class UserInfo
+    {
+        public string Password
+        {
+            get;
+            set;
+        }
+
+        public string Level
+        {
+            get;
+            set;
+        }
+
+        public UserInfo(string password, string level)
+        {
+            Password = password;
+            Level = level;
         }
     }
 }

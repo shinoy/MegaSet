@@ -20,6 +20,7 @@ namespace MegaSet
             DevExpress.UserSkins.BonusSkins.Register();
 
             LogonForm logon = new LogonForm();
+            logon.StartPosition = FormStartPosition.CenterScreen;
             logon.ShowDialog();
             if (logon.DialogResult == DialogResult.OK)
             {

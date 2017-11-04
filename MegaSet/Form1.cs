@@ -786,7 +786,24 @@ namespace MegaSet
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if (this.cpbTreeView.FocusedNode == null)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("请选择要修改名称的节点");
+                return;
+            }
+            bool isExpanded = this.cpbTreeView.FocusedNode.Expanded;
+            ChangeNodeForm changeForm = new ChangeNodeForm(this.nodeInfoDS, this.cpbTreeView.FocusedNode);
+            changeForm.StartPosition = FormStartPosition.CenterParent;
+            this.cpbTreeView.NodeChanged -= cpbTreeView_NodeChanged;
+            changeForm.ShowDialog();
 
+            this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
+
+            //restore the expanded status
+            if (isExpanded)
+            {
+                this.cpbTreeView.FocusedNode.ExpandAll();
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -843,12 +860,29 @@ namespace MegaSet
 
         private void rightChangeItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            bool isExpanded = this.cpbTreeView.FocusedNode.Expanded;
+            ChangeNodeForm changeForm = new ChangeNodeForm(this.nodeInfoDS, this.cpbTreeView.FocusedNode);
+            changeForm.StartPosition = FormStartPosition.CenterParent;
+            this.cpbTreeView.NodeChanged -= cpbTreeView_NodeChanged;
+             changeForm.ShowDialog();
             
+            this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
+
+            //restore the expanded status
+            if (isExpanded)
+            {
+                this.cpbTreeView.FocusedNode.ExpandAll();
+            }
         }
 
         private void rightDelItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             cpbTreeView.DeleteNode(cpbTreeView.FocusedNode);
+        }
+
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.checkEdit1.Checked.ToString());
         }
 
        
