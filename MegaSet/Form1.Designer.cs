@@ -39,24 +39,24 @@ namespace MegaSet
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
             this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
@@ -358,9 +358,9 @@ namespace MegaSet
             this.openFileBtn.Id = 3;
             this.openFileBtn.LargeImageIndex = 2;
             this.openFileBtn.Name = "openFileBtn";
-            toolTipItem1.Text = "从备份的配置文件导入所有节点信息";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.openFileBtn.SuperTip = superToolTip1;
+            toolTipItem10.Text = "从备份的配置文件导入所有节点信息";
+            superToolTip10.Items.Add(toolTipItem10);
+            this.openFileBtn.SuperTip = superToolTip10;
             this.openFileBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.openScheduleItem1_ItemClick);
             // 
             // saveBtn
@@ -369,9 +369,9 @@ namespace MegaSet
             this.saveBtn.Id = 1;
             this.saveBtn.LargeImageIndex = 8;
             this.saveBtn.Name = "saveBtn";
-            toolTipItem2.Text = "备份所有节点信息";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.saveBtn.SuperTip = superToolTip2;
+            toolTipItem11.Text = "备份所有节点信息";
+            superToolTip11.Items.Add(toolTipItem11);
+            this.saveBtn.SuperTip = superToolTip11;
             this.saveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.saveBtn_ItemClick);
             // 
             // barButtonItem1
@@ -380,9 +380,9 @@ namespace MegaSet
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.LargeImageIndex = 6;
             this.barButtonItem1.Name = "barButtonItem1";
-            toolTipItem3.Text = "添加节点信息，节点描述不超过5个字符";
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barButtonItem1.SuperTip = superToolTip3;
+            toolTipItem12.Text = "添加节点信息，节点描述不超过5个字符";
+            superToolTip12.Items.Add(toolTipItem12);
+            this.barButtonItem1.SuperTip = superToolTip12;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
@@ -391,9 +391,9 @@ namespace MegaSet
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.LargeImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipItem4.Text = "删除当前选中的地区或节点";
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barButtonItem2.SuperTip = superToolTip4;
+            toolTipItem13.Text = "删除当前选中的地区或节点";
+            superToolTip13.Items.Add(toolTipItem13);
+            this.barButtonItem2.SuperTip = superToolTip13;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
@@ -402,9 +402,9 @@ namespace MegaSet
             this.barButtonItem3.Id = 1;
             this.barButtonItem3.LargeImageIndex = 0;
             this.barButtonItem3.Name = "barButtonItem3";
-            toolTipItem5.Text = "添加地区名称，最长不超过10个字符";
-            superToolTip5.Items.Add(toolTipItem5);
-            this.barButtonItem3.SuperTip = superToolTip5;
+            toolTipItem14.Text = "添加地区名称，最长不超过10个字符";
+            superToolTip14.Items.Add(toolTipItem14);
+            this.barButtonItem3.SuperTip = superToolTip14;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem4
@@ -413,9 +413,9 @@ namespace MegaSet
             this.barButtonItem4.Id = 2;
             this.barButtonItem4.LargeImageIndex = 1;
             this.barButtonItem4.Name = "barButtonItem4";
-            toolTipItem6.Text = "修改软件登陆密码";
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barButtonItem4.SuperTip = superToolTip6;
+            toolTipItem15.Text = "修改软件登陆密码";
+            superToolTip15.Items.Add(toolTipItem15);
+            this.barButtonItem4.SuperTip = superToolTip15;
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem5
@@ -439,9 +439,9 @@ namespace MegaSet
             this.updateInfoBtn.Id = 5;
             this.updateInfoBtn.LargeImageIndex = 3;
             this.updateInfoBtn.Name = "updateInfoBtn";
-            toolTipItem7.Text = "更新当前节点的定时表";
-            superToolTip7.Items.Add(toolTipItem7);
-            this.updateInfoBtn.SuperTip = superToolTip7;
+            toolTipItem16.Text = "更新当前节点的定时表";
+            superToolTip16.Items.Add(toolTipItem16);
+            this.updateInfoBtn.SuperTip = superToolTip16;
             this.updateInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonGroup1
@@ -457,9 +457,9 @@ namespace MegaSet
             this.addUserBtn.Id = 2;
             this.addUserBtn.LargeImageIndex = 11;
             this.addUserBtn.Name = "addUserBtn";
-            toolTipItem8.Text = "管理用户信息";
-            superToolTip8.Items.Add(toolTipItem8);
-            this.addUserBtn.SuperTip = superToolTip8;
+            toolTipItem17.Text = "管理用户信息";
+            superToolTip17.Items.Add(toolTipItem17);
+            this.addUserBtn.SuperTip = superToolTip17;
             this.addUserBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.addUserBtn_ItemClick);
             // 
             // helpBtn
@@ -468,9 +468,9 @@ namespace MegaSet
             this.helpBtn.Id = 4;
             this.helpBtn.LargeImageIndex = 12;
             this.helpBtn.Name = "helpBtn";
-            toolTipItem9.Text = "显示帮助信息";
-            superToolTip9.Items.Add(toolTipItem9);
-            this.helpBtn.SuperTip = superToolTip9;
+            toolTipItem18.Text = "显示帮助信息";
+            superToolTip18.Items.Add(toolTipItem18);
+            this.helpBtn.SuperTip = superToolTip18;
             // 
             // barButtonItem7
             // 
@@ -901,7 +901,7 @@ namespace MegaSet
             // 
             // simpleButton12
             // 
-            this.simpleButton12.Location = new System.Drawing.Point(40, 149);
+            this.simpleButton12.Location = new System.Drawing.Point(38, 147);
             this.simpleButton12.Name = "simpleButton12";
             this.simpleButton12.Size = new System.Drawing.Size(78, 23);
             this.simpleButton12.TabIndex = 19;
@@ -910,7 +910,7 @@ namespace MegaSet
             // 
             // simpleButton11
             // 
-            this.simpleButton11.Location = new System.Drawing.Point(40, 120);
+            this.simpleButton11.Location = new System.Drawing.Point(38, 118);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(78, 23);
             this.simpleButton11.TabIndex = 18;
@@ -1110,7 +1110,7 @@ namespace MegaSet
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(39, 136);
+            this.simpleButton2.Location = new System.Drawing.Point(37, 136);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(78, 23);
             this.simpleButton2.TabIndex = 14;
@@ -1173,9 +1173,8 @@ namespace MegaSet
             this.digitalGauge4.Bounds = new System.Drawing.Rectangle(6, 6, 438, 67);
             this.digitalGauge4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "GPSTime", true));
             this.digitalGauge4.DigitCount = 15;
-            this.digitalGauge4.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.digitalGauge4.Name = "digitalGauge4";
-            this.digitalGauge4.Text = "2017-11-22 21:23:33";
+            this.digitalGauge4.Text = "2017-01-01 11:11:11";
             // 
             // digitalBackgroundLayerComponent5
             // 

@@ -195,6 +195,11 @@
     <Compile Include="RowStateHelper.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserPassDateSetCLS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserPassDateSetCLS.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +223,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="keyE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="NodeInfoDS.xsc">
       <DependentUpon>NodeInfoDS.xsd</DependentUpon>
     </None>
@@ -238,6 +246,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UserPassDateSetCLS.xsc">
+      <DependentUpon>UserPassDateSetCLS.xsd</DependentUpon>
+    </None>
+    <None Include="UserPassDateSetCLS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserPassDateSetCLS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UserPassDateSetCLS.xss">
+      <DependentUpon>UserPassDateSetCLS.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

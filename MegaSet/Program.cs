@@ -18,9 +18,19 @@ namespace MegaSet
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
-            
 
-            Application.Run(new Form1());
+            LogonForm logon = new LogonForm();
+            logon.ShowDialog();
+            if (logon.DialogResult == DialogResult.OK)
+            {
+                logon.Close();
+                Application.Run(new Form1());
+            }
+            else
+            {
+                logon.Close();
+            }
+            
         }
     }
 }
