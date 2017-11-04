@@ -195,6 +195,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NodeInfoDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PasswordChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordChangeForm.Designer.cs">
+      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -205,6 +211,13 @@
     <Compile Include="ProtocalParserCLS.cs" />
     <Compile Include="RowStateHelper.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserMgmtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMgmtForm.Designer.cs">
+      <DependentUpon>UserMgmtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserPassDateSetCLS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -230,6 +243,9 @@
     <EmbeddedResource Include="LogonForm.resx">
       <DependentUpon>LogonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PasswordChangeForm.resx">
+      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -237,9 +253,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="keyE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="keyE" />
     <None Include="NodeInfoDS.xsc">
       <DependentUpon>NodeInfoDS.xsd</DependentUpon>
     </None>
@@ -298,6 +312,9 @@
     <EmbeddedResource Include="gps3232.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UserMgmtForm.resx">
+      <DependentUpon>UserMgmtForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="voltage3232.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

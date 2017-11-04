@@ -16,13 +16,15 @@ namespace MegaSet
 
     public partial class LogonForm : Form
     {
-        
 
         private string keyFileName = System.Environment.CurrentDirectory + @"\keyE";
 
         private UserPassDateSetCLS myDataset = new UserPassDateSetCLS();
 
         private Dictionary<string, UserInfo> userInformationDict = new Dictionary<string, UserInfo>();
+
+        public string LogOnUser = string.Empty;
+        public string LogOnLevel = "-1";
 
         public LogonForm()
         {    
@@ -122,6 +124,8 @@ namespace MegaSet
             {
                 if (userInformationDict[this.comboBox1.Text].Password == this.textBox2.Text)
                 {
+                    LogOnUser = this.comboBox1.Text;
+                    LogOnLevel = userInformationDict[this.comboBox1.Text].Level;
                     DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
                 else
@@ -133,6 +137,7 @@ namespace MegaSet
 
         private void LogonForm_Load(object sender, EventArgs e)
         {
+           
             try
             {
                 // read key file
@@ -160,6 +165,10 @@ namespace MegaSet
             {
                 this.comboBox1.SelectedIndex = 0;
             }
+            else
+            {
+                this.comboBox1.Text = "";
+            }
            
            
         }
@@ -178,6 +187,8 @@ namespace MegaSet
                 {
                     if (userInformationDict[this.comboBox1.Text].Password == this.textBox2.Text)
                     {
+                        LogOnUser = this.comboBox1.Text;
+                        LogOnLevel = userInformationDict[this.comboBox1.Text].Level;
                         DialogResult = System.Windows.Forms.DialogResult.OK;
                     }
                     else
@@ -189,27 +200,5 @@ namespace MegaSet
         }
 
 
-    }
-
-
-    public class UserInfo
-    {
-        public string Password
-        {
-            get;
-            set;
-        }
-
-        public string Level
-        {
-            get;
-            set;
-        }
-
-        public UserInfo(string password, string level)
-        {
-            Password = password;
-            Level = level;
-        }
     }
 }

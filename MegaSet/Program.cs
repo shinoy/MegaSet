@@ -7,6 +7,8 @@ namespace MegaSet
 {
     static class Program
     {
+        private static string userName;
+        private static int userLevel;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -24,8 +26,11 @@ namespace MegaSet
             logon.ShowDialog();
             if (logon.DialogResult == DialogResult.OK)
             {
+                userName = logon.LogOnUser;
+                userLevel = int.Parse(logon.LogOnLevel);
+                
                 logon.Close();
-                Application.Run(new Form1());
+                Application.Run(new Form1(userName,userLevel));
             }
             else
             {

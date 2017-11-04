@@ -114,6 +114,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.userNameLabelCtl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "LogonForm";
             this.Text = "登陆";
             this.Load += new System.EventHandler(this.LogonForm_Load);

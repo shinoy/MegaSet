@@ -86,7 +86,7 @@ namespace MegaSet
 
                 foreach (NodeInfoDS.cpbInfoRow row in myDataset.cpbInfo.Rows)
                 {
-                    if (row.ID == this.richTextBox1.Text)
+                    if (row.ID == this.richTextBox1.Text && myNode.Level != 2)
                     {
                         DevExpress.XtraEditors.XtraMessageBox.Show("名称已经存在，无法修改");
                         return;

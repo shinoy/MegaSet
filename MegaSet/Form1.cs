@@ -26,11 +26,13 @@ namespace MegaSet
     {
         private System.Timers.Timer systemTimerTicker = new System.Timers.Timer(500);
         private System.Timers.Timer cpbTimeTicker = new System.Timers.Timer(1000);
+        
 
         private string configFileName = @".\Configuration.mgs";
         private string currentNodeIp =string.Empty;
         private bool isEdited = false;
-
+        private string userName = "";
+        private int userLevel = -1;
       
 
         private NodeInfoDS.NodeTimeInfoDataTable backupTable = new NodeInfoDS.NodeTimeInfoDataTable();
@@ -42,9 +44,10 @@ namespace MegaSet
        // ProtocalParserCLS endpointConnecter = new ProtocalParserCLS();
 
 
-        public Form1()
+        public Form1(string user, int level)
         {
-           
+                userName = user;
+                userLevel = level;
                 InitializeComponent();
                 InitSkinGallery();
                 systemTimerTicker.Elapsed += dateTimerTicker_Elapsed;
@@ -164,6 +167,12 @@ namespace MegaSet
 
                     case CPBProtolType.Valtage:
                         this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content;
+                        break;
+                    case CPBProtolType.GPSErr:
+                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content;
+                        break;
+                    case CPBProtolType.GPSTime:
+                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content;
                         break;
 
                     default:
@@ -350,8 +359,11 @@ namespace MegaSet
             this.gridView1.ShowingEditor += gridView1_ShowingEditor;
             this.gridView1.BeforeLeaveRow += gridView1_BeforeLeaveRow;
             this.cpbTimeTicker.Elapsed += cpbTimeTicker_Elapsed;
-         
 
+            if (this.userLevel != 0)
+            {
+                this.addUserBtn.Enabled = false;
+            }
            
            
         }
@@ -486,9 +498,18 @@ namespace MegaSet
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-          //  if (selectedNode != null)
-             
-            cpbTreeView.DeleteNode(cpbTreeView.FocusedNode);
+            if (cpbTreeView.FocusedNode == null)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前未选中任何节点");
+                return;
+            }
+
+            DevExpress.XtraTreeList.Nodes.TreeListNode deleteNode = cpbTreeView.FocusedNode;
+            if (deleteNode.ParentNode != null)
+            {
+                cpbTreeView.SetFocusedNode(deleteNode.ParentNode);
+            }
+            cpbTreeView.DeleteNode(deleteNode);
         }
 
        
@@ -659,7 +680,9 @@ namespace MegaSet
 
         private void addUserBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+            UserMgmtForm userMgmtForm = new UserMgmtForm();
+            userMgmtForm.StartPosition = FormStartPosition.CenterParent;
+            userMgmtForm.ShowDialog();
         }
 
         private void cancelInfoChangeBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -721,7 +744,7 @@ namespace MegaSet
             }
             else
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何通道板节点，请选择节点后更新信息");
             }
         }
 
@@ -733,7 +756,7 @@ namespace MegaSet
             }
             else
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何通道板节点，请选择节点后更新信息");
             }
         }
 
@@ -745,7 +768,7 @@ namespace MegaSet
             }
             else
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何通道板节点，请选择节点后更新信息");
             }
         }
 
@@ -757,7 +780,7 @@ namespace MegaSet
             }
             else
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点，请选择节点后更新信息");
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何通道板节点，请选择节点后更新信息");
             }
         }
 
@@ -781,14 +804,16 @@ namespace MegaSet
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            PasswordChangeForm passwordForm = new PasswordChangeForm(this.userName);
+            passwordForm.StartPosition = FormStartPosition.CenterParent;
+            passwordForm.ShowDialog();
         }
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (this.cpbTreeView.FocusedNode == null)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("请选择要修改名称的节点");
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点");
                 return;
             }
             bool isExpanded = this.cpbTreeView.FocusedNode.Expanded;
@@ -882,7 +907,50 @@ namespace MegaSet
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(this.checkEdit1.Checked.ToString());
+
+            if (checkEdit1.Checked)
+            {
+                if (string.IsNullOrEmpty(currentNodeIp))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("请先选择需要开启GPS的通道板节点");
+                    checkEdit1.Checked = false;
+                }
+                else
+                {
+                    protocalAgent.SendCMD("set gps on", currentNodeIp);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("GPS开启");
+                }
+                
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(currentNodeIp))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("请先选择需要关闭GPS的通道板节点");
+                    checkEdit1.Checked = true;
+                }
+                else
+                {
+                    protocalAgent.SendCMD("set gps off", currentNodeIp);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("GPS关闭");
+                }
+            
+            }
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(currentNodeIp))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("请先选择需要获取GPS时间的通道板节点");
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("应保证GPS模块上电至少一分钟且间隔不应过短(3s)，确保时间准确！");
+                protocalAgent.SendCMD("get gps",currentNodeIp);
+               
+            }
+           
         }
 
        

@@ -68,6 +68,8 @@
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.richTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "ChangeNodeForm";
             this.Text = "修改节点描述";
             this.Load += new System.EventHandler(this.ChangeNodeForm_Load);

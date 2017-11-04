@@ -1191,6 +1191,7 @@ namespace MegaSet
             this.simpleButton9.Size = new System.Drawing.Size(108, 32);
             this.simpleButton9.TabIndex = 10;
             this.simpleButton9.Text = "获取GPS时间";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // checkEdit1
             // 

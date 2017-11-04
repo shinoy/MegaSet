@@ -14,7 +14,9 @@ namespace MegaSet
         Date,
         Valtage,
         Temp,
-        Version
+        Version,
+        GPSErr,
+        GPSTime
     }
 
     /// <summary>
@@ -165,6 +167,7 @@ namespace MegaSet
                  
              } // end of get power
 
+            // get time
              if( tag.Equals("1") )
              {
                 string dateStr = frame.Substring(6,frame.Length -6);
@@ -190,6 +193,19 @@ namespace MegaSet
              {
                  string verStr = frame.Substring(frame.Length - 5, 5);
                  DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.Version, ipAddress, verStr)));
+             }
+
+            //get gps error
+             if (tag.Equals("3"))
+             {
+                 DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.GPSErr, ipAddress, "Error")));
+             }
+
+            //get gps UTC
+             if (tag.Equals("2"))
+             {
+                 string gpsDateStr = frame.Substring(5, frame.Length - 5);
+                 DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.GPSTime, ipAddress, gpsDateStr)));
              }
 
 

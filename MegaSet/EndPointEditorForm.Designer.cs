@@ -57,10 +57,10 @@
             // 
             this.dropDownButton1.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show;
             this.dropDownButton1.DropDownControl = this.popupMenu1;
-            this.dropDownButton1.Location = new System.Drawing.Point(79, 48);
+            this.dropDownButton1.Location = new System.Drawing.Point(79, 44);
             this.dropDownButton1.MinimumSize = new System.Drawing.Size(156, 0);
             this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.Size = new System.Drawing.Size(156, 30);
+            this.dropDownButton1.Size = new System.Drawing.Size(156, 28);
             this.dropDownButton1.TabIndex = 0;
             // 
             // popupMenu1
@@ -88,7 +88,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 196);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 181);
             this.barDockControlBottom.Size = new System.Drawing.Size(269, 0);
             // 
             // barDockControlLeft
@@ -96,20 +96,20 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 196);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 181);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(269, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 196);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 181);
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(25, 55);
+            this.labelControl1.Location = new System.Drawing.Point(25, 51);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 13);
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "选择地区";
             // 
@@ -120,7 +120,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(25, 13);
+            this.spinEdit1.Location = new System.Drawing.Point(25, 12);
             this.spinEdit1.MenuManager = this.barManager1;
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -142,7 +142,7 @@
             0,
             0,
             0});
-            this.spinEdit2.Location = new System.Drawing.Point(79, 13);
+            this.spinEdit2.Location = new System.Drawing.Point(79, 12);
             this.spinEdit2.MenuManager = this.barManager1;
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -164,7 +164,7 @@
             0,
             0,
             0});
-            this.spinEdit3.Location = new System.Drawing.Point(133, 13);
+            this.spinEdit3.Location = new System.Drawing.Point(133, 12);
             this.spinEdit3.MenuManager = this.barManager1;
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -186,7 +186,7 @@
             0,
             0,
             0});
-            this.spinEdit4.Location = new System.Drawing.Point(187, 13);
+            this.spinEdit4.Location = new System.Drawing.Point(187, 12);
             this.spinEdit4.MenuManager = this.barManager1;
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -205,9 +205,9 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(25, 132);
+            this.simpleButton1.Location = new System.Drawing.Point(25, 122);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(210, 40);
+            this.simpleButton1.Size = new System.Drawing.Size(210, 37);
             this.simpleButton1.TabIndex = 10;
             this.simpleButton1.Text = "添加节点";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -215,7 +215,7 @@
             // textEdit1
             // 
             this.textEdit1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.textEdit1.Location = new System.Drawing.Point(79, 93);
+            this.textEdit1.Location = new System.Drawing.Point(79, 86);
             this.textEdit1.MenuManager = this.barManager1;
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(156, 20);
@@ -223,17 +223,17 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(25, 95);
+            this.labelControl2.Location = new System.Drawing.Point(25, 88);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 13);
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
             this.labelControl2.TabIndex = 16;
             this.labelControl2.Text = "节点备注";
             // 
             // EndPointEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 196);
+            this.ClientSize = new System.Drawing.Size(269, 181);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.simpleButton1);
@@ -247,6 +247,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "EndPointEditorForm";
             this.Text = "添加节点";
             this.Load += new System.EventHandler(this.EndPointEditorForm_Load);
