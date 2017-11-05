@@ -155,25 +155,25 @@ namespace MegaSet
 
                     case CPBProtolType.Date:
                         this.cpbTimeTicker.Stop();
-                        this.nodeInfoDS.DispNodeInfo[0]["DateTime"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["DateTime"] = e.Data.Content.ToString();
                         this.cpbTimeTicker.Start();
                         break;
 
                     case CPBProtolType.Temp:
-                        this.nodeInfoDS.DispNodeInfo[0]["Temp"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["Temp"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.Version:
-                        this.nodeInfoDS.DispNodeInfo[0]["Version"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["Version"] = e.Data.Content.ToString();
                         break;
 
                     case CPBProtolType.Valtage:
-                        this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.GPSErr:
-                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.GPSTime:
-                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content;
+                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content.ToString();
                         break;
 
                     default:
@@ -374,9 +374,24 @@ namespace MegaSet
 
         void cpbTimeTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-             DateTime tempTime = DateTime.Parse(nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"].ToString());
-             tempTime = tempTime.AddSeconds(1);
-             nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = tempTime.ToString("yyyy-MM-dd HH:mm:ss");
+            if (nodeInfoDS.DispNodeInfo.Rows.Count < 1)
+            {
+                return;
+            }
+            try
+            {
+                DateTime tempTime = DateTime.Parse(nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"].ToString());
+                tempTime = tempTime.AddSeconds(1);
+                nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = tempTime.ToString("yyyy-MM-dd HH:mm:ss");
+            
+            }
+            catch(Exception ex)
+            {
+                return;
+                // eat it
+            }
+             
+            
            
         }
 

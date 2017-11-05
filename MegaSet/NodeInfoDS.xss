@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:cpbInfo" ZOrder="5" X="931" Y="44" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
     <Shape ID="DesignTable:NodeInfo" ZOrder="6" X="465" Y="202" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:NodeTimeInfo" ZOrder="3" X="502" Y="-31" Height="163" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:DispNodeInfo" ZOrder="4" X="54" Y="381" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
+    <Shape ID="DesignTable:DispNodeInfo" ZOrder="4" X="54" Y="381" Height="296" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="292" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:cpb_node" ZOrder="2" LineWidth="11">

@@ -736,7 +736,9 @@ namespace MegaSet
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.gridView1.OptionsCustomization.AllowFilter = false;
+            this.gridView1.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Direct;
             this.gridView1.OptionsFilter.AllowFilterEditor = false;
             this.gridView1.OptionsFind.AllowFindPanel = false;
             this.gridView1.OptionsHint.ShowColumnHeaderHints = false;
@@ -744,9 +746,6 @@ namespace MegaSet
             this.gridView1.OptionsMenu.EnableFooterMenu = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Direct;
-            // this make grid cell shall be focused firstly before editing
-            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.gridView1.RowHeight = 40;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.typeColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -1336,6 +1335,7 @@ namespace MegaSet
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // navBarControl1
