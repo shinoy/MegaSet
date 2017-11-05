@@ -130,6 +130,7 @@ namespace MegaSet
                 }
                 else
                 {
+                    this.textBox2.Clear();
                     MessageBox.Show("密码错误");
                 }
             }
@@ -193,6 +194,7 @@ namespace MegaSet
                     }
                     else
                     {
+                        this.textBox2.Clear();
                         MessageBox.Show("密码错误");
                     }
                 }

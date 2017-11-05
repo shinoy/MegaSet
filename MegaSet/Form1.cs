@@ -15,6 +15,7 @@ using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraScheduler;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 
 
 
@@ -26,9 +27,9 @@ namespace MegaSet
     {
         private System.Timers.Timer systemTimerTicker = new System.Timers.Timer(500);
         private System.Timers.Timer cpbTimeTicker = new System.Timers.Timer(1000);
-        
 
-        private string configFileName = @".\Configuration.mgs";
+
+        private string configFileName = System.Environment.CurrentDirectory + @"\Configuration.mgs";
         private string currentNodeIp =string.Empty;
         private bool isEdited = false;
         private string userName = "";
@@ -336,7 +337,9 @@ namespace MegaSet
 
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.None;
             this.cpbTreeView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Percent50;
-           
+
+          
+
             try
             {
                 this.nodeInfoDS.ReadXml(configFileName);
@@ -913,7 +916,9 @@ namespace MegaSet
                 if (string.IsNullOrEmpty(currentNodeIp))
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("请先选择需要开启GPS的通道板节点");
+                    checkEdit1.CheckedChanged -= checkEdit1_CheckedChanged;
                     checkEdit1.Checked = false;
+                    checkEdit1.CheckedChanged += checkEdit1_CheckedChanged;
                 }
                 else
                 {
@@ -927,7 +932,9 @@ namespace MegaSet
                 if (string.IsNullOrEmpty(currentNodeIp))
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("请先选择需要关闭GPS的通道板节点");
+                    checkEdit1.CheckedChanged -= checkEdit1_CheckedChanged;
                     checkEdit1.Checked = true;
+                    checkEdit1.CheckedChanged += checkEdit1_CheckedChanged;
                 }
                 else
                 {

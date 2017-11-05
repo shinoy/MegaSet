@@ -253,7 +253,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="keyE" />
+    <None Include="keyE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="NodeInfoDS.xsc">
       <DependentUpon>NodeInfoDS.xsd</DependentUpon>
     </None>
