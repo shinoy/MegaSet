@@ -240,11 +240,11 @@ namespace MegaSet
             //this.endpointConnecter.SendCMD("get power", "192.168.1.100");
 
 
-            nodeInfoDS.NodeTimeInfo.Rows.Add(1, true, null, null, "******", "caemra", "192.168.1.1", (int)1);
+           // nodeInfoDS.NodeTimeInfo.Rows.Add(1, true, null, null, "******", "caemra", "192.168.1.1", (int)1);
 
-          //  DebugForm debugForm1 = new DebugForm(nodeInfoDS);
+            DebugForm debugForm1 = new DebugForm(nodeInfoDS);
 
-            //debugForm1.ShowDialog();
+            debugForm1.ShowDialog();
         }
 
         void gridView1_ShowingEditor(object sender, CancelEventArgs e)
@@ -353,6 +353,7 @@ namespace MegaSet
             }
 
             this.nodeInfoDS.DispNodeInfo.Rows.Add(null, null, null, null, null);
+          
 
             this.cpbTreeView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.cpbTreeView_FocusedNodeChanged);
             this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
@@ -376,6 +377,7 @@ namespace MegaSet
              DateTime tempTime = DateTime.Parse(nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"].ToString());
              tempTime = tempTime.AddSeconds(1);
              nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = tempTime.ToString("yyyy-MM-dd HH:mm:ss");
+           
         }
 
  
@@ -607,7 +609,6 @@ namespace MegaSet
                     
 
                     string command = string.Format("power on {0} {1} {2}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString(), sendRow.StartTime.ToString("HHmmss"), durationTemp.ToString());
-                     MessageBox.Show(command);
                     protocalAgent.SendCMD(command ,currentNodeIp);
                
                     
@@ -638,6 +639,9 @@ namespace MegaSet
                         return;
                     }
 
+                    //stop current time increasing.
+                    this.cpbTimeTicker.Stop();
+
                     currentNodeIp = newIP;
                     isEdited = false;
                     editingRow = -1;
@@ -656,7 +660,7 @@ namespace MegaSet
 
                     this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
 
-                    nodeInfoDS.NodeTimeInfo.Rows.Clear();
+            
                     if (currentNodeIp != string.Empty)
                     {
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
@@ -840,7 +844,7 @@ namespace MegaSet
             {
                 if (currentNodeIp != string.Empty)
                 {
-                    DateTime timeSet = DateTime.Parse(timeEdit1.Text);
+                    DateTime timeSet = DateTime.Parse(this.timeEdit1.Text);
                     string str = timeSet.ToString("HHmmssyyMMdd");
                   //  MessageBox.Show(string.Format("set time {0}", str));
                     protocalAgent.SendCMD(string.Format("set time {0}", str), currentNodeIp);
@@ -959,6 +963,16 @@ namespace MegaSet
             }
            
         }
+
+        private void timeEdit1_Click(object sender, EventArgs e)
+        {
+            if (this.timeEdit1.IsPopupOpen == false)
+            {
+                this.timeEdit1.ShowPopup();
+            }
+        }
+
+      
 
        
        

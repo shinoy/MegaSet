@@ -308,7 +308,7 @@ namespace MegaSet
             this.ribbonPageSkins});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1478, 149);
+            this.ribbonControl.Size = new System.Drawing.Size(1478, 150);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Toolbar.ItemLinks.Add(this.iHelp);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
@@ -590,10 +590,10 @@ namespace MegaSet
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.datetimeInfo);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 784);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 786);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1478, 33);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1478, 31);
             // 
             // ribbonImageCollection
             // 
@@ -619,7 +619,7 @@ namespace MegaSet
             this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
             this.navBarGroupControlContainer1.Controls.Add(this.cpbTreeView);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(245, 561);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(245, 550);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // cpbTreeView
@@ -644,7 +644,7 @@ namespace MegaSet
             this.cpbTreeView.OptionsView.ShowVertLines = false;
             this.cpbTreeView.RootValue = "0";
             this.cpbTreeView.SelectImageList = this.navbarImageCollection;
-            this.cpbTreeView.Size = new System.Drawing.Size(245, 561);
+            this.cpbTreeView.Size = new System.Drawing.Size(245, 550);
             this.cpbTreeView.TabIndex = 0;
             // 
             // AddressName
@@ -693,7 +693,7 @@ namespace MegaSet
             this.gridSplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(767, 635);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(769, 636);
             this.gridSplitContainer1.TabIndex = 0;
             // 
             // gridControl1
@@ -711,7 +711,7 @@ namespace MegaSet
             this.repositoryItemDateEdit2,
             this.repositoryItemTimeEdit1,
             this.repositoryItemSpinEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(767, 635);
+            this.gridControl1.Size = new System.Drawing.Size(769, 636);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -895,7 +895,7 @@ namespace MegaSet
             this.groupControl5.Location = new System.Drawing.Point(302, 2);
             this.groupControl5.MinimumSize = new System.Drawing.Size(150, 0);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(150, 243);
+            this.groupControl5.Size = new System.Drawing.Size(150, 244);
             this.groupControl5.TabIndex = 27;
             this.groupControl5.Text = "版本/控制";
             // 
@@ -921,7 +921,7 @@ namespace MegaSet
             // 
             this.panel5.Controls.Add(this.gaugeControl5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(2, 33);
+            this.panel5.Location = new System.Drawing.Point(2, 39);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(146, 61);
             this.panel5.TabIndex = 17;
@@ -977,7 +977,7 @@ namespace MegaSet
             this.groupControl4.Location = new System.Drawing.Point(2, 2);
             this.groupControl4.MinimumSize = new System.Drawing.Size(150, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(150, 243);
+            this.groupControl4.Size = new System.Drawing.Size(150, 244);
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "温度(C)";
             // 
@@ -994,7 +994,7 @@ namespace MegaSet
             // 
             this.panel1.Controls.Add(this.gaugeControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(2, 33);
+            this.panel1.Location = new System.Drawing.Point(2, 39);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(146, 69);
             this.panel1.TabIndex = 1;
@@ -1043,7 +1043,7 @@ namespace MegaSet
             this.groupControl2.Location = new System.Drawing.Point(152, 2);
             this.groupControl2.MinimumSize = new System.Drawing.Size(150, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(150, 243);
+            this.groupControl2.Size = new System.Drawing.Size(150, 244);
             this.groupControl2.TabIndex = 25;
             this.groupControl2.Text = "电压（伏）";
             // 
@@ -1051,7 +1051,7 @@ namespace MegaSet
             // 
             this.panel2.Controls.Add(this.gaugeControl2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 33);
+            this.panel2.Location = new System.Drawing.Point(2, 39);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(146, 67);
             this.panel2.TabIndex = 3;
@@ -1147,7 +1147,7 @@ namespace MegaSet
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.gaugeControl3);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(2, 33);
+            this.panelControl2.Location = new System.Drawing.Point(2, 39);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(450, 79);
             this.panelControl2.TabIndex = 6;
@@ -1186,7 +1186,7 @@ namespace MegaSet
             // 
             // simpleButton9
             // 
-            this.simpleButton9.Location = new System.Drawing.Point(191, 128);
+            this.simpleButton9.Location = new System.Drawing.Point(205, 128);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(108, 32);
             this.simpleButton9.TabIndex = 10;
@@ -1227,18 +1227,21 @@ namespace MegaSet
             // 
             // timeEdit1
             // 
-            this.timeEdit1.EditValue = new System.DateTime(2017, 11, 4, 0, 0, 0, 0);
-            this.timeEdit1.Location = new System.Drawing.Point(23, 136);
+            this.timeEdit1.EditValue = new System.DateTime(2017, 11, 5, 0, 0, 0, 0);
+            this.timeEdit1.Location = new System.Drawing.Point(25, 136);
             this.timeEdit1.MenuManager = this.ribbonControl;
-            this.timeEdit1.MinimumSize = new System.Drawing.Size(0, 30);
             this.timeEdit1.Name = "timeEdit1";
-            this.timeEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.timeEdit1.Properties.AutoHeight = false;
             this.timeEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.timeEdit1.Properties.Mask.EditMask = "G";
-            this.timeEdit1.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
-            this.timeEdit1.Size = new System.Drawing.Size(139, 22);
+            this.timeEdit1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.timeEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.timeEdit1.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.timeEdit1.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm:ss";
+            this.timeEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.timeEdit1.Size = new System.Drawing.Size(164, 31);
             this.timeEdit1.TabIndex = 25;
+            this.timeEdit1.Click += new System.EventHandler(this.timeEdit1_Click);
             // 
             // simpleButton3
             // 
@@ -1254,7 +1257,7 @@ namespace MegaSet
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.TimeGauge);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(2, 33);
+            this.panelControl1.Location = new System.Drawing.Point(2, 39);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(446, 79);
             this.panelControl1.TabIndex = 6;
@@ -1294,7 +1297,7 @@ namespace MegaSet
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(192, 136);
+            this.simpleButton1.Location = new System.Drawing.Point(205, 135);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(108, 32);
             this.simpleButton1.TabIndex = 10;
@@ -1324,13 +1327,12 @@ namespace MegaSet
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(987, 82);
+            this.button1.Location = new System.Drawing.Point(944, 83);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // navBarControl1
@@ -1347,7 +1349,7 @@ namespace MegaSet
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 245;
             this.navBarControl1.OptionsNavPane.ShowOverflowPanel = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(245, 635);
+            this.navBarControl1.Size = new System.Drawing.Size(245, 636);
             this.navBarControl1.SmallImages = this.navbarImageCollection;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -1368,13 +1370,13 @@ namespace MegaSet
             // MainSplitContainerControl1
             // 
             this.MainSplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainSplitContainerControl1.Location = new System.Drawing.Point(0, 149);
+            this.MainSplitContainerControl1.Location = new System.Drawing.Point(0, 150);
             this.MainSplitContainerControl1.Name = "MainSplitContainerControl1";
             this.MainSplitContainerControl1.Panel1.Controls.Add(this.navBarControl1);
             this.MainSplitContainerControl1.Panel1.Text = "Panel1";
             this.MainSplitContainerControl1.Panel2.Controls.Add(this.InfoSplitContainerControl1);
             this.MainSplitContainerControl1.Panel2.Text = "Panel2";
-            this.MainSplitContainerControl1.Size = new System.Drawing.Size(1478, 635);
+            this.MainSplitContainerControl1.Size = new System.Drawing.Size(1478, 636);
             this.MainSplitContainerControl1.SplitterPosition = 245;
             this.MainSplitContainerControl1.TabIndex = 28;
             this.MainSplitContainerControl1.Text = "splitContainerControl1";
@@ -1393,7 +1395,7 @@ namespace MegaSet
             this.InfoSplitContainerControl1.Panel2.Controls.Add(this.panelControl3);
             this.InfoSplitContainerControl1.Panel2.MinSize = 450;
             this.InfoSplitContainerControl1.Panel2.Text = "Panel2";
-            this.InfoSplitContainerControl1.Size = new System.Drawing.Size(1227, 635);
+            this.InfoSplitContainerControl1.Size = new System.Drawing.Size(1228, 636);
             this.InfoSplitContainerControl1.SplitterPosition = 454;
             this.InfoSplitContainerControl1.TabIndex = 0;
             this.InfoSplitContainerControl1.Text = "splitContainerControl1";
@@ -1406,7 +1408,7 @@ namespace MegaSet
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 388);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(454, 247);
+            this.panelControl5.Size = new System.Drawing.Size(454, 248);
             this.panelControl5.TabIndex = 2;
             // 
             // panelControl4
@@ -1481,9 +1483,9 @@ namespace MegaSet
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1478, 817);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.MainSplitContainerControl1);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ribbonControl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

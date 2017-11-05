@@ -170,7 +170,7 @@ namespace MegaSet
                 }
                 else
                 {
-                    myDataset.Account.Rows.Add(this.textEdit1.Text, this.textEdit1.Text, 1);
+                    myDataset.Account.Rows.Add(this.textEdit1.Text, "111111", 1);
                   
                     WriteEncryptedKeyFile(myDataset);
                     DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("{0}添加成功",this.textEdit1.Text));
