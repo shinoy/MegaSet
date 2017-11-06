@@ -430,7 +430,7 @@ namespace MegaSet
         {
             foreach (NodeInfoDS.cpbInfoRow cpbRow in nodeInfoDS.cpbInfo.Rows)
             {
-                if (cpbRow.ParentID == "0")
+                if (cpbRow.NodeImage != 1)
                 {
                     return;
                 }
@@ -614,7 +614,6 @@ namespace MegaSet
 
             if (!(bool)nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"])
             {
-
                 protocalAgent.SendCMD(string.Format("power off {0}", nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"].ToString()), currentNodeIp);
             }
             else
@@ -673,6 +672,8 @@ namespace MegaSet
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = "____-__-__ __:__:__";
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Version"] = "_._._";
 
+                    this.timeEdit1.Time = DateTime.Now;
+
                     this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
 
             
@@ -686,7 +687,8 @@ namespace MegaSet
             }
             else
             {
-                currentNodeIp = string.Empty;
+                // we don't change current IP address if focus on other node.
+                // currentNodeIp = string.Empty;
             }
 
           
@@ -855,6 +857,11 @@ namespace MegaSet
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            if (DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("确定要重新设置通道板时间么？"), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+
             try
             {
                 if (currentNodeIp != string.Empty)
@@ -985,6 +992,77 @@ namespace MegaSet
             {
                 this.timeEdit1.ShowPopup();
             }
+        }
+
+        private void rightRefreshItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            if ( this.cpbTreeView.FocusedNode != null )
+            {
+                string newIP =  this.cpbTreeView.FocusedNode.GetValue("ID").ToString();
+                // MessageBox.Show(newIP);
+
+                if ( newIP != currentNodeIp)
+                {
+                    if (MessageBox.Show(string.Format("确定要切换到{0}么？", newIP), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                        // if cancel, we do nothing
+                        return;
+                    }
+
+                    //stop current time increasing.
+                    this.cpbTimeTicker.Stop();
+
+                    currentNodeIp = newIP;
+                    isEdited = false;
+                    editingRow = -1;
+
+                    this.updateInfoBtn.Enabled = false;
+                    this.cancelInfoChangeBtn.Enabled = false;
+
+                    this.DisableRowStateHelper.DisabledRows.Clear();
+                    this.ChangedRowStateHelper.DisabledRows.Clear();
+
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Temp"] = "__._";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Voltage"] = "__._";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["GPSTime"] = "____-__-__ __:__:__";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = "____-__-__ __:__:__";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["Version"] = "_._._";
+
+                    this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
+
+                    this.timeEdit1.Time = DateTime.Now;
+
+
+                    if (currentNodeIp != string.Empty)
+                    {
+                        this.protocalAgent.SendCMD("get power", currentNodeIp);
+                    }
+                }
+                else
+                {
+
+                     isEdited = false;
+                     editingRow = -1;
+
+                     this.updateInfoBtn.Enabled = false;
+                     this.cancelInfoChangeBtn.Enabled = false;
+
+                     this.DisableRowStateHelper.DisabledRows.Clear();
+                     this.ChangedRowStateHelper.DisabledRows.Clear();
+
+                     this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
+
+
+                    if (currentNodeIp != string.Empty)
+                    {
+                        this.protocalAgent.SendCMD("get power", currentNodeIp);
+                    }
+                    
+                }
+
+            }
+                   
         }
 
       

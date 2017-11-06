@@ -82,6 +82,7 @@ namespace MegaSet
             this.rightAdditem = new DevExpress.XtraBars.BarButtonItem();
             this.rightChangeItem = new DevExpress.XtraBars.BarButtonItem();
             this.rightDelItem = new DevExpress.XtraBars.BarButtonItem();
+            this.rightRefreshItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -170,6 +171,8 @@ namespace MegaSet
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.treeRightPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nodeInfoDS)).BeginInit();
@@ -242,6 +245,8 @@ namespace MegaSet
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeRightBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeRightPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             this.SuspendLayout();
             // 
             // nodeInfoBindingSource
@@ -297,10 +302,11 @@ namespace MegaSet
             this.cancelInfoChangeBtn,
             this.rightAdditem,
             this.rightChangeItem,
-            this.rightDelItem});
+            this.rightDelItem,
+            this.rightRefreshItem});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 1;
+            this.ribbonControl.MaxItemId = 2;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -507,11 +513,19 @@ namespace MegaSet
             // 
             // rightDelItem
             // 
-            this.rightDelItem.Caption = "删除";
+            this.rightDelItem.Caption = "删除节点";
             this.rightDelItem.Id = 3;
             this.rightDelItem.ImageUri.Uri = "Delete";
             this.rightDelItem.Name = "rightDelItem";
             this.rightDelItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rightDelItem_ItemClick);
+            // 
+            // rightRefreshItem
+            // 
+            this.rightRefreshItem.Caption = "刷新定时";
+            this.rightRefreshItem.Id = 1;
+            this.rightRefreshItem.ImageUri.Uri = "Refresh";
+            this.rightRefreshItem.Name = "rightRefreshItem";
+            this.rightRefreshItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rightRefreshItem_ItemClick);
             // 
             // ribbonImageCollectionLarge
             // 
@@ -1476,9 +1490,20 @@ namespace MegaSet
             this.treeRightPopupMenu.ItemLinks.Add(this.rightAdditem);
             this.treeRightPopupMenu.ItemLinks.Add(this.rightChangeItem);
             this.treeRightPopupMenu.ItemLinks.Add(this.rightDelItem);
+            this.treeRightPopupMenu.ItemLinks.Add(this.rightRefreshItem);
             this.treeRightPopupMenu.MultiColumn = DevExpress.Utils.DefaultBoolean.False;
             this.treeRightPopupMenu.Name = "treeRightPopupMenu";
             this.treeRightPopupMenu.Ribbon = this.ribbonControl;
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.Name = "popupMenu1";
+            this.popupMenu1.Ribbon = this.ribbonControl;
+            // 
+            // popupMenu2
+            // 
+            this.popupMenu2.Name = "popupMenu2";
+            this.popupMenu2.Ribbon = this.ribbonControl;
             // 
             // Form1
             // 
@@ -1573,6 +1598,8 @@ namespace MegaSet
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeRightBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeRightPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1580,7 +1607,7 @@ namespace MegaSet
 
         void cpbTreeView_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
+            // only show right click menu on node
             if (cpbTreeView.CalcHitInfo(e.Location).HitInfoType != DevExpress.XtraTreeList.HitInfoType.Cell)
             {
                 return;
@@ -1597,17 +1624,19 @@ namespace MegaSet
                 //nodeLocationEditor = new LocationsEditor(this.nodeInfoDS);
                 //nodeLocationEditor.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
                 //nodeLocationEditor.Location = System.Windows.Forms.Control.MousePosition;
-                if (cpbTreeView.FocusedNode.Level < 2)  // 1/2 level, enable all 3 buttons
+                if (cpbTreeView.FocusedNode.Level < 2)  // 1/2 level, enable all 3 buttons, disable refresh button
                 {
                    rightAdditem.Enabled = true;
                    rightDelItem.Enabled = true;
                    rightChangeItem.Enabled = true;
+                   rightRefreshItem.Enabled = false;
                 } else
                     if (cpbTreeView.FocusedNode.Level == 2) // endPoint level, disable add button
                     {
                         rightAdditem.Enabled = false;
                         rightDelItem.Enabled = true;
                         rightChangeItem.Enabled = true;
+                        rightRefreshItem.Enabled = true;
                     }
                 
                 treeRightPopupMenu.ShowPopup(System.Windows.Forms.Control.MousePosition);
@@ -1730,8 +1759,15 @@ namespace MegaSet
 
                     if (e.Node.Level == 2)
                     {
-                        //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
-                        nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
+                        try
+                        {
+                            //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
+                            nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
+                        }
+                        catch (Exception ex)
+                        { 
+                            //eat here
+                        }
                     }
                     
                 }
@@ -1746,7 +1782,7 @@ namespace MegaSet
                 //}
             }
 
-            this.nodeInfoDS.NodeTimeInfo.Clear();
+            //this.nodeInfoDS.NodeTimeInfo.Clear();
             nodeInfoDS.WriteXml(configFileName);
         }
 
@@ -1868,6 +1904,9 @@ namespace MegaSet
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.PopupMenu treeRightPopupMenu;
         private DevExpress.XtraEditors.TimeEdit timeEdit1;
+        private DevExpress.XtraBars.BarButtonItem rightRefreshItem;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.PopupMenu popupMenu2;
 
     }
 }
