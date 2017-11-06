@@ -202,11 +202,13 @@ namespace MegaSet
              }
 
             //get gps UTC
-             if (tag.Equals("2"))
+             if (tag.Equals("2")||frame.StartsWith("utcerror"))
              {
                  string gpsDateStr = frame.Substring(5, frame.Length - 5);
                  DataArrived(this, new ProtocalParseEventArg(new cpbProtocalDataCls(CPBProtolType.GPSTime, ipAddress, gpsDateStr)));
              }
+
+
 
 
         }

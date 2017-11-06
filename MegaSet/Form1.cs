@@ -38,7 +38,7 @@ namespace MegaSet
 
         private NodeInfoDS.NodeTimeInfoDataTable backupTable = new NodeInfoDS.NodeTimeInfoDataTable();
 
-        private ProtocalParserCLS protocalAgent = new ProtocalParserCLS();
+        private ProtocalParserCLS protocalAgent;
 
         delegate void MyDataUpdateCallBack(object sender, ProtocalParseEventArg e);
 
@@ -47,6 +47,15 @@ namespace MegaSet
 
         public Form1(string user, int level)
         {
+            try
+            {
+                protocalAgent = new ProtocalParserCLS();
+            }
+            catch
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("网络端口打开失败，请确认端口88未被占用,程序异常退出");
+                return;
+            }
                 userName = user;
                 userLevel = level;
                 InitializeComponent();
@@ -60,7 +69,74 @@ namespace MegaSet
          
         }
 
-  
+
+
+        private bool isInTimeRange(DateTime startTimeIn, string durationStr, DateTime myTime)
+        {
+            DateTime startTime = startTimeIn;
+            DateTime endTime = startTime.AddMinutes(Double.Parse(durationStr));
+
+            try
+            {
+                DateTime currentTime = myTime;
+                DateTime compareTime1 = new DateTime(startTime.Year, startTime.Month, startTime.Day, currentTime.Hour, currentTime.Minute, currentTime.Second);
+                DateTime compareTime2 = new DateTime(endTime.Year, endTime.Month, endTime.Day, currentTime.Hour, currentTime.Minute, currentTime.Second);
+
+                if (startTime.Day != endTime.Day)
+                {
+                    if ((startTime < compareTime1) || (compareTime2 < endTime))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if ((startTime < compareTime1) && (compareTime2 < endTime))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+                            
+        }
+
+        private void RefreshTimeTargetStatus()
+        { 
+             DateTime currentTime;
+             try
+             {
+                 currentTime = DateTime.Parse(this.digitalGauge3.Text);
+                 foreach (NodeInfoDS.NodeTimeInfoRow row in nodeInfoDS.NodeTimeInfo.Rows)
+                 {
+
+                     if (row.IsStartTimeNull() || row.Duration.StartsWith("*") || row.Status == false)
+                     {
+                         row.IsTarget = false;
+                     }
+                     else
+                     {
+                         row.IsTarget = isInTimeRange(row.StartTime, row.Duration, currentTime);
+                     }
+                    
+                 }
+             }
+             catch (Exception ex)
+             {
+                 return;
+             }
+        }
 
 
 
@@ -112,7 +188,7 @@ namespace MegaSet
                         {
                             try
                             {
-                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress, groupID);
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, null, null, frame.Duration, typeName, e.Data.IPAddress, groupID,false);
                             }
                             catch (ConstraintException ex)
                             {
@@ -124,18 +200,48 @@ namespace MegaSet
                                 row["Duration"] = frame.Duration;
                                 row["TypeName"] = typeName;
                                 row["GroupName"] = groupName;
+                                row["IsTarget"] = false; 
                             }
 
                         }
                         else
                         {
                             DateTime startTime = DateTime.Parse(String.Format("{0} {1}", DateTime.Now.ToLongDateString(), frame.StartTime));
-                            DateTime endTime = startTime.AddSeconds(Double.Parse(frame.Duration));
+                            DateTime endTime = startTime.AddMinutes(Double.Parse(frame.Duration));
+                            bool compareResult = false;
+
+                            try
+                            {
+                                DateTime currentTime = DateTime.Parse(this.digitalGauge3.Text);
+                                DateTime compareTime1 = new DateTime(startTime.Year, startTime.Month, startTime.Day, currentTime.Hour, currentTime.Minute, currentTime.Second);
+                                DateTime compareTime2 = new DateTime(endTime.Year, endTime.Month, endTime.Day, currentTime.Hour, currentTime.Minute, currentTime.Second);
+
+                                if (startTime.Day != endTime.Day)
+                                {
+                                    if ((startTime < compareTime1) || (compareTime2 < endTime))
+                                    {
+                                        compareResult = true;
+                                    }
+                                }
+                                else
+                                {
+                                    if ((startTime < compareTime1) && (compareTime2 < endTime))
+                                    {
+                                        compareResult = true;
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            { 
+                                // not set istarget if error
+                            }
+                            
+
 
                             try
                             {
                                 
-                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, startTime , endTime, frame.Duration, typeName, e.Data.IPAddress,groupID);
+                                nodeInfoDS.NodeTimeInfo.Rows.Add(groupName, frame.Status, startTime , endTime, frame.Duration, typeName, e.Data.IPAddress,groupID,compareResult);
                             }
                             catch (ConstraintException ex)
                             {
@@ -147,6 +253,7 @@ namespace MegaSet
                                 row["Duration"] = frame.Duration;
                                 row["TypeName"] = typeName;
                                 row["GroupName"] = groupName;
+                                row["IsTarget"] = compareResult; 
                             }
                         
                         }
@@ -157,6 +264,8 @@ namespace MegaSet
                         this.cpbTimeTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["DateTime"] = e.Data.Content.ToString();
                         this.cpbTimeTicker.Start();
+                        RefreshTimeTargetStatus();
+                        this.gridView1.MoveFirst();
                         break;
 
                     case CPBProtolType.Temp:
@@ -170,7 +279,7 @@ namespace MegaSet
                         this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.GPSErr:
-                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content.ToString();
+                        this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = "ERROR";
                         break;
                     case CPBProtolType.GPSTime:
                         this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content.ToString();
@@ -284,6 +393,7 @@ namespace MegaSet
                 backupTable.Rows[0]["Status"] = temp.Status;
                 backupTable.Rows[0]["TypeName"] = temp.TypeName;
                 backupTable.Rows[0]["GroupID"] = temp.GroupID;
+                backupTable.Rows[0]["IsTarget"] = temp.IsTarget;
                 isEdited = true;
             }
                 
@@ -579,6 +689,11 @@ namespace MegaSet
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.gridView1.CloseEditor();
+            if (editingRow > nodeInfoDS.NodeTimeInfo.Rows.Count - 1 || editingRow < 0)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("修改失败，请取消修改后重新设置");
+                return;
+            }
             NodeInfoDS.NodeTimeInfoRow sendRow = (NodeInfoDS.NodeTimeInfoRow)nodeInfoDS.NodeTimeInfo.Rows[editingRow];
             uint durationTemp;
             bool parseResult = uint.TryParse(sendRow.Duration, out durationTemp);
@@ -679,7 +794,11 @@ namespace MegaSet
             
                     if (currentNodeIp != string.Empty)
                     {
+                        
+                     
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
+                        this.gridView1.MoveFirst();
+                   
                     }
                    
                   
@@ -695,13 +814,7 @@ namespace MegaSet
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            this.protocalAgent.SendCMD("get power", currentNodeIp);
-
-        }
-
+       
         private void addUserBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             UserMgmtForm userMgmtForm = new UserMgmtForm();
@@ -752,6 +865,7 @@ namespace MegaSet
                 nodeInfoDS.NodeTimeInfo.Rows[editingRow]["Status"] = backupTable.Rows[0]["Status"];
                 nodeInfoDS.NodeTimeInfo.Rows[editingRow]["TypeName"] = backupTable.Rows[0]["TypeName"];
                 nodeInfoDS.NodeTimeInfo.Rows[editingRow]["GroupID"] = backupTable.Rows[0]["GroupID"];
+                nodeInfoDS.NodeTimeInfo.Rows[editingRow]["IsTarget"] = backupTable.Rows[0]["IsTarget"];
 
             }
 
@@ -857,7 +971,9 @@ namespace MegaSet
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("确定要重新设置通道板时间么？"), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+            DialogResult result = DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("设置时间后是否重启节点？"), "警告", MessageBoxButtons.YesNoCancel);
+
+            if (result == System.Windows.Forms.DialogResult.Cancel)
             {
                 return;
             }
@@ -880,6 +996,14 @@ namespace MegaSet
             catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("设置时间失败，请确认设置时间值有效");
+            }
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (currentNodeIp != string.Empty)
+                {
+                        protocalAgent.SendCMD("reset", currentNodeIp);
+                }
             }
            
         }
@@ -1036,7 +1160,11 @@ namespace MegaSet
 
                     if (currentNodeIp != string.Empty)
                     {
+                        
+                      
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
+                        this.gridView1.MoveFirst();
+                    
                     }
                 }
                 else
@@ -1056,13 +1184,32 @@ namespace MegaSet
 
                     if (currentNodeIp != string.Empty)
                     {
+                    
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
+                        this.gridView1.MoveFirst();
+                     
                     }
                     
                 }
 
             }
                    
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            nodeInfoDS.NodeTimeInfo.Rows.Add(1, false, null, null, "11", "test1", "192.168.1.100", 1, true);
+            nodeInfoDS.NodeTimeInfo.Rows.Add(2, false, null, null, "11", "3d", "192.168.1.100", 1, false);
+        }
+
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIp != string.Empty)
+            {
+                this.protocalAgent.SendCMD("set rtc2utc", currentNodeIp);
+                this.protocalAgent.SendCMD("get time", currentNodeIp);
+            }
+
         }
 
       

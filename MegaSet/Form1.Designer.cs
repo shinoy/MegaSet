@@ -57,6 +57,10 @@ namespace MegaSet
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            this.TargetColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.nodeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nodeInfoDS = new MegaSet.NodeInfoDS();
@@ -104,7 +108,6 @@ namespace MegaSet
             this.nodeTimeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.StatusColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DateColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.TimeColumn = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -248,6 +251,21 @@ namespace MegaSet
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TargetColumn
+            // 
+            this.TargetColumn.Caption = "gridColumn3";
+            this.TargetColumn.FieldName = "IsTarget";
+            this.TargetColumn.Name = "TargetColumn";
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.Caption = "状态";
+            this.StatusColumn.FieldName = "Status";
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.Visible = true;
+            this.StatusColumn.VisibleIndex = 1;
+            this.StatusColumn.Width = 40;
             // 
             // nodeInfoBindingSource
             // 
@@ -745,7 +763,20 @@ namespace MegaSet
             this.DurationColumn,
             this.gridColumn2,
             this.GroupID,
-            this.typeColumn});
+            this.typeColumn,
+            this.TargetColumn});
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.TargetColumn;
+            gridFormatRule1.ColumnApplyTo = this.TargetColumn;
+            gridFormatRule1.Name = "TestFormat";
+            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.CornflowerBlue;
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = true;
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
@@ -772,15 +803,6 @@ namespace MegaSet
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            // 
-            // StatusColumn
-            // 
-            this.StatusColumn.Caption = "状态";
-            this.StatusColumn.FieldName = "Status";
-            this.StatusColumn.Name = "StatusColumn";
-            this.StatusColumn.Visible = true;
-            this.StatusColumn.VisibleIndex = 1;
-            this.StatusColumn.Width = 40;
             // 
             // DateColumn
             // 
@@ -1157,6 +1179,7 @@ namespace MegaSet
             this.simpleButton8.Size = new System.Drawing.Size(108, 32);
             this.simpleButton8.TabIndex = 24;
             this.simpleButton8.Text = "校准时间";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // panelControl2
             // 
@@ -1907,6 +1930,7 @@ namespace MegaSet
         private DevExpress.XtraBars.BarButtonItem rightRefreshItem;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.PopupMenu popupMenu2;
+        private DevExpress.XtraGrid.Columns.GridColumn TargetColumn;
 
     }
 }

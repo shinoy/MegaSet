@@ -1062,6 +1062,8 @@ namespace MegaSet {
             
             private global::System.Data.DataColumn columnGroupID;
             
+            private global::System.Data.DataColumn columnIsTarget;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeTimeInfoDataTable() {
@@ -1161,6 +1163,14 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsTargetColumn {
+                get {
+                    return this.columnIsTarget;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1196,7 +1206,7 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NodeTimeInfoRow AddNodeTimeInfoRow(ushort GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime, ushort GroupID) {
+            public NodeTimeInfoRow AddNodeTimeInfoRow(ushort GroupName, bool Status, System.DateTime StartTime, System.DateTime EndTime, string Duration, string TypeName, NodeInfoRow parentNodeInfoRowBynode_nodetime, ushort GroupID, bool IsTarget) {
                 NodeTimeInfoRow rowNodeTimeInfoRow = ((NodeTimeInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GroupName,
@@ -1206,7 +1216,8 @@ namespace MegaSet {
                         Duration,
                         TypeName,
                         null,
-                        GroupID};
+                        GroupID,
+                        IsTarget};
                 if ((parentNodeInfoRowBynode_nodetime != null)) {
                     columnValuesArray[6] = parentNodeInfoRowBynode_nodetime[0];
                 }
@@ -1240,6 +1251,7 @@ namespace MegaSet {
                 this.columnTypeName = base.Columns["TypeName"];
                 this.columnIP = base.Columns["IP"];
                 this.columnGroupID = base.Columns["GroupID"];
+                this.columnIsTarget = base.Columns["IsTarget"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1261,9 +1273,12 @@ namespace MegaSet {
                 base.Columns.Add(this.columnIP);
                 this.columnGroupID = new global::System.Data.DataColumn("GroupID", typeof(ushort), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGroupID);
+                this.columnIsTarget = new global::System.Data.DataColumn("IsTarget", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsTarget);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("NodeTimeInfoKey1", new global::System.Data.DataColumn[] {
                                 this.columnIP,
                                 this.columnGroupID}, false));
+                this.columnIsTarget.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2151,6 +2166,22 @@ namespace MegaSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTarget {
+                get {
+                    try {
+                        return ((bool)(this[this.tableNodeTimeInfo.IsTargetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsTarget\' in table \'NodeTimeInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeTimeInfo.IsTargetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NodeInfoRow NodeInfoRow {
                 get {
                     return ((NodeInfoRow)(this.GetParentRow(this.Table.ParentRelations["node_nodetime"])));
@@ -2254,6 +2285,18 @@ namespace MegaSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGroupIDNull() {
                 this[this.tableNodeTimeInfo.GroupIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIsTargetNull() {
+                return this.IsNull(this.tableNodeTimeInfo.IsTargetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIsTargetNull() {
+                this[this.tableNodeTimeInfo.IsTargetColumn] = global::System.Convert.DBNull;
             }
         }
         
