@@ -28,6 +28,13 @@ namespace MegaSet
         private System.Timers.Timer systemTimerTicker = new System.Timers.Timer(500);
         private System.Timers.Timer cpbTimeTicker = new System.Timers.Timer(1000);
 
+        private System.Timers.Timer powerTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer dateTimeTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer tempTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer voltageTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer versionTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer gpsTimeoutTicker = new System.Timers.Timer(5000);
+
 
         private string configFileName = System.Environment.CurrentDirectory + @"\Configuration.mgs";
         private string currentNodeIp =string.Empty;
@@ -56,6 +63,25 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("网络端口打开失败，请确认端口88未被占用,程序异常退出");
                 return;
             }
+                // initialize timeout ticker 
+            powerTimeoutTicker.AutoReset = false;
+            powerTimeoutTicker.Elapsed += powerTimeoutTicker_Elapsed;
+
+            dateTimeTimeoutTicker.AutoReset = false;
+            dateTimeTimeoutTicker.Elapsed += dateTimeTimeoutTicker_Elapsed;
+
+            tempTimeoutTicker.AutoReset = false;
+            tempTimeoutTicker.Elapsed += tempTimeoutTicker_Elapsed;
+
+            voltageTimeoutTicker.AutoReset = false;
+            voltageTimeoutTicker.Elapsed += voltageTimeoutTicker_Elapsed;
+
+            versionTimeoutTicker.AutoReset = false;
+            versionTimeoutTicker.Elapsed += versionTimeoutTicker_Elapsed;
+
+            gpsTimeoutTicker.AutoReset = false;
+            gpsTimeoutTicker.Elapsed += gpsTimeoutTicker_Elapsed;
+                
                 userName = user;
                 userLevel = level;
                 InitializeComponent();
@@ -67,6 +93,36 @@ namespace MegaSet
                 backupTable.Rows.Add();
                 
          
+        }
+
+        void gpsTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("GPS信息超时,请确认节点网络连接");
+        }
+
+        void versionTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("当前版本获取超时");
+        }
+
+        void voltageTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("当前电压获取超时");
+        }
+
+        void tempTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("当前温度获取超时");
+        }
+
+        void dateTimeTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("当前时间获取超时");
+        }
+
+        void powerTimeoutTicker_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DevExpress.XtraEditors.XtraMessageBox.Show("定时表获取超时,请确认节点网络连接");
         }
 
 
@@ -157,6 +213,7 @@ namespace MegaSet
                 switch (e.Data.TypeName)
                 {
                     case CPBProtolType.Power:
+                        this.powerTimeoutTicker.Stop();
                         PowerFrameType frame = (PowerFrameType)e.Data.Content;                    
                         int groupID = int.Parse(frame.PowerGroup);
                         int groupName;
@@ -257,31 +314,45 @@ namespace MegaSet
                             }
                         
                         }
-                                        
+
+                        if (!isEdited)
+                        {
+                            this.gridView1.MoveFirst();
+                        }         
                         break;
 
                     case CPBProtolType.Date:
+                        this.dateTimeTimeoutTicker.Stop();
                         this.cpbTimeTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["DateTime"] = e.Data.Content.ToString();
                         this.cpbTimeTicker.Start();
                         RefreshTimeTargetStatus();
-                        this.gridView1.MoveFirst();
+                        if (!isEdited)
+                        {
+                            this.gridView1.MoveFirst();
+                        }
+                       
                         break;
 
                     case CPBProtolType.Temp:
+                        this.tempTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["Temp"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.Version:
+                        this.versionTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["Version"] = e.Data.Content.ToString();
                         break;
 
                     case CPBProtolType.Valtage:
+                        this.voltageTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["Voltage"] = e.Data.Content.ToString();
                         break;
                     case CPBProtolType.GPSErr:
+                        this.gpsTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = "ERROR";
                         break;
                     case CPBProtolType.GPSTime:
+                        this.gpsTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["GPSTime"] = e.Data.Content.ToString();
                         break;
 
@@ -794,10 +865,10 @@ namespace MegaSet
             
                     if (currentNodeIp != string.Empty)
                     {
-                        
-                     
+
+                        this.powerTimeoutTicker.Start();
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
-                        this.gridView1.MoveFirst();
+                       
                    
                     }
                    
@@ -878,6 +949,7 @@ namespace MegaSet
         {
             if (currentNodeIp != string.Empty)
             {
+                this.dateTimeTimeoutTicker.Start();
                 protocalAgent.SendCMD("get time",currentNodeIp);
             }
             else
@@ -890,6 +962,7 @@ namespace MegaSet
         {
             if (currentNodeIp != string.Empty)
             {
+                this.voltageTimeoutTicker.Start();
                 protocalAgent.SendCMD("get voltage", currentNodeIp);
             }
             else
@@ -902,6 +975,7 @@ namespace MegaSet
         {
             if (currentNodeIp != string.Empty)
             {
+                this.tempTimeoutTicker.Start();
                 protocalAgent.SendCMD("get temp", currentNodeIp);
             }
             else
@@ -914,6 +988,7 @@ namespace MegaSet
         {
             if (currentNodeIp != string.Empty)
             {
+                this.versionTimeoutTicker.Start();
                 protocalAgent.SendCMD("get version", currentNodeIp);
             }
             else
@@ -985,7 +1060,13 @@ namespace MegaSet
                     DateTime timeSet = DateTime.Parse(this.timeEdit1.Text);
                     string str = timeSet.ToString("HHmmssyyMMdd");
                   //  MessageBox.Show(string.Format("set time {0}", str));
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.dateTimeTimeoutTicker.Start();
+                    }
                     protocalAgent.SendCMD(string.Format("set time {0}", str), currentNodeIp);
+                   
+
                 }
                 else
                 {
@@ -1005,6 +1086,7 @@ namespace MegaSet
                         protocalAgent.SendCMD("reset", currentNodeIp);
                 }
             }
+            
            
         }
 
@@ -1105,6 +1187,7 @@ namespace MegaSet
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("应保证GPS模块上电至少一分钟且间隔不应过短(3s)，确保时间准确！");
                 protocalAgent.SendCMD("get gps",currentNodeIp);
+                gpsTimeoutTicker.Start();
                
             }
            
@@ -1160,10 +1243,11 @@ namespace MegaSet
 
                     if (currentNodeIp != string.Empty)
                     {
-                        
-                      
+
+                        this.powerTimeoutTicker.Start();
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
-                        this.gridView1.MoveFirst();
+                        
+                     
                     
                     }
                 }
@@ -1184,9 +1268,9 @@ namespace MegaSet
 
                     if (currentNodeIp != string.Empty)
                     {
-                    
+                        this.powerTimeoutTicker.Start();
                         this.protocalAgent.SendCMD("get power", currentNodeIp);
-                        this.gridView1.MoveFirst();
+                        
                      
                     }
                     

@@ -40,57 +40,60 @@
             // 
             // oldpassTextB
             // 
-            this.oldpassTextB.Location = new System.Drawing.Point(87, 21);
+            this.oldpassTextB.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.oldpassTextB.Location = new System.Drawing.Point(87, 23);
             this.oldpassTextB.Name = "oldpassTextB";
             this.oldpassTextB.PasswordChar = '*';
-            this.oldpassTextB.Size = new System.Drawing.Size(129, 21);
+            this.oldpassTextB.Size = new System.Drawing.Size(129, 20);
             this.oldpassTextB.TabIndex = 0;
             // 
             // newPass1TextB
             // 
-            this.newPass1TextB.Location = new System.Drawing.Point(87, 53);
+            this.newPass1TextB.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.newPass1TextB.Location = new System.Drawing.Point(87, 57);
             this.newPass1TextB.Name = "newPass1TextB";
             this.newPass1TextB.PasswordChar = '*';
-            this.newPass1TextB.Size = new System.Drawing.Size(129, 21);
+            this.newPass1TextB.Size = new System.Drawing.Size(129, 20);
             this.newPass1TextB.TabIndex = 1;
             // 
             // newPass2TextB
             // 
-            this.newPass2TextB.Location = new System.Drawing.Point(87, 85);
+            this.newPass2TextB.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.newPass2TextB.Location = new System.Drawing.Point(87, 92);
             this.newPass2TextB.Name = "newPass2TextB";
             this.newPass2TextB.PasswordChar = '*';
-            this.newPass2TextB.Size = new System.Drawing.Size(129, 21);
+            this.newPass2TextB.Size = new System.Drawing.Size(129, 20);
             this.newPass2TextB.TabIndex = 2;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(25, 22);
+            this.labelControl1.Location = new System.Drawing.Point(25, 24);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 14);
+            this.labelControl1.Size = new System.Drawing.Size(36, 13);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "原密码";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(25, 53);
+            this.labelControl2.Location = new System.Drawing.Point(25, 57);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(36, 14);
+            this.labelControl2.Size = new System.Drawing.Size(36, 13);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "新密码";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(25, 86);
+            this.labelControl3.Location = new System.Drawing.Point(25, 93);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 14);
+            this.labelControl3.Size = new System.Drawing.Size(48, 13);
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "确认密码";
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(25, 128);
+            this.simpleButton1.Location = new System.Drawing.Point(25, 139);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(75, 25);
             this.simpleButton1.TabIndex = 6;
             this.simpleButton1.Text = "确定";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -98,17 +101,17 @@
             // simpleButton2
             // 
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(141, 128);
+            this.simpleButton2.Location = new System.Drawing.Point(141, 139);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(75, 25);
             this.simpleButton2.TabIndex = 7;
             this.simpleButton2.Text = "取消";
             // 
             // PasswordChangeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 170);
+            this.ClientSize = new System.Drawing.Size(251, 184);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.labelControl3);
