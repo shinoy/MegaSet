@@ -65,6 +65,7 @@
             // 
             // textEdit1
             // 
+            this.textEdit1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.textEdit1.Location = new System.Drawing.Point(66, 90);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(131, 20);

@@ -341,6 +341,24 @@ namespace MegaSet
                     case CPBProtolType.Version:
                         this.versionTimeoutTicker.Stop();
                         this.nodeInfoDS.DispNodeInfo[0]["Version"] = e.Data.Content.ToString();
+
+                        try
+                        {
+                            if (Double.Parse(e.Data.Content.ToString().Substring(0, 3)) >= 1.8)
+                            {
+
+                                if (this.checkEdit1.Checked == false)
+                                {
+                                    this.checkEdit1.Checked = true;
+                                }
+                                this.checkEdit1.Enabled = false;
+                            }
+                        }
+                        catch (Exception ex)
+                        { 
+                           
+                        }
+                       
                         break;
 
                     case CPBProtolType.Valtage:
@@ -854,7 +872,7 @@ namespace MegaSet
 
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Temp"] = "__._";
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Voltage"] = "__._";
-                    this.nodeInfoDS.DispNodeInfo.Rows[0]["GPSTime"] = "____-__-__ __:__:__";
+                    this.nodeInfoDS.DispNodeInfo.Rows[0]["GPSTime"] = DateTime.Now.ToString("yy-MM-dd HH:mm:ss");
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["DateTime"] = "____-__-__ __:__:__";
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Version"] = "_._._";
 
@@ -1293,11 +1311,14 @@ namespace MegaSet
                 this.protocalAgent.SendCMD("set rtc2utc", currentNodeIp);
                 this.protocalAgent.SendCMD("get time", currentNodeIp);
             }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("请选择节点后操作");
+            }
 
         }
 
       
-
        
        
 
