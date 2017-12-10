@@ -4030,7 +4030,7 @@
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
-		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;PATH_TO_MEGASET_FILES&gt;\Mother_board_128px_554960_easyicon.net.ico</td><td>0</td></row>
+		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;PATH_TO_MEGASET_FILES&gt;\无标题.ico</td><td>0</td></row>
 		<row><td>MegaSet.exe1_613277CCBE304E998AD57D715F3A9684.exe</td><td/><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe</td><td>0</td></row>
 		<row><td>MegaSet.exe_56AC7DE199764710890CF25A6BC8F852.exe</td><td/><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe</td><td>0</td></row>
 	</table>

@@ -1172,6 +1172,7 @@ namespace MegaSet
                 }
                 else
                 {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("应保证GPS模块上电至少一分钟且间隔不应过短(3s)，确保时间准确！");
                     protocalAgent.SendCMD("set gps on", currentNodeIp);
                     DevExpress.XtraEditors.XtraMessageBox.Show("GPS开启");
                 }
@@ -1203,7 +1204,6 @@ namespace MegaSet
             }
             else
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("应保证GPS模块上电至少一分钟且间隔不应过短(3s)，确保时间准确！");
                 protocalAgent.SendCMD("get gps",currentNodeIp);
                 gpsTimeoutTicker.Start();
                
@@ -1316,6 +1316,13 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("请选择节点后操作");
             }
 
+        }
+
+        private void helpBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LicenseForm licenseWin = new LicenseForm();
+            licenseWin.StartPosition = FormStartPosition.CenterParent;
+            licenseWin.ShowDialog();
         }
 
       

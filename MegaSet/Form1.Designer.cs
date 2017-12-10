@@ -488,13 +488,14 @@ namespace MegaSet
             // 
             // helpBtn
             // 
-            this.helpBtn.Caption = "帮助";
+            this.helpBtn.Caption = "关于";
             this.helpBtn.Id = 4;
             this.helpBtn.LargeImageIndex = 12;
             this.helpBtn.Name = "helpBtn";
             toolTipItem9.Text = "显示帮助信息";
             superToolTip9.Items.Add(toolTipItem9);
             this.helpBtn.SuperTip = superToolTip9;
+            this.helpBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.helpBtn_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -940,7 +941,7 @@ namespace MegaSet
             // 
             // simpleButton12
             // 
-            this.simpleButton12.Location = new System.Drawing.Point(46, 173);
+            this.simpleButton12.Location = new System.Drawing.Point(46, 165);
             this.simpleButton12.Name = "simpleButton12";
             this.simpleButton12.Size = new System.Drawing.Size(78, 31);
             this.simpleButton12.TabIndex = 19;
@@ -1304,6 +1305,7 @@ namespace MegaSet
             // 
             // TimeGauge
             // 
+            this.TimeGauge.AutoLayout = false;
             this.TimeGauge.BackColor = System.Drawing.Color.Transparent;
             this.TimeGauge.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.TimeGauge.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1320,7 +1322,7 @@ namespace MegaSet
             this.digitalGauge3.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:WhiteSmoke");
             this.digitalGauge3.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent4});
-            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(6, 6, 494, 67);
+            this.digitalGauge3.Bounds = new System.Drawing.Rectangle(3, 4, 499, 76);
             this.digitalGauge3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dispNodeInfoBindingSource, "DateTime", true));
             this.digitalGauge3.DigitCount = 15;
             this.digitalGauge3.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
