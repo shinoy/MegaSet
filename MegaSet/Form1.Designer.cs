@@ -87,6 +87,7 @@ namespace MegaSet
             this.rightChangeItem = new DevExpress.XtraBars.BarButtonItem();
             this.rightDelItem = new DevExpress.XtraBars.BarButtonItem();
             this.rightRefreshItem = new DevExpress.XtraBars.BarButtonItem();
+            this.rightIPchangeItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -321,10 +322,11 @@ namespace MegaSet
             this.rightAdditem,
             this.rightChangeItem,
             this.rightDelItem,
-            this.rightRefreshItem});
+            this.rightRefreshItem,
+            this.rightIPchangeItem6});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 2;
+            this.ribbonControl.MaxItemId = 3;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -354,9 +356,10 @@ namespace MegaSet
             this.iAbout.Description = "V2.0";
             this.iAbout.Id = 24;
             this.iAbout.ImageIndex = 8;
-            this.iAbout.LargeImageIndex = 8;
+            this.iAbout.ImageUri.Uri = "Home";
+            this.iAbout.LargeImageIndex = 12;
             this.iAbout.Name = "iAbout";
-            this.iAbout.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.iAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iAbout_ItemClick);
             // 
             // rgbiSkins
             // 
@@ -488,7 +491,7 @@ namespace MegaSet
             // 
             // helpBtn
             // 
-            this.helpBtn.Caption = "关于";
+            this.helpBtn.Caption = "帮助";
             this.helpBtn.Id = 4;
             this.helpBtn.LargeImageIndex = 12;
             this.helpBtn.Name = "helpBtn";
@@ -545,6 +548,14 @@ namespace MegaSet
             this.rightRefreshItem.ImageUri.Uri = "Refresh";
             this.rightRefreshItem.Name = "rightRefreshItem";
             this.rightRefreshItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rightRefreshItem_ItemClick);
+            // 
+            // rightIPchangeItem6
+            // 
+            this.rightIPchangeItem6.Caption = "修改IP";
+            this.rightIPchangeItem6.Id = 2;
+            this.rightIPchangeItem6.ImageUri.Uri = "Replace";
+            this.rightIPchangeItem6.Name = "rightIPchangeItem6";
+            this.rightIPchangeItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rightIPchangeItem6_ItemClick);
             // 
             // ribbonImageCollectionLarge
             // 
@@ -1517,6 +1528,7 @@ namespace MegaSet
             this.treeRightPopupMenu.ItemLinks.Add(this.rightChangeItem);
             this.treeRightPopupMenu.ItemLinks.Add(this.rightDelItem);
             this.treeRightPopupMenu.ItemLinks.Add(this.rightRefreshItem);
+            this.treeRightPopupMenu.ItemLinks.Add(this.rightIPchangeItem6);
             this.treeRightPopupMenu.MultiColumn = DevExpress.Utils.DefaultBoolean.False;
             this.treeRightPopupMenu.Name = "treeRightPopupMenu";
             this.treeRightPopupMenu.Ribbon = this.ribbonControl;
@@ -1650,12 +1662,13 @@ namespace MegaSet
                 //nodeLocationEditor = new LocationsEditor(this.nodeInfoDS);
                 //nodeLocationEditor.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
                 //nodeLocationEditor.Location = System.Windows.Forms.Control.MousePosition;
-                if (cpbTreeView.FocusedNode.Level < 2)  // 1/2 level, enable all 3 buttons, disable refresh button
+                if (cpbTreeView.FocusedNode.Level < 2)  // 1/2 level, enable all 3 buttons, disable refresh/IP change button
                 {
                    rightAdditem.Enabled = true;
                    rightDelItem.Enabled = true;
                    rightChangeItem.Enabled = true;
                    rightRefreshItem.Enabled = false;
+                   rightIPchangeItem6.Enabled = false;
                 } else
                     if (cpbTreeView.FocusedNode.Level == 2) // endPoint level, disable add button
                     {
@@ -1663,6 +1676,7 @@ namespace MegaSet
                         rightDelItem.Enabled = true;
                         rightChangeItem.Enabled = true;
                         rightRefreshItem.Enabled = true;
+                        rightIPchangeItem6.Enabled = true;
                     }
                 
                 treeRightPopupMenu.ShowPopup(System.Windows.Forms.Control.MousePosition);
@@ -1934,6 +1948,7 @@ namespace MegaSet
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.PopupMenu popupMenu2;
         private DevExpress.XtraGrid.Columns.GridColumn TargetColumn;
+        private DevExpress.XtraBars.BarButtonItem rightIPchangeItem6;
 
     }
 }

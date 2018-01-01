@@ -150,6 +150,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeIPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeIPForm.Designer.cs">
+      <DependentUpon>ChangeIPForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangeNodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserPassDateSetCLS.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChangeIPForm.resx">
+      <DependentUpon>ChangeIPForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeNodeForm.resx">
       <DependentUpon>ChangeNodeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +271,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="help.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="keyE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -341,7 +353,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon.ico" />
     <Content Include="Mother_board_128px_554960_easyicon.net.ico" />
     <Content Include="thumb.ico" />
     <Content Include="无标题.ico" />

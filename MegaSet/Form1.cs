@@ -722,6 +722,11 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("当前未选中任何节点");
                 return;
             }
+            if (DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("确定删除节点?"), "警告", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+
 
             DevExpress.XtraTreeList.Nodes.TreeListNode deleteNode = cpbTreeView.FocusedNode;
             if (deleteNode.ParentNode != null)
@@ -1047,6 +1052,9 @@ namespace MegaSet
                 DevExpress.XtraEditors.XtraMessageBox.Show("当前没有选中任何节点");
                 return;
             }
+           
+              
+            
             bool isExpanded = this.cpbTreeView.FocusedNode.Expanded;
             ChangeNodeForm changeForm = new ChangeNodeForm(this.nodeInfoDS, this.cpbTreeView.FocusedNode);
             changeForm.StartPosition = FormStartPosition.CenterParent;
@@ -1319,6 +1327,35 @@ namespace MegaSet
         }
 
         private void helpBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Help.ShowHelp(this, @".\help.chm", HelpNavigator.KeywordIndex, "MegaSet V2帮助文档");
+           
+        }
+
+        private void rightIPchangeItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            bool isExpanded = this.cpbTreeView.FocusedNode.Expanded;
+            ChangeIPForm changeForm = new ChangeIPForm(this.nodeInfoDS, this.cpbTreeView.FocusedNode);
+            changeForm.StartPosition = FormStartPosition.CenterParent;
+            this.cpbTreeView.NodeChanged -= cpbTreeView_NodeChanged;
+            if (changeForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.protocalAgent.SendCMD("set ip " + this.cpbTreeView.FocusedNode.GetValue("ID").ToString(), currentNodeIp);
+                currentNodeIp = this.cpbTreeView.FocusedNode.GetValue("ID").ToString();
+                DevExpress.XtraEditors.XtraMessageBox.Show("修改成功！请等待硬件重启后即可使用新IP地址访问");
+                this.cpbTreeView.Refresh();
+            }
+
+            this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
+
+            //restore the expanded status
+            if (isExpanded)
+            {
+                this.cpbTreeView.FocusedNode.ExpandAll();
+            }
+        }
+
+        private void iAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
             LicenseForm licenseWin = new LicenseForm();
             licenseWin.StartPosition = FormStartPosition.CenterParent;

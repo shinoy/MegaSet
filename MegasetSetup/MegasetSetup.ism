@@ -362,6 +362,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{087BA38A-EAF1-4C74-B1AD-E9E11A523FE8}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{05D01B0E-52FB-4EAA-8057-A37E95D4BE46}</td><td>ALLUSERSPROFILE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>MegaSet.exe</td><td>{5D74D673-45FA-4911-9420-705FE8CB6C17}</td><td>INSTALLDIR</td><td>2</td><td/><td>megaset.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>help.chm</td><td>{73E308BA-32CC-403D-989D-BC6B2371DE56}</td><td>INSTALLDIR</td><td>8</td><td/><td>help.chm</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1094,6 +1095,7 @@
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>MegaSet.exe</td></row>
+		<row><td>INSTALLDIR</td><td>help.chm</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1216,8 +1218,7 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
-		<row><td>lee</td><td>ProgramMenuFolder</td><td>Lee</td><td/><td>1</td><td/></row>
-		<row><td>megaset</td><td>lee</td><td>MegaSet</td><td/><td>1</td><td/></row>
+		<row><td>megaset</td><td>StartupFolder</td><td>MegaSet</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -1931,6 +1932,7 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>MegaSet.exe</td></row>
+		<row><td>AlwaysInstall</td><td>help.chm</td></row>
 	</table>
 
 	<table name="File">
@@ -1978,6 +1980,7 @@
 		<row><td>devexpress.xtrascheduler.v155</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraScheduler.v15.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\workspace\MegaSet\MegaSet\bin\Release\DevExpress.XtraScheduler.v15.2.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v15.</td><td>DevExpress.XtraTreeList.v15.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v15.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\workspace\MegaSet\MegaSet\bin\Release\DevExpress.XtraTreeList.v15.2.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v15.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraTreeList.v15.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\workspace\MegaSet\MegaSet\bin\Release\DevExpress.XtraTreeList.v15.2.xml</td><td>1</td><td/></row>
+		<row><td>help.chm</td><td>help.chm</td><td>help.chm</td><td>0</td><td/><td/><td>0</td><td>1</td><td>&lt;PATH_TO_MEGASET_FILES&gt;\help.chm</td><td>5</td><td/></row>
 		<row><td>keye</td><td>AllOtherFiles</td><td>keyE</td><td>0</td><td/><td/><td>0</td><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\keyE</td><td>1</td><td/></row>
 		<row><td>megaset.exe</td><td>MegaSet.exe</td><td>MegaSet.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe</td><td>1</td><td/></row>
 		<row><td>megaset.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>MEGASE~1.CON|MegaSet.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe.config</td><td>1</td><td/></row>
@@ -2151,6 +2154,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_6117C145_142C_4F40_8F15_BBC5000944B3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_142713AD_F659_45CC_9D8C_D7384C4A6B42_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>MegaSet.exe</td><td/><td/><td>_1CEE6DE3_BEDE_430D_85A8_06C65ECD5E1E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>help.chm</td><td/><td/><td>_1B089371_2A21_4C82_B2D4_4B76368CBBB0_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2339,6 +2343,7 @@
 		<row><td>configuration.mgs</td><td>File</td><td>[%USERDOMAIN]</td><td>Administrators</td><td>1880031679</td><td>0</td></row>
 		<row><td>configuration.mgs</td><td>File</td><td>[%USERDOMAIN]</td><td>Everyone</td><td>1610809791</td><td>0</td></row>
 		<row><td>configuration.mgs</td><td>File</td><td>[%USERDOMAIN]</td><td>[LogonUser]</td><td>1880031679</td><td>0</td></row>
+		<row><td>help.chm</td><td>File</td><td>[%USERDOMAIN]</td><td>Everyone</td><td>1880031679</td><td>0</td></row>
 		<row><td>keye</td><td>File</td><td>[%USERDOMAIN]</td><td>Administrators</td><td>1880031679</td><td>0</td></row>
 		<row><td>keye</td><td>File</td><td>[%USERDOMAIN]</td><td>Everyone</td><td>1610809791</td><td>0</td></row>
 		<row><td>keye</td><td>File</td><td>[%USERDOMAIN]</td><td>[LogonUser]</td><td>1880031679</td><td>0</td></row>
@@ -3914,6 +3919,7 @@
 		<row><td>ID_STRING1</td><td>1033</td><td>http://www.Lee.com</td><td>0</td><td/><td>765841062</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>Lee</td><td>0</td><td/><td>765822818</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>LAUNCH~1.EXE|Launch MegaSet.exe</td><td>0</td><td/><td>765805153</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>MEGASE~1|MegaSet Help</td><td>0</td><td/><td>279321027</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>765794625</td></row>
 	</table>
 
@@ -4033,6 +4039,7 @@
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;PATH_TO_MEGASET_FILES&gt;\无标题.ico</td><td>0</td></row>
 		<row><td>MegaSet.exe1_613277CCBE304E998AD57D715F3A9684.exe</td><td/><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe</td><td>0</td></row>
 		<row><td>MegaSet.exe_56AC7DE199764710890CF25A6BC8F852.exe</td><td/><td>D:\workspace\MegaSet\MegaSet\bin\Release\MegaSet.exe</td><td>0</td></row>
+		<row><td>NewShortcut1_0A98F77B2AAB49659638DECC772FB44A.exe</td><td/><td>&lt;PATH_TO_MEGASET_FILES&gt;\Blue_Help_Book_128px_1076356_easyicon.net.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4620,6 +4627,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileKey1</td><td>MegaSet.exe</td><td/><td>lee</td><td>2</td></row>
 		<row><td>FileKey2</td><td>MegaSet.exe</td><td/><td>megaset</td><td>2</td></row>
 		<row><td>MegaSet.exe</td><td>MegaSet.exe</td><td/><td>megaset</td><td>2</td></row>
+		<row><td>NewShortcut1</td><td>help.chm</td><td/><td>megaset</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4707,6 +4715,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="I4">ISAttributes</col>
 		<row><td>MegaSet.exe</td><td>megaset</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>MegaSet.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MegaSet.exe_56AC7DE199764710890CF25A6BC8F852.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>MegaSet.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>MegaSet.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MegaSet.exe1_613277CCBE304E998AD57D715F3A9684.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>NewShortcut1</td><td>megaset</td><td>##ID_STRING4##</td><td>help.chm</td><td>[INSTALLDIR]help.chm</td><td/><td/><td/><td>NewShortcut1_0A98F77B2AAB49659638DECC772FB44A.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
