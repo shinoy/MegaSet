@@ -1801,8 +1801,14 @@ namespace MegaSet
                     {
                         try
                         {
+                            if (nodeInfoDS.NodeInfo.Select(string.Format("IP = '{0}'", e.Node.GetValue("ID").ToString())).Length == 0)
+                            {
+
+                                // to add nodeinfo row for orphan tree node 
+                                nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
+                            }
                             //  System.Windows.Forms.MessageBox.Show(e.Node.GetValue("ID").ToString());
-                            nodeInfoDS.NodeInfo.Rows.Add(new object[] { e.Node.GetValue("ID").ToString(), "_", "_", "_", "_", "_" });
+                            
                         }
                         catch (Exception ex)
                         { 

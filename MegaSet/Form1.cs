@@ -28,11 +28,11 @@ namespace MegaSet
         private System.Timers.Timer systemTimerTicker = new System.Timers.Timer(500);
         private System.Timers.Timer cpbTimeTicker = new System.Timers.Timer(1000);
 
-        private System.Timers.Timer powerTimeoutTicker = new System.Timers.Timer(5000);
-        private System.Timers.Timer dateTimeTimeoutTicker = new System.Timers.Timer(5000);
-        private System.Timers.Timer tempTimeoutTicker = new System.Timers.Timer(5000);
-        private System.Timers.Timer voltageTimeoutTicker = new System.Timers.Timer(5000);
-        private System.Timers.Timer versionTimeoutTicker = new System.Timers.Timer(5000);
+        private System.Timers.Timer powerTimeoutTicker = new System.Timers.Timer(4000);
+        private System.Timers.Timer dateTimeTimeoutTicker = new System.Timers.Timer(4000);
+        private System.Timers.Timer tempTimeoutTicker = new System.Timers.Timer(4000);
+        private System.Timers.Timer voltageTimeoutTicker = new System.Timers.Timer(4000);
+        private System.Timers.Timer versionTimeoutTicker = new System.Timers.Timer(4000);
         private System.Timers.Timer gpsTimeoutTicker = new System.Timers.Timer(5000);
 
 
@@ -401,18 +401,33 @@ namespace MegaSet
           
             if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+
+                this.cpbTreeView.NodeChanged -= cpbTreeView_NodeChanged;
+
                 try
                 {
+                    this.nodeInfoDS.Clear();
                     this.nodeInfoDS.ReadXml(openFile.FileName);
+                    this.nodeInfoDS.DispNodeInfo.Clear();
+                    this.nodeInfoDS.NodeTimeInfo.Clear();
+                    this.nodeInfoDS.DispNodeInfo.Rows.Add();
                 }
                 catch( System.Security.SecurityException)
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("没有权限访问该文件");
+                    this.nodeInfoDS.ReadXml(configFileName);
+                    updateDataSetAfterLoad();
+                    
                 }
                 catch(Exception ex)
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("错误的配置文件");
+                    this.nodeInfoDS.Clear();
+                    this.nodeInfoDS.ReadXml(configFileName);
+                    updateDataSetAfterLoad();
                 }
+
+                this.cpbTreeView.NodeChanged += cpbTreeView_NodeChanged;
             }
         }
 
@@ -543,6 +558,10 @@ namespace MegaSet
             {
                 this.nodeInfoDS.ReadXml(configFileName);
                 updateDataSetAfterLoad();
+                this.nodeInfoDS.DispNodeInfo.Clear();
+                this.nodeInfoDS.NodeTimeInfo.Clear();
+                this.nodeInfoDS.DispNodeInfo.Rows.Add();
+              
             }
             catch (Exception ex)
             {
@@ -875,6 +894,8 @@ namespace MegaSet
                     this.DisableRowStateHelper.DisabledRows.Clear();
                     this.ChangedRowStateHelper.DisabledRows.Clear();
 
+                  
+
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Temp"] = "__._";
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["Voltage"] = "__._";
                     this.nodeInfoDS.DispNodeInfo.Rows[0]["GPSTime"] = DateTime.Now.ToString("yy-MM-dd HH:mm:ss");
@@ -1119,7 +1140,7 @@ namespace MegaSet
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.nodeInfoDS.NodeTimeInfo.Rows.Clear();
-            this.nodeInfoDS.DispNodeInfo.Rows.Clear();
+           // this.nodeInfoDS.DispNodeInfo.Rows.Clear();
             this.nodeInfoDS.WriteXml(configFileName);
         }
 
